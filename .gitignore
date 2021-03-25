@@ -1,2 +1,3 @@
 # ignore all of the image files for now
-static/images/**
+static/images/
+static/scss/
