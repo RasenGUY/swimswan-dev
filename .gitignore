@@ -1,3 +1,6 @@
 # ignore all of the image files for now
 static/images/
 static/scss/
+*.jpg
+*.txt
+*.xd
