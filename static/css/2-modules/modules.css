@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap");
+.btn, button {
+  display: inline-block;
+  font-family: "Kiwi Maru", "serif";
+  font-weight: 500;
+  color: #EEF6FC;
+  border-width: 0;
+  padding: clamp(0.75rem, -0.1109865471rem + 1.1210762332vw, 1rem) clamp(5rem, 0.6950672646rem + 5.6053811659vw, 6.25rem);
+  background-color: #FF3E5B;
+  border-radius: 5px;
+  transition: all 0.15s ease-in-out;
+}
+.btn.md, button.md {
+  padding: clamp(1rem, -0.1980676329rem + 1.2077294686vw, 1.25rem) clamp(6.25rem, 0.2596618357rem + 6.038647343vw, 7.5rem);
+}
+.btn.sm, button.sm {
+  padding: clamp(0.5rem, -0.2539267016rem + 1.3089005236vw, 0.75rem) clamp(3.75rem, -0.0196335079rem + 6.5445026178vw, 5rem);
+}
+.btn.lg, button.lg {
+  padding: clamp(1.25rem, -0.2575376884rem + 1.256281407vw, 1.5rem) clamp(7.5rem, -7.5753768844rem + 12.5628140704vw, 10rem);
+}
+.btn.xl, button.xl {
+  padding: clamp(1.5rem, -5.5rem + 5vw, 2rem) clamp(10rem, -25rem + 25vw, 12.5rem);
+}
+
+/*# sourceMappingURL=modules.css.map */
