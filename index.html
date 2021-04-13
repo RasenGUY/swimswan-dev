@@ -8,6 +8,8 @@
 
     <!-- css -->
     <link rel="stylesheet" href="static/css/0-base/base.css">
+    <link rel="stylesheet" href="static/css/1-layout/grid.css">
+    <link rel="stylesheet" href="static/css/1-layout/flexbox.css">
     <link rel="stylesheet" href="static/css/1-layout/layout.css">
     <link rel="stylesheet" href="static/css/2-modules/modules.css">
     <!-- <link rel="stylesheet" href="static/css/3-state/state.css"> -->
@@ -16,31 +18,60 @@
 </head>
 <body class="bg base">
     
-    <h1>Heading 1</h1>
-    <h2>Heading 2</h2>
-    <h3>Heading 3</h3>
-    <h4>Heading 4</h4>
-    <h5>Heading 5</h5>
-    <h6>Heading 6</h6>
-    
-    <br>
-    <br>
-    <br>
+    <!-- nav mobile top -->
+    <nav id="mobile-top" class="l-flex items-align-center">
+        <div class="container l-flex items-align-center">
+            <div class="logo">
+                <a href="#">
+                    <img src="static/images/svg/compressed/logo-main.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="f-item f-item l-flex content-justify-right">
+                <a href="#" data-translation="Đăng ký" class="translate btn sm">Sign Up</a> <!-- sign up button -->
+            </div>
+        </div>
+    </nav>
 
-    <a href="#">hello world haha</a>
+    <!-- nav mobile bottom -->
+    <nav id="mobile-bottom">
+        <ul class="nav-links"> <!-- nav-links -->
+            <li><a class="translate" data-translation="gói hàng" href="#">Packages</a></li>
+            <li><a class="translate" data-translation="Trong khoảng" href="#">About</a></li>
+            <li><a class="translate" data-translation="Tại sao là chúng tôi?" href="#">Why us?</a></li>
+        </ul>
+        <div class="container l-flex items-align-center">
+            <div class="socials f-item l-flex items-align-center">
+                <a href="#">
+                    <img src="static/images/svg/compressed/social-instagram.svg" alt="Instagram">
+                </a>
+                <a href="#">
+                    <img src="static/images/svg/compressed/social-facebook.svg" alt="Facebook">
+                </a>
+            </div>
+            <div id="burger" class="f-item l-flex content-justify-right">
+                <div class="burger-wrapper l-flex col content-justify-center">
+                    <div class="top"></div>
+                    <div class="middle"></div>
+                    <div class="bottom"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
     
-    <br>
-    <br>
-    <br>
-    
-
-    <a class="btn xl" href="#">Submit</a>
-    <a class="btn lg" href="#">Submit</a>
-    <a class="btn md" href="#">Submit</a>
-    <a class="btn nm" href="#">Submit</a>
-    <button class="btn sm">Submit</button>
-
+    <!-- change language button -->
+    <div id="lang-dropdown">
+        <ul class='f-item l-flex items-align-center content-justify-center'>
+            <li id="trans-eng" class="trans-off">
+                <img src="static/images/svg/compressed/english-flag.svg" alt="English">
+            </li>
+            <li id="trans-viet" class="trans-on">
+                <img src="static/images/svg/compressed/vietnam-flag.svg" alt="Vietnamese">
+            </li>
+        </ul>
+    </div>
 
     <!-- js -->
+    <script type="module" src="/static/js/main.js"></script> <!-- main -->
+
 </body>
 </html>

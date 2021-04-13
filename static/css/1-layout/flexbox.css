@@ -73,6 +73,9 @@
 .l-flex.content-justify-between {
   justify-content: space-between;
 }
+.l-flex.mob {
+  width: 100%;
+}
 
 .l-flex.col {
   display: flex;

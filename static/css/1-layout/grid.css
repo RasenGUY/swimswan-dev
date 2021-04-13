@@ -76,6 +76,9 @@
 .l-grid.content-justify-stretch {
   justify-content: stretch;
 }
+.l-grid.mob {
+  width: 100%;
+}
 
 .g-item.align-left {
   align-self: start;

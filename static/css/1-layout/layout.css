@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap");
+body {
+  min-width: 37.6rem;
+}
+@media only screen and (max-width: 576px) {
+  body {
+    max-width: 57.5rem;
+  }
+}
+
+main, nav {
+  width: 100vw;
+}
+main .container, nav .container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (max-width: 576px) {
+  main .container, nav .container {
+    width: 95%;
+  }
+}
+
+nav#mobile-top .container .f-item {
+  flex: 1;
+}
+nav#mobile-bottom .nav-links {
+  position: absolute;
+  bottom: -18rem;
+}
+
+#lang-dropdown {
+  position: fixed;
+  top: 10%;
+  right: 5%;
+}
+
+/*# sourceMappingURL=layout.css.map */

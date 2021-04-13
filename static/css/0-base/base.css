@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap");
 html, *, *::before, *::after {
   padding: 0px;
   margin: 0px;
@@ -47,14 +46,14 @@ a:active, a:focus {
   color: #bf3e51;
 }
 a.primary {
-  color: #afbfbe;
+  color: #afd9d5;
 }
 a.primary:hover {
-  color: white;
+  color: #fcffff;
 }
 a.primary:active, a.primary:focus {
   outline: none;
-  color: darkgray;
+  color: #afbfbe;
 }
 a.secondary {
   color: #1F74AD;
@@ -144,15 +143,15 @@ input:invalid, textarea:invalid {
 }
 
 ::placeholder {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(252, 255, 255, 0.75);
 }
 
 :-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(252, 255, 255, 0.75);
 }
 
 ::-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(252, 255, 255, 0.75);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -270,6 +269,10 @@ h6.caption {
 }
 .spacer.thinnest {
   height: 0.25rem;
+}
+
+::selection {
+  background: rgba(175, 255, 247, 0.6);
 }
 
 /*# sourceMappingURL=base.css.map */
