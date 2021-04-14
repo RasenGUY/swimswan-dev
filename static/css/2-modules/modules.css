@@ -34,8 +34,17 @@
 
 nav {
   background: #AFFFF7;
-  position: fixed;
-  z-index: 10000;
+}
+nav .nav-links {
+  list-style: none;
+}
+nav .nav-links > li a {
+  transition: all 0.15s ease-in-out;
+  padding: 1rem 0;
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #1F74AD;
 }
 nav#mobile-top {
   top: 0;
@@ -56,8 +65,20 @@ nav#mobile-top .container .logo a object {
   width: 100%;
 }
 nav#mobile-bottom {
-  bottom: 0;
   height: 5rem;
+}
+nav#mobile-bottom .nav-links {
+  width: 100%;
+  background-color: #AFFFF7;
+  transition: all 0.15s ease-in-out;
+}
+nav#mobile-bottom .nav-links > li a:hover {
+  color: #68b2e4;
+  background-color: #afd9d5;
+}
+nav#mobile-bottom .nav-links > li a:active, nav#mobile-bottom .nav-links > li a:focus {
+  color: #1f4e6d;
+  background-color: #afbfbe;
 }
 nav#mobile-bottom .container {
   height: 100%;
@@ -81,6 +102,8 @@ nav#mobile-bottom .container #burger {
 }
 nav#mobile-bottom .container #burger .burger-wrapper {
   width: 23%;
+  min-width: 38px;
+  max-width: 42px;
   z-index: 10000;
 }
 nav#mobile-bottom .container #burger .burger-wrapper > div {
@@ -112,29 +135,6 @@ nav#mobile-bottom .container #burger .burger-wrapper .bottom.animate {
 nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
   opacity: 0;
   visibility: hidden;
-}
-nav#mobile-bottom .container .nav-links {
-  background-color: #AFFFF7;
-}
-
-.nav-links {
-  list-style: none;
-}
-.nav-links > li a {
-  transition: all 0.15s ease-in-out;
-  padding: 1rem 0;
-  display: block;
-  width: 100%;
-  text-align: center;
-  color: #1F74AD;
-}
-.nav-links > li a:hover {
-  color: #68b2e4;
-  background-color: #afd9d5;
-}
-.nav-links > li a:active, .nav-links > li a:focus {
-  color: #1f4e6d;
-  background-color: #afbfbe;
 }
 
 #lang-dropdown ul {

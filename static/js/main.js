@@ -11,14 +11,18 @@ window.onload = (()=>{
 
     // menu-mobile-animation
     const burger = document.querySelector("#burger");
+    const bottomLinks = document.querySelector("#mobile-bottom .nav-links");
     burger.addEventListener("click", () => {
         // variables to animate 
         const burgerBars = burger.querySelectorAll('.burger-wrapper > div');
         
-        // toggle class
+        // animate burger
         burgerBars.forEach(bar => {
             bar.classList.toggle('animate');
         })
+        // animate nav-links
+        bottomLinks.classList.toggle('animate');
+        
     });
     
     // translations

@@ -16,24 +16,107 @@ main .container, nav .container {
   margin-left: auto;
   margin-right: auto;
 }
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 575px) {
   main .container, nav .container {
     width: 95%;
   }
 }
+@media (min-width: 576px) and (max-width: 767px) {
+  main .container, nav .container {
+    width: 92.5%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  main .container, nav .container {
+    width: 92.5%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  main .container, nav .container {
+    width: 90%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  main .container, nav .container {
+    width: 87.5%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  main .container, nav .container {
+    width: 85%;
+  }
+}
 
+nav {
+  position: fixed;
+  z-index: 10000;
+}
 nav#mobile-top .container .f-item {
   flex: 1;
 }
-nav#mobile-bottom .nav-links {
+nav#mobile-bottom {
+  z-index: inherit;
+  bottom: 0;
+}
+nav#mobile-bottom ul.nav-links {
   position: absolute;
-  bottom: -18rem;
+  bottom: 5rem;
+  visibility: collapse;
+  opacity: 0;
+  z-index: -5;
+}
+nav#mobile-bottom ul.nav-links.animate {
+  opacity: 1;
+  visibility: unset;
+}
+nav#mobile-bottom .container {
+  position: relative;
+  z-index: 10000;
+}
+@media only screen and (min-width: 576px) {
+  nav#mobile-bottom {
+    display: none;
+  }
 }
 
 #lang-dropdown {
   position: fixed;
-  top: 10%;
-  right: 5%;
+}
+@media only screen and (max-width: 575px) {
+  #lang-dropdown {
+    top: 10.5%;
+    right: 2.5%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  #lang-dropdown {
+    top: 11.5%;
+    right: 4%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #lang-dropdown {
+    top: 13%;
+    right: 4.5%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  #lang-dropdown {
+    top: 14%;
+    right: 5.5%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  #lang-dropdown {
+    top: 14%;
+    right: 6.5%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  #lang-dropdown {
+    top: 15%;
+    right: 7.5%;
+  }
 }
 
 /*# sourceMappingURL=layout.css.map */
