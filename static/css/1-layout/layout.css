@@ -51,7 +51,7 @@ nav {
   position: fixed;
   z-index: 10000;
 }
-nav#mobile-top .container .f-item {
+nav#top .container .f-item {
   flex: 1;
 }
 nav#mobile-bottom {
@@ -64,6 +64,7 @@ nav#mobile-bottom ul.nav-links {
   visibility: collapse;
   opacity: 0;
   z-index: -5;
+  text-align: center;
 }
 nav#mobile-bottom ul.nav-links.animate {
   opacity: 1;
@@ -88,33 +89,33 @@ nav#mobile-bottom .container {
     right: 2.5%;
   }
 }
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 576px) and (max-width: 768px) {
   #lang-dropdown {
     top: 11.5%;
     right: 4%;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 769px) and (max-width: 992px) {
   #lang-dropdown {
     top: 13%;
     right: 4.5%;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 993px) and (max-width: 1200px) {
   #lang-dropdown {
     top: 14%;
     right: 5.5%;
   }
 }
-@media (min-width: 1200px) and (max-width: 1399px) {
+@media (min-width: 1201px) and (max-width: 1400px) {
   #lang-dropdown {
     top: 14%;
     right: 6.5%;
   }
 }
-@media only screen and (min-width: 1400px) {
+@media only screen and (min-width: 1401px) {
   #lang-dropdown {
-    top: 15%;
+    top: 18%;
     right: 7.5%;
   }
 }

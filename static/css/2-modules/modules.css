@@ -38,47 +38,73 @@ nav {
 nav .nav-links {
   list-style: none;
 }
+nav .nav-links > li {
+  transition: all 0.15s ease-in-out;
+}
 nav .nav-links > li a {
   transition: all 0.15s ease-in-out;
-  padding: 1rem 0;
-  display: block;
   width: 100%;
   text-align: center;
   color: #1F74AD;
 }
-nav#mobile-top {
+nav#top {
   top: 0;
 }
-nav#mobile-top .container {
+nav#top .container {
   padding: 1rem 0;
 }
-nav#mobile-top .container .logo {
+nav#top .container .logo {
   width: 30%;
   min-width: 10rem;
   max-width: 25rem;
 }
-nav#mobile-top .container .logo a {
+nav#top .container .logo a {
   display: block;
   width: 100%;
 }
-nav#mobile-top .container .logo a object {
+nav#top .container .logo a object {
   width: 100%;
+}
+@media only screen and (min-width: 576px) {
+  nav#top .container > div:nth-child(3) {
+    display: none;
+  }
+}
+nav#top .container .nav-links > *:not(:nth-child(4)) {
+  margin-right: 2rem;
+}
+nav#top .container .nav-links > li a:hover {
+  color: #1f4e6d;
+}
+nav#top .container .nav-links > li a:active {
+  color: #fcffff;
+}
+@media only screen and (max-width: 576px) {
+  nav#top .container .nav-links {
+    display: none;
+  }
 }
 nav#mobile-bottom {
   height: 5rem;
 }
-nav#mobile-bottom .nav-links {
+nav#mobile-bottom ul.nav-links {
   width: 100%;
   background-color: #AFFFF7;
   transition: all 0.15s ease-in-out;
 }
-nav#mobile-bottom .nav-links > li a:hover {
+nav#mobile-bottom ul.nav-links > li {
+  padding: 1rem 0;
+}
+nav#mobile-bottom ul.nav-links > li:hover {
   color: #68b2e4;
   background-color: #afd9d5;
 }
-nav#mobile-bottom .nav-links > li a:active, nav#mobile-bottom .nav-links > li a:focus {
+nav#mobile-bottom ul.nav-links > li:active, nav#mobile-bottom ul.nav-links > li:focus {
   color: #1f4e6d;
   background-color: #afbfbe;
+}
+nav#mobile-bottom ul.nav-links > li a {
+  width: 100%;
 }
 nav#mobile-bottom .container {
   height: 100%;
