@@ -1,14 +1,12 @@
 # ignore all of the image files for now
 design/*
-static/scss/*
-static/images/jpg/*
-static/images/png/*
-static/images/svg/*
+static/scss
+static/images
 
 # don't ignore the compressed images
-!static/image/jpg/compressed
-!static/image/svg/compressed
-!static/image/png/compressed
+static/images/!jpg/compressed
+static/images/!svg/compressed
+static/images/!png/compressed
 
 # all other unused files in root directory
 *.jpg
