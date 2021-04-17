@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.21 35.54">
+  <defs>
+    <radialGradient id="b" cx="-17.7" cy="17.35" r="93.05" gradientUnits="userSpaceOnUse">
+      <stop offset=".23" stop-color="#96caed" stop-opacity=".75"/>
+      <stop offset=".47" stop-color="#9dd9f0" stop-opacity=".82"/>
+      <stop offset="1" stop-color="#affff7"/>
+    </radialGradient>
+    <linearGradient id="a" x1="-7.69" x2="99.7" y1="3.18" y2="32.57" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#96caed"/>
+      <stop offset=".03" stop-color="#9dd8f0"/>
+      <stop offset=".09" stop-color="#a5eaf3"/>
+      <stop offset=".16" stop-color="#abf6f5"/>
+      <stop offset=".26" stop-color="#aefdf7"/>
+      <stop offset=".49" stop-color="#affff7"/>
+      <stop offset=".75" stop-color="#aefdf7"/>
+      <stop offset=".84" stop-color="#abf6f5"/>
+      <stop offset=".91" stop-color="#a5ebf3"/>
+      <stop offset=".97" stop-color="#9ddaf0"/>
+      <stop offset="1" stop-color="#96caed"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#a)" d="M90.2 16.56c0 10.06-18.5 18.98-43.59 18.98S0 27.84 0 17.78 15.98-.52 46.12.03C71.2.49 90.2 7.8 90.2 16.56z"/>
+  <path fill="url(#b)" fill-opacity=".6" d="M45.97 11.76c20.56 33.8-43.3 15.51-43.3 5.46s32.78-22.76 43.3-5.46z"/>
+  <path fill="#eef6fc" d="M24.01 6.62c-5.63.88-9.6 4.48-9.6 7.7 0 2.5 2.22 4.48 5.8 5.5-6.58-.19-11.11-2.74-11.11-6.32 0-3.7 4.9-7.09 11.86-7.09a23.04 23.04 0 013.05.2z"/>
+</svg>
