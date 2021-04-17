@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- meta data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/0-base/base.css">
+    <link rel="stylesheet" href="static/css/1-layout/grid.css">
+    <link rel="stylesheet" href="static/css/1-layout/flexbox.css">
+    <link rel="stylesheet" href="static/css/1-layout/layout.css">
+    <link rel="stylesheet" href="static/css/2-modules/modules.css">
+    <!-- <link rel="stylesheet" href="static/css/3-state/state.css"> -->
+   
+    <title>Home</title> <!-- Title -->
+</head>
+<body class="bg base">
+    
+    <!-- nav mobile top -->
+    <nav id="top" class="l-flex items-align-center">
+        <div class="container l-flex items-align-center">
+            <!-- change language button -->
+            <div id="lang-dropdown">
+                <ul class='f-item l-flex items-align-center content-justify-center'>
+                    <li id="trans-eng" class="trans-off">
+                        <img src="static/images/svg/compressed/english-flag.svg" alt="English">
+                    </li>
+                    <li id="trans-viet" class="trans-on">
+                        <img src="static/images/svg/compressed/vietnam-flag.svg" alt="Vietnamese">
+                    </li>
+                </ul>
+            </div>
+            <div class="logo">
+                <a href="#">
+                    <img src="static/images/svg/compressed/logo-main.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="f-item f-item l-flex content-justify-right">
+                <a href="#" data-translation="Đăng ký" class="translate btn sm">Sign Up</a> <!-- sign up button -->
+            </div> 
+            
+            <ul class="nav-links f-item align-right l-flex content-justify-right items-align-right"> <!-- nav-links -->
+                <a href="#" data-translation="Đăng ký" class="translate btn sm">Sign Up</a> <!-- sign up button -->
+                <li><a class="translate" data-translation="gói hàng" href="google.com">Packages</a></li>
+                <li><a class="translate" data-translation="Trong khoảng" href="#">About</a></li>
+                <li><a class="translate" data-translation="Tại sao là chúng tôi?" href="#">Why us?</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- nav mobile bottom -->
+    <nav id="mobile-bottom">
+        <ul class="nav-links"> <!-- nav-links -->
+            <li><a class="translate" data-translation="gói hàng" href="#">Packages</a></li>
+            <li><a class="translate" data-translation="Trong khoảng" href="#">About</a></li>
+            <li><a class="translate" data-translation="Tại sao là chúng tôi?" href="#">Why us?</a></li>
+        </ul>
+        <div class="container l-flex items-align-center">
+            <div class="socials f-item l-flex items-align-center">
+                <a href="#">
+                    <img src="static/images/svg/compressed/social-instagram.svg" alt="Instagram">
+                </a>
+                <a href="#">
+                    <img src="static/images/svg/compressed/social-facebook.svg" alt="Facebook">
+                </a>
+            </div>
+            <div id="burger" class="f-item l-flex content-justify-right">
+                <div class="burger-wrapper l-flex col content-justify-center">
+                    <div class="top"></div>
+                    <div class="middle"></div>
+                    <div class="bottom"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- main -->
+    <main id="main-wrapper">
+        <section id="hero"><!-- Hero section -->
+            <object data="static/images/svg/compressed/index-hero-shape-mobile.svg">
+        </section>
+    </main>
+
+    <!-- js -->
+    <script type="module" src="/static/js/main.js"></script> <!-- main -->
+
+</body>
+</html>

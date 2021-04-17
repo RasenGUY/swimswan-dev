@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap");
+body {
+  min-width: 37.6rem;
+}
+@media only screen and (max-width: 576px) {
+  body {
+    max-width: 57.5rem;
+  }
+}
+
+main, nav {
+  width: 100vw;
+}
+main .container, nav .container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (max-width: 575px) {
+  main .container, nav .container {
+    width: 95%;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  main .container, nav .container {
+    width: 92.5%;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  main .container, nav .container {
+    width: 92.5%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  main .container, nav .container {
+    width: 90%;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  main .container, nav .container {
+    width: 87.5%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  main .container, nav .container {
+    width: 85%;
+  }
+}
+main .overlay, nav .overlay {
+  position: absolute;
+  z-index: 5000;
+  width: 100%;
+  height: 100%;
+}
+
+nav {
+  position: fixed;
+  z-index: 10000;
+}
+nav#top .container .f-item {
+  flex: 1;
+}
+nav#mobile-bottom {
+  z-index: inherit;
+  bottom: 0;
+}
+nav#mobile-bottom ul.nav-links {
+  position: absolute;
+  bottom: 5rem;
+  visibility: collapse;
+  opacity: 0;
+  z-index: -5;
+  text-align: center;
+}
+nav#mobile-bottom ul.nav-links.animate {
+  opacity: 1;
+  visibility: unset;
+}
+nav#mobile-bottom .container {
+  position: relative;
+  z-index: 10000;
+}
+@media only screen and (min-width: 576px) {
+  nav#mobile-bottom {
+    display: none;
+  }
+}
+
+#lang-dropdown {
+  position: fixed;
+}
+@media only screen and (max-width: 575px) {
+  #lang-dropdown {
+    top: 10.5%;
+    right: 2.5%;
+  }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  #lang-dropdown {
+    top: 11.5%;
+    right: 4%;
+  }
+}
+@media (min-width: 769px) and (max-width: 992px) {
+  #lang-dropdown {
+    top: 13%;
+    right: 4.5%;
+  }
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+  #lang-dropdown {
+    top: 14%;
+    right: 5.5%;
+  }
+}
+@media (min-width: 1201px) and (max-width: 1400px) {
+  #lang-dropdown {
+    top: 16%;
+    right: 6.5%;
+  }
+}
+@media only screen and (min-width: 1401px) {
+  #lang-dropdown {
+    top: 18%;
+    right: 7.5%;
+  }
+}
+
+/*# sourceMappingURL=layout.css.map */

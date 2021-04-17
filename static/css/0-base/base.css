@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap");
+html, *, *::before, *::after {
+  padding: 0px;
+  margin: 0px;
+  box-shadow: unset;
+  outline: unset;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+html body {
+  min-width: 375px;
+  overflow-x: hidden;
+}
+html body.loader-settings {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+a {
+  font-size: inherit;
+  color: #1F74AD;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover {
+  color: #1F74AD;
+  text-decoration: none;
+}
+a:active {
+  color: #1F74AD;
+}
+
+a {
+  color: #FF3E5B;
+  transition: color ease-in-out 0.15s;
+}
+a:hover {
+  color: #ffbec7;
+}
+a:active, a:focus {
+  outline: none;
+  color: #bf3e51;
+}
+a.primary {
+  color: #afd9d5;
+}
+a.primary:hover {
+  color: #fcffff;
+}
+a.primary:active, a.primary:focus {
+  outline: none;
+  color: #afbfbe;
+}
+a.secondary {
+  color: #1F74AD;
+}
+a.secondary:hover {
+  color: #68b2e4;
+}
+a.secondary:active, a.secondary:focus {
+  outline: none;
+  color: #1f3f54;
+}
+a.base {
+  color: #FAFDFF;
+}
+a.base:hover {
+  color: white;
+}
+a.base:active, a.base:focus {
+  outline: none;
+  color: #bcbcbc;
+}
+a.text {
+  color: #1F74AD;
+}
+a.text:hover {
+  color: #68b2e4;
+}
+a.text:active, a.text:focus {
+  outline: none;
+  color: #1f3f54;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, input, textarea, a, span {
+  font-family: "Kiwi Maru", "serif";
+  font-weight: 400;
+}
+h1.to-upper, h2.to-upper, h3.to-upper, h4.to-upper, h5.to-upper, h6.to-upper, p.to-upper, li.to-upper, input.to-upper, textarea.to-upper, a.to-upper, span.to-upper {
+  text-transform: uppercase;
+}
+h1.to-lower, h2.to-lower, h3.to-lower, h4.to-lower, h5.to-lower, h6.to-lower, p.to-lower, li.to-lower, input.to-lower, textarea.to-lower, a.to-lower, span.to-lower {
+  text-transform: lowercase;
+}
+h1.capitalize, h2.capitalize, h3.capitalize, h4.capitalize, h5.capitalize, h6.capitalize, p.capitalize, li.capitalize, input.capitalize, textarea.capitalize, a.capitalize, span.capitalize {
+  text-transform: capitalize;
+}
+
+h1.paragraph, h2.paragraph, h3.paragraph, h4.paragraph, h5.paragraph, p.paragraph, li.paragraph, span.paragraph {
+  font-family: "Kiwi Maru", "serif";
+}
+
+h4, h5, h6 {
+  font-style: italic;
+  stroke-opacity: -0.25;
+}
+
+p, li, span, i {
+  color: #1F74AD;
+}
+p.primary, li.primary, span.primary, i.primary {
+  color: #AFFFF7;
+}
+p.secondary, li.secondary, span.secondary, i.secondary {
+  color: #1F74AD;
+}
+p.base, li.base, span.base, i.base {
+  color: #FAFDFF;
+}
+p.cta, li.cta, span.cta, i.cta {
+  color: #FF3E5B;
+}
+
+input, textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  background-color: #FAFDFF;
+  border: solid 2px #FAFDFF;
+  color: #2791d8;
+  box-shadow: 3px 3px 5px rgba(195, 195, 195, 0.75);
+  transition: border ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+input:focus, textarea:focus {
+  border: solid 2px #FF3E5B;
+  box-shadow: unset;
+}
+input:invalid, textarea:invalid {
+  border: solid 2px #AFFFF7;
+}
+
+::placeholder {
+  color: rgba(252, 255, 255, 0.75);
+}
+
+:-ms-input-placeholder {
+  color: rgba(252, 255, 255, 0.75);
+}
+
+::-ms-input-placeholder {
+  color: rgba(252, 255, 255, 0.75);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1F74AD;
+}
+h1.primary, h2.primary, h3.primary, h4.primary, h5.primary, h6.primary {
+  color: #AFFFF7;
+}
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary {
+  color: #1F74AD;
+}
+h1.text, h2.text, h3.text, h4.text, h5.text, h6.text {
+  color: #1F74AD;
+}
+h1.cta, h2.cta, h3.cta, h4.cta, h5.cta, h6.cta {
+  color: #FF3E5B;
+}
+
+a i, li a i {
+  color: #AFFFF7;
+}
+a i:hover, li a i:hover {
+  color: #e2fffc;
+}
+a i:active, a i:focus, li a i:active, li a i:focus {
+  outline: none;
+  color: #afccc9;
+  text-shadow: 1px 1px 2px rgba(175, 191, 190, 0.3);
+}
+
+.shadow {
+  text-shadow: 1px 1px 3px rgba(31, 116, 173, 0.3);
+}
+.shadow.s-primary {
+  text-shadow: 1px 1px 3px rgba(175, 255, 247, 0.3);
+}
+.shadow.s-secondary {
+  text-shadow: 1px 1px 3px rgba(31, 116, 173, 0.3);
+}
+.shadow.s-text {
+  text-shadow: 1px 1px 3px rgba(31, 116, 173, 0.3);
+}
+.shadow.s-cta {
+  text-shadow: 1px 1px 3px rgba(255, 62, 91, 0.3);
+}
+
+p, a, li, input, textarea, button {
+  font-size: clamp(1.585rem, 1.3225796178rem + 0.6369426752vw, 1.985rem);
+}
+
+i {
+  font-size: clamp(1.8rem, 1.5375796178rem + 0.6369426752vw, 2.2rem);
+}
+
+h1 {
+  font-size: clamp(3.2rem, 2.8175066313rem + 0.9283819629vw, 4.6rem);
+}
+
+h2 {
+  font-size: clamp(2.6rem, 2.4633952255rem + 0.3315649867vw, 3.1rem);
+}
+
+h3 {
+  font-size: clamp(1.985rem, 1.8442970822rem + 0.3415119363vw, 2.5rem);
+}
+
+h4 {
+  font-size: clamp(1.75rem, 1.5724137931rem + 0.4310344828vw, 2.4rem);
+}
+
+h5 {
+  font-size: clamp(1.65rem, 1.6090185676rem + 0.099469496vw, 1.8rem);
+}
+
+h6 {
+  font-size: clamp(1.6rem, 1.5863395225rem + 0.0331564987vw, 1.65rem);
+}
+h6.caption {
+  font-size: clamp(1.485rem, 1.4576790451rem + 0.0663129973vw, 1.585rem);
+}
+
+.bg {
+  background-color: #FAFDFF;
+}
+.bg.primary {
+  background-color: #AFFFF7;
+}
+.bg.text {
+  background-color: #1F74AD;
+}
+.bg.secondary {
+  background-color: #1F74AD;
+}
+.bg.cta {
+  background-color: #FF3E5B;
+}
+
+.spacer {
+  height: 1rem;
+}
+.spacer.wide {
+  height: 1.5rem;
+}
+.spacer.wider {
+  height: 2rem;
+}
+.spacer.widest {
+  height: 2.5rem;
+}
+.spacer.thin {
+  height: 0.75rem;
+}
+.spacer.thinner {
+  height: 0.5rem;
+}
+.spacer.thinnest {
+  height: 0.25rem;
+}
+
+::selection {
+  background: rgba(175, 255, 247, 0.6);
+}
+
+/*# sourceMappingURL=base.css.map */
