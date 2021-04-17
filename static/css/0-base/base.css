@@ -13,6 +13,7 @@ html {
 }
 html body {
   min-width: 375px;
+  overflow-x: hidden;
 }
 html body.loader-settings {
   overflow: hidden;
