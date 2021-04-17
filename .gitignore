@@ -4,9 +4,9 @@ static/scss
 static/images/**
 
 # don't ignore the compressed images
-static/images/!jpg/compressed
-static/images/!svg/compressed
-static/images/!png/compressed
+!static/images/jpg/compressed
+!static/images/svg/compressed
+!static/images/png/compressed
 
 # all other unused files in root directory
 *.jpg
