@@ -32,9 +32,6 @@
   background-color: #a63e4e;
 }
 
-nav {
-  background: #AFFFF7;
-}
 nav .nav-links {
   list-style: none;
 }
@@ -48,6 +45,7 @@ nav .nav-links > li a {
   color: #1F74AD;
 }
 nav#top {
+  background: rgba(175, 255, 247, 0);
   top: 0;
 }
 nav#top .container {
@@ -85,6 +83,7 @@ nav#top .container .nav-links > li a:active {
   }
 }
 nav#mobile-bottom {
+  background: #AFFFF7;
   height: 5rem;
 }
 nav#mobile-bottom ul.nav-links {
