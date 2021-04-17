@@ -1,6 +1,21 @@
 # ignore all of the image files for now
-static/images/
-static/scss/
+design/*
+static/scss/*
+static/images/jpg/*
+static/images/png/*
+static/images/svg/*
+
+# don't ignore the compressed images
+!static/image/jpg/compressed
+!static/image/svg/compressed
+!static/image/png/compressed
+
+# all other unused files in root directory
 *.jpg
 *.txt
 *.xd
+*.psd
+*.ai
+
+# ignore the basemaps for css
+static/css/**/*.css.map
