@@ -48,18 +48,31 @@ main .container, nav .container {
   }
 }
 
-main section {
+main#main-wrapper section {
   width: 100%;
-  position: relative;
 }
-main section .overlay {
+main#main-wrapper section .overlay {
   position: absolute;
   z-index: 5000;
   width: inherit;
 }
-main section .shapes {
-  position: relative;
+main#main-wrapper section .shapes {
   width: inherit;
+}
+main#main-wrapper section .text-box {
+  height: 100%;
+}
+@media only screen and (max-width: 576px) {
+  main#main-wrapper section .text-box {
+    text-align: center;
+  }
+}
+main#main-wrapper #index-hero {
+  height: 50vh;
+}
+main#main-wrapper #index-hero .shapes object {
+  position: absolute;
+  z-index: -1;
 }
 nav {
   position: fixed;

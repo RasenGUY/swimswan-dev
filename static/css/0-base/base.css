@@ -208,15 +208,15 @@ i {
 }
 
 h1 {
-  font-size: clamp(3.2rem, 2.8175066313rem + 0.9283819629vw, 4.6rem);
+  font-size: clamp(2.5rem, 2.4316976127rem + 0.1657824934vw, 2.75rem);
 }
 
 h2 {
-  font-size: clamp(2.6rem, 2.4633952255rem + 0.3315649867vw, 3.1rem);
+  font-size: clamp(2.35rem, 2.3363395225rem + 0.0331564987vw, 2.4rem);
 }
 
 h3 {
-  font-size: clamp(1.985rem, 1.8442970822rem + 0.3415119363vw, 2.5rem);
+  font-size: clamp(1.985rem, 1.898938992rem + 0.2088859416vw, 2.3rem);
 }
 
 h4 {
