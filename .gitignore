@@ -1,7 +1,7 @@
 # ignore all of the image files for now
 design/*
 static/scss
-static/images
+static/images/**
 
 # don't ignore the compressed images
 static/images/!jpg/compressed
@@ -14,6 +14,7 @@ static/images/!png/compressed
 *.xd
 *.psd
 *.ai
+*.pdf
 
 # ignore the basemaps for css
-static/css/**/*.css.map
+static/css/**/*.map
