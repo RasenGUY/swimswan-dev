@@ -46,6 +46,12 @@ main .container, nav .container {
     width: 85%;
   }
 }
+main .overlay, nav .overlay {
+  position: absolute;
+  z-index: 5000;
+  width: 100%;
+  height: 100%;
+}
 
 nav {
   position: fixed;
@@ -109,7 +115,7 @@ nav#mobile-bottom .container {
 }
 @media (min-width: 1201px) and (max-width: 1400px) {
   #lang-dropdown {
-    top: 14%;
+    top: 16%;
     right: 6.5%;
   }
 }

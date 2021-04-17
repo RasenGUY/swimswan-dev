@@ -3,7 +3,7 @@
   display: inline-block;
   font-family: "Kiwi Maru", "serif";
   font-weight: 500;
-  color: #EEF6FC;
+  color: #FAFDFF;
   border-width: 0;
   padding: clamp(0.75rem, -0.1109865471rem + 1.1210762332vw, 1rem) clamp(5rem, 0.6950672646rem + 5.6053811659vw, 6.25rem);
   background-color: #FF3E5B;
@@ -28,7 +28,7 @@
   background-color: #bf3e51;
 }
 .btn:active, .btn:focus, button:active, button:focus {
-  color: #c7c7c7;
+  color: #cbcbcb;
   background-color: #a63e4e;
 }
 
@@ -186,6 +186,16 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
 }
 #lang-dropdown ul > li.trans-on {
   pointer-events: auto;
+}
+
+#svg-shapes .overlay {
+  opacity: 0.85;
+}
+#svg-shapes .overlay.hero-mobile {
+  fill: #AFFFF7;
+}
+#svg-shapes .image.hero-mobile {
+  transform: translate(-40%) scale(0.35);
 }
 
 /*# sourceMappingURL=modules.css.map */

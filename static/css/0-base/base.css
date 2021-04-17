@@ -66,14 +66,14 @@ a.secondary:active, a.secondary:focus {
   color: #1f3f54;
 }
 a.base {
-  color: #EEF6FC;
+  color: #FAFDFF;
 }
 a.base:hover {
   color: white;
 }
 a.base:active, a.base:focus {
   outline: none;
-  color: #b8b8b8;
+  color: #bcbcbc;
 }
 a.text {
   color: #1F74AD;
@@ -119,7 +119,7 @@ p.secondary, li.secondary, span.secondary, i.secondary {
   color: #1F74AD;
 }
 p.base, li.base, span.base, i.base {
-  color: #EEF6FC;
+  color: #FAFDFF;
 }
 p.cta, li.cta, span.cta, i.cta {
   color: #FF3E5B;
@@ -128,10 +128,10 @@ p.cta, li.cta, span.cta, i.cta {
 input, textarea {
   padding: 0.75rem 1rem;
   border-radius: 5px;
-  background-color: #EEF6FC;
-  border: solid 2px #EEF6FC;
+  background-color: #FAFDFF;
+  border: solid 2px #FAFDFF;
   color: #2791d8;
-  box-shadow: 3px 3px 5px rgba(191, 191, 191, 0.75);
+  box-shadow: 3px 3px 5px rgba(195, 195, 195, 0.75);
   transition: border ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 input:focus, textarea:focus {
@@ -234,7 +234,7 @@ h6.caption {
 }
 
 .bg {
-  background-color: #EEF6FC;
+  background-color: #FAFDFF;
 }
 .bg.primary {
   background-color: #AFFFF7;
