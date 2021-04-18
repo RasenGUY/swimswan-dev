@@ -221,5 +221,9 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
     display: none;
   }
 }
+main#main-wrapper section#index-s-one .container img {
+  width: 50%;
+  margin-bottom: 5rem;
+}
 
 /*# sourceMappingURL=modules.css.map */
