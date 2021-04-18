@@ -2,9 +2,9 @@
 <svg
 id="svg-shapes"
 xmlns="http://www.w3.org/2000/svg"
-data-name="hero-mobile" 
-viewBox="0 0 360 405.5"
 xmlns:xlink="http://www.w3.org/1999/xlink" 
+data-name="index-hero-mobile" 
+viewBox="0 0 360 405.5"
 width="100%"
 >
   <defs>
@@ -14,7 +14,7 @@ width="100%"
   </defs>
 
   <g xmlns="http://www.w3.org/2000/svg" clip-path="url(#clip-path)">
-      <image class="image hero-mobile" xlink:href="../../jpg/compressed/index-hero-mob.jpg" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+      <image class="image index-hero-mobile" xlink:href="../../jpg/compressed/index-hero-mob.jpg" xmlns:xlink="http://www.w3.org/1999/xlink"/>
   </g>
-  <path d="M1.2 0L375 .03v325c-108.5 62.47-267.28-91.93-375 0z" data-name="mobile-hero-overlay" class="overlay hero-mobile" width="100%"/> <!-- clipPath --> 
+  <path d="M1.2 0L375 .03v325c-108.5 62.47-267.28-91.93-375 0z" data-name="mobile-hero-overlay" class="overlay" width="100%"/> <!-- clipPath --> 
 </svg>

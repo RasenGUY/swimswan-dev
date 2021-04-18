@@ -10,7 +10,6 @@ body {
 
 main, nav {
   width: 100vw;
-  overflow: hidden;
 }
 main .container, nav .container {
   width: 100%;
@@ -67,13 +66,7 @@ main#main-wrapper section .text-box {
     text-align: center;
   }
 }
-main#main-wrapper #index-hero {
-  height: 50vh;
-}
-main#main-wrapper #index-hero .shapes object {
-  position: absolute;
-  z-index: -1;
-}
+
 nav {
   position: fixed;
   z-index: 10000;
@@ -145,6 +138,14 @@ nav#mobile-bottom .container {
     top: 18%;
     right: 7.5%;
   }
+}
+
+main#main-wrapper section#index-hero {
+  height: 50vh;
+}
+main#main-wrapper section#index-hero .shapes object {
+  position: absolute;
+  z-index: -1;
 }
 
 /*# sourceMappingURL=layout.css.map */

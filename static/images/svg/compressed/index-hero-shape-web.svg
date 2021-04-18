@@ -1,3 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1920 870.48">
-  <path fill="#affff7" d="M1920 0H0v720c961.6 473.15 966.54-353 1920 0z" data-name="hero - shape"/>
+<?xml-stylesheet type="text/css" href="../../../css/2-modules/modules.css"?>
+<svg 
+id="svg-shapes"
+xmlns="http://www.w3.org/2000/svg" 
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+data-name="index-hero-web" 
+viewBox="0 0 1920 870.48"
+width="100%"
+>
+  <defs>
+    <clipPath xmlns="http://www.w3.org/2000/svg" id="clip-path">
+        <path fill="#affff7" d="M1920 0H0v720c961.6 473.15 966.54-353 1920 0z"/><!-- shape will be used as clipPath here -->
+    </clipPath>
+  </defs>
+  <g xmlns="http://www.w3.org/2000/svg" clip-path="url(#clip-path)">
+    <image class="image index-hero-web" xlink:href="../../jpg/compressed/index-hero-web.jpg" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+  </g>
+  <path d="M1920 0H0v720c961.6 473.15 966.54-353 1920 0z" data-name="index-hero-shape-web" class="overlay"/>
 </svg>

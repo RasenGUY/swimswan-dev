@@ -189,12 +189,37 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
 
 #svg-shapes .overlay {
   opacity: 0.85;
-}
-#svg-shapes .overlay.hero-mobile {
   fill: #AFFFF7;
 }
-#svg-shapes .image.hero-mobile {
+#svg-shapes .image.index-hero-mobile {
   transform: translate(-40%) scale(0.35);
+}
+#svg-shapes .image.index-hero-med {
+  transform: translate(0%, -19%);
+}
+#svg-shapes .image.index-hero-web {
+  transform: translate(0%, -30%);
+}
+
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section .shapes object.mob {
+    display: none;
+  }
+}
+@media only screen and (max-width: 576px) {
+  main#main-wrapper section .shapes object.med {
+    display: none;
+  }
+}
+@media only screen and (min-width: 769px) {
+  main#main-wrapper section .shapes object.med {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  main#main-wrapper section .shapes object.lg {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=modules.css.map */
