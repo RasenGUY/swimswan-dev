@@ -153,6 +153,11 @@ main#main-wrapper section#index-hero {
     height: 55vh;
   }
 }
+@media only screen and (min-width: 1500px) {
+  main#main-wrapper section#index-hero {
+    height: 68vh;
+  }
+}
 @media only screen and (min-width: 1920px) {
   main#main-wrapper section#index-hero {
     height: 65vh;
@@ -199,6 +204,11 @@ main#main-wrapper section#index-hero .container .text-box {
   main#main-wrapper section#index-hero .container .text-box {
     height: 40%;
     width: 50%;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  main#main-wrapper section#index-hero .container .text-box {
+    width: 55%;
   }
 }
 

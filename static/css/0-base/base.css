@@ -200,38 +200,38 @@ a i:active, a i:focus, li a i:active, li a i:focus {
 }
 
 p, a, li, input, textarea, button {
-  font-size: clamp(1.585rem, 1.3225796178rem + 0.6369426752vw, 1.985rem);
+  font-size: clamp(1.585rem, 1.3732352941rem + 0.5882352941vw, 1.985rem);
 }
 
 i {
-  font-size: clamp(1.8rem, 1.5375796178rem + 0.6369426752vw, 2.2rem);
+  font-size: clamp(1.8rem, 1.5882352941rem + 0.5882352941vw, 2.2rem);
 }
 
 h1 {
-  font-size: clamp(2.5rem, 2.4316976127rem + 0.1657824934vw, 2.75rem);
+  font-size: clamp(2.45rem, 2.3807692308rem + 0.1923076923vw, 2.75rem);
 }
 
 h2 {
-  font-size: clamp(2.35rem, 2.3363395225rem + 0.0331564987vw, 2.4rem);
+  font-size: clamp(2.35rem, 2.3384615385rem + 0.0320512821vw, 2.4rem);
 }
 
 h3 {
-  font-size: clamp(1.985rem, 1.898938992rem + 0.2088859416vw, 2.3rem);
+  font-size: clamp(1.985rem, 1.9123076923rem + 0.2019230769vw, 2.3rem);
 }
 
 h4 {
-  font-size: clamp(1.75rem, 1.5724137931rem + 0.4310344828vw, 2.4rem);
+  font-size: clamp(1.75rem, 1.6rem + 0.4166666667vw, 2.4rem);
 }
 
 h5 {
-  font-size: clamp(1.65rem, 1.6090185676rem + 0.099469496vw, 1.8rem);
+  font-size: clamp(1.65rem, 1.6153846154rem + 0.0961538462vw, 1.8rem);
 }
 
 h6 {
-  font-size: clamp(1.6rem, 1.5863395225rem + 0.0331564987vw, 1.65rem);
+  font-size: clamp(1.6rem, 1.5884615385rem + 0.0320512821vw, 1.65rem);
 }
 h6.caption {
-  font-size: clamp(1.485rem, 1.4576790451rem + 0.0663129973vw, 1.585rem);
+  font-size: clamp(1.485rem, 1.4619230769rem + 0.0641025641vw, 1.585rem);
 }
 
 .bg {
