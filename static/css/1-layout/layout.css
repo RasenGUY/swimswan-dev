@@ -43,7 +43,7 @@ main .container, nav .container {
 }
 @media only screen and (min-width: 1400px) {
   main .container, nav .container {
-    width: 85%;
+    width: 70%;
   }
 }
 
@@ -211,18 +211,12 @@ main#main-wrapper section#index-hero .container .text-box {
     width: 55%;
   }
 }
-@media only screen and (min-width: 768px) {
-  main#main-wrapper section#index-s-one {
-    height: 65vh;
-  }
-}
 main#main-wrapper section#index-s-one .container {
   justify-items: center;
   margin-top: clamp(0rem, -25.1162790698rem + 69.7674418605vw, 15rem);
 }
 @media only screen and (min-width: 576px) {
   main#main-wrapper section#index-s-one .container {
-    height: 60%;
     grid-template-rows: none;
     grid-template-columns: repeat(3, minmax(135px, 1fr));
     margin-top: 0;

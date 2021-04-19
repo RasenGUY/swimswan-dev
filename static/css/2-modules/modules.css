@@ -242,6 +242,17 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
     height: 50vh;
   }
 }
+@media only screen and (min-width: 1200px) {
+  main#main-wrapper section#index-s-one {
+    height: 100vh;
+    margin-top: 20rem;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  main#main-wrapper section#index-s-one {
+    margin-top: 35rem;
+  }
+}
 main#main-wrapper section#index-s-one .container {
   grid-gap: 10rem 0;
 }
@@ -252,6 +263,12 @@ main#main-wrapper section#index-s-one .container {
   }
 }
 @media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-one .container {
+    grid-gap: 0;
+    height: 55%;
+  }
+}
+@media only screen and (min-width: 1200px) {
   main#main-wrapper section#index-s-one .container {
     height: 55%;
   }
@@ -269,6 +286,11 @@ main#main-wrapper section#index-s-one .container .icon img {
 @media only screen and (min-width: 768px) {
   main#main-wrapper section#index-s-one .container .icon img {
     width: 85%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  main#main-wrapper section#index-s-one .container .icon img {
+    width: 95%;
   }
 }
 main#main-wrapper section#index-s-one .container .icon span {
