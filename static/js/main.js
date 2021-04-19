@@ -10,7 +10,7 @@ import * as f from "./functions.js";
 window.onload = (()=>{
 
     // menu-mobile-animation
-    const burger = document.querySelector("#burger");
+    const burger = document.querySelector("#burger .burger-wrapper");
     const bottomLinks = document.querySelector("#mobile-bottom .nav-links");
     burger.addEventListener("click", () => {
         // variables to animate 

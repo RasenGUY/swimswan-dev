@@ -221,9 +221,103 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
     display: none;
   }
 }
-main#main-wrapper section#index-s-one .container img {
-  width: 50%;
-  margin-bottom: 5rem;
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-one {
+    height: 45vh;
+  }
+  main#main-wrapper section#index-s-one .spacer {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-one {
+    height: 65vh;
+  }
+  main#main-wrapper section#index-s-one .spacer {
+    display: block;
+  }
+}
+@media only screen and (min-width: 992px) {
+  main#main-wrapper section#index-s-one {
+    height: 50vh;
+  }
+}
+main#main-wrapper section#index-s-one .container {
+  grid-gap: 10rem 0;
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  main#main-wrapper section#index-s-one .container {
+    grid-gap: 0 0;
+    height: 0%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-one .container {
+    height: 55%;
+  }
+}
+main#main-wrapper section#index-s-one .container .icon {
+  width: 100%;
+  position: relative;
+  transition: all 0.15s ease-in-out;
+}
+main#main-wrapper section#index-s-one .container .icon img {
+  width: 100%;
+  opacity: 0.85;
+  transition: all 0.15s ease-in-out;
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-one .container .icon img {
+    width: 85%;
+  }
+}
+main#main-wrapper section#index-s-one .container .icon span {
+  width: 100%;
+  transition: all 0.15s ease-in-out;
+}
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-one .container .icon span {
+    visibility: collapse;
+    opacity: 0;
+    position: absolute;
+  }
+}
+main#main-wrapper section#index-s-one .container .icon span p {
+  text-align: center;
+}
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-one .container .icon#confidence span {
+    top: 105%;
+  }
+  main#main-wrapper section#index-s-one .container .icon#swimming span {
+    top: 100%;
+  }
+  main#main-wrapper section#index-s-one .container .icon#cultural-exchange span {
+    top: 105%;
+  }
+  main#main-wrapper section#index-s-one .container .icon:hover img, main#main-wrapper section#index-s-one .container .icon:active img {
+    transform: scale(1.2);
+  }
+  main#main-wrapper section#index-s-one .container .icon:hover span, main#main-wrapper section#index-s-one .container .icon:active span {
+    visibility: initial;
+    opacity: 1;
+  }
+  main#main-wrapper section#index-s-one .container .icon:hover img, main#main-wrapper section#index-s-one .container .icon:active img {
+    opacity: 1;
+  }
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-one .container .icon#swimming span {
+    top: 50%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  main#main-wrapper section#index-s-one .container .icon span {
+    width: 150%;
+  }
+  main#main-wrapper section#index-s-one .container .icon#swimming span {
+    top: 44%;
+  }
 }
 
 /*# sourceMappingURL=modules.css.map */

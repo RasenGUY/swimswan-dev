@@ -211,5 +211,36 @@ main#main-wrapper section#index-hero .container .text-box {
     width: 55%;
   }
 }
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-one {
+    height: 65vh;
+  }
+}
+main#main-wrapper section#index-s-one .container {
+  justify-items: center;
+  margin-top: clamp(0rem, -25.1162790698rem + 69.7674418605vw, 15rem);
+}
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-one .container {
+    height: 60%;
+    grid-template-rows: none;
+    grid-template-columns: repeat(3, minmax(135px, 1fr));
+    margin-top: 0;
+  }
+}
+main#main-wrapper section#index-s-one .container .icon {
+  max-width: 190px;
+}
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-one .container .icon:nth-child(1) {
+    justify-content: flex-end;
+  }
+  main#main-wrapper section#index-s-one .container .icon:nth-child(2) {
+    justify-content: flex-start;
+  }
+  main#main-wrapper section#index-s-one .container .icon:nth-child(3) {
+    justify-content: flex-end;
+  }
+}
 
 /*# sourceMappingURL=layout.css.map */

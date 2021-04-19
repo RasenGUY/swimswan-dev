@@ -76,6 +76,12 @@
 .l-grid.content-justify-stretch {
   justify-content: stretch;
 }
+.l-grid.col {
+  grid-auto-flow: column;
+}
+.l-grid.row {
+  grid-auto-flow: row;
+}
 .l-grid.mob {
   width: 100%;
 }
