@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&display=swap");
 body {
   min-width: 37.6rem;
+  position: relative;
+  z-index: -10000;
 }
 @media only screen and (max-width: 576px) {
   body {
@@ -75,7 +77,6 @@ nav#top .container .f-item {
   flex: 1;
 }
 nav#mobile-bottom {
-  z-index: inherit;
   bottom: 0;
 }
 nav#mobile-bottom ul.nav-links {
@@ -89,10 +90,6 @@ nav#mobile-bottom ul.nav-links {
 nav#mobile-bottom ul.nav-links.animate {
   opacity: 1;
   visibility: unset;
-}
-nav#mobile-bottom .container {
-  position: relative;
-  z-index: 10000;
 }
 @media only screen and (min-width: 576px) {
   nav#mobile-bottom {
@@ -140,6 +137,10 @@ nav#mobile-bottom .container {
   }
 }
 
+main#main-wrapper {
+  position: relative;
+  z-index: -1;
+}
 main#main-wrapper section#index-hero {
   height: 50vh;
 }

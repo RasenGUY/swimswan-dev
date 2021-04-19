@@ -268,11 +268,6 @@ main#main-wrapper section#index-s-one .container {
     height: 55%;
   }
 }
-@media only screen and (min-width: 1200px) {
-  main#main-wrapper section#index-s-one .container {
-    height: 55%;
-  }
-}
 main#main-wrapper section#index-s-one .container .icon {
   width: 100%;
   position: relative;
