@@ -73,6 +73,9 @@ nav {
   position: fixed;
   z-index: 10000;
 }
+nav#top > #upper .container .f-item {
+  flex: 1fr, 1fr;
+}
 nav#top .container .f-item {
   flex: 1;
 }

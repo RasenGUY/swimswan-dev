@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- css -->
+    <!-- css-libs -->
+    <script src="https://kit.fontawesome.com/77ede35369.js" crossorigin="anonymous"></script>
+
+    <!-- css-app -->
     <link rel="stylesheet" href="static/css/0-base/base.css">
     <link rel="stylesheet" href="static/css/1-layout/grid.css">
     <link rel="stylesheet" href="static/css/1-layout/flexbox.css">
@@ -19,9 +22,24 @@
 <body class="bg base">
     
     <!-- nav mobile top -->
-    <nav id="top" class="l-flex items-align-center">
-        <div class="container" style="display: none"></div> <!-- IMPORTANT ADD TOP TOP BAR -->
-        <div class="container l-flex items-align-center">
+    <nav id="top" class="l-flex col">
+        <div id="upper" class="anim type:to set|display:none">
+            <div class="container l-flex">
+                <div class="socials f-item justify-left l-flex items-align-center">
+                    <a href="#">
+                        <img src="static/images/svg/compressed/social-instagram.svg" alt="instagram">
+                    </a>
+                    <a href="#">
+                        <img src="static/images/svg/compressed/social-facebook.svg" alt="facebook">
+                    </a>
+                </div>
+                <span id="phone" class="f-item l-flex items-align-center content-justify-right">
+                    <i class="fas fa-phone text shadow" aria-hidden="true"></i>
+                    <p class="cta">084-974210</p>
+                </span>
+            </div> <!-- IMPORTANT ADD TOP TOP BAR -->
+        </div>
+        <div id="lower" class="container f-item align-center l-flex items-align-center">
             <!-- change language button -->
             <div id="lang-dropdown">
                 <ul class='f-item l-flex items-align-center content-justify-center'>
@@ -61,10 +79,10 @@
         <div class="container l-flex items-align-center">
             <div class="socials f-item l-flex items-align-center">
                 <a href="#">
-                    <img src="static/images/svg/compressed/social-instagram.svg" alt="Instagram">
+                    <img src="static/images/svg/compressed/social-instagram.svg" alt="instagram">
                 </a>
                 <a href="#">
-                    <img src="static/images/svg/compressed/social-facebook.svg" alt="Facebook">
+                    <img src="static/images/svg/compressed/social-facebook.svg" alt="facebook">
                 </a>
             </div>
             <div id="burger" class="f-item l-flex content-justify-right">
@@ -126,6 +144,14 @@
             </div>
         </section>
     </main>
+
+
+    <!-- GreenSock -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
 
     <!-- js -->
     <script type="module" src="/static/js/main.js"></script> <!-- main.js -->

@@ -44,41 +44,55 @@ nav .nav-links > li a {
   text-align: center;
   color: #1F74AD;
 }
+nav .socials {
+  padding: 1rem 0;
+}
+nav .socials a {
+  display: block;
+}
+nav .socials a:first-child {
+  margin-right: 1rem;
+}
 nav#top {
   background: rgba(175, 255, 247, 0);
   top: 0;
 }
-nav#top .container {
+nav#top > #upper {
+  width: 100%;
+  background: #93c8ec;
+}
+nav#top > #upper .container #phone i {
+  width: 3rem;
+  height: 2rem;
+  font-size: 2rem;
+}
+nav#top .container#lower {
   padding: 1rem 0;
 }
-nav#top .container .logo {
+nav#top .container#lower .logo {
   width: 30%;
   min-width: 10rem;
   max-width: 25rem;
 }
-nav#top .container .logo a {
+nav#top .container#lower .logo a {
   display: block;
-  width: 100%;
-}
-nav#top .container .logo a object {
-  width: 100%;
 }
 @media only screen and (min-width: 576px) {
-  nav#top .container > div:nth-child(3) {
+  nav#top .container#lower > div:nth-child(3) {
     display: none;
   }
 }
-nav#top .container .nav-links > *:not(:nth-child(4)) {
+nav#top .container#lower .nav-links > *:not(:nth-child(4)) {
   margin-right: 2rem;
 }
-nav#top .container .nav-links > li a:hover {
+nav#top .container#lower .nav-links > li a:hover {
   color: #1f4e6d;
 }
-nav#top .container .nav-links > li a:active {
+nav#top .container#lower .nav-links > li a:active {
   color: #fcffff;
 }
 @media only screen and (max-width: 576px) {
-  nav#top .container .nav-links {
+  nav#top .container#lower .nav-links {
     display: none;
   }
 }
@@ -113,13 +127,6 @@ nav#mobile-bottom .container .f-item {
 }
 nav#mobile-bottom .container .socials {
   margin-top: 0.2rem;
-}
-nav#mobile-bottom .container .socials a {
-  display: block;
-}
-nav#mobile-bottom .container .socials a img {
-  width: 2.5rem;
-  height: 2.5rem;
 }
 nav#mobile-bottom .container #burger {
   height: 100%;
@@ -200,7 +207,22 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
 #svg-shapes .image.index-hero-web {
   transform: translate(0%, -30%);
 }
+#svg-shapes #instagram path.outer {
+  fill: none;
+  stroke: #1F74AD;
+}
+#svg-shapes #instagram path.inner-big {
+  fill: none;
+  stroke: #1F74AD;
+}
+#svg-shapes #instagram path.inner-small {
+  fill: none;
+  stroke: #1F74AD;
+}
 
+main#main-wrapper {
+  height: 300vh;
+}
 @media only screen and (min-width: 576px) {
   main#main-wrapper section .shapes object.mob {
     display: none;

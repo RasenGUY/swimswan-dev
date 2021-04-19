@@ -3,7 +3,7 @@ import * as f from "./functions.js";
 // import * as g from "./gmap.js";
 // import * as c from "./carousel.js";
 // import * as gal from "./gallery.js";
-// import * as an from "./animations.js";
+import * as an from "./animations.js";
 
 
 // function to be run after the whole page is loaded 
@@ -46,6 +46,27 @@ window.onload = (()=>{
             transViet.classList.toggle('trans-off');
         })
     })
+
+    // animations
+    const sel = ".anim"
+    const els = document.querySelectorAll(sel);
+    const baseSet = {
+        duration: 0.75,
+        ease: "circ.inOut",
+        clearProps: true, 
+        scrollTrigger: {
+            start: "+=150 +=100",
+            end: "+=600 +=300",
+            // once: true, 
+            markers: {
+                startColor: "green", 
+                endColor: "red", 
+                fontSize: "12px"
+            } 
+        }
+    }
+    const animation = new an.Animation(baseSet);
+    animation.animInit(els, sel); 
   
 });
 
