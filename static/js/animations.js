@@ -237,3 +237,18 @@ export function Animation (baseSet) {
 }
 
 // circular animation with button
+    // trigger both animations at the same time at the click of the button 
+    // move icons in circular motion
+        // do with css animations (no need of tweens)
+        // scaled (0) -> <- unscaled (1) <- unscaled (2) 
+        // remove opacity ->                             
+        // scaleToLow -> 
+        // move 90 deg -> move 90deg -> move 90deg 
+        // bubble seq
+            // scale - unscale
+            // rotate - horizontally 
+
+
+    // carouselify the cards
+        // visible (0) -> <- invisible (1) <- invisible (2) 
+        // remove opacity -> <- add opacity <- unchange                          
