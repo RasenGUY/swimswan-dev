@@ -55,16 +55,15 @@ window.onload = (()=>{
         ease: "circ.inOut",
         clearProps: true, 
         scrollTrigger: {
-            start: "+=150 +=100",
-            end: "+=600 +=300",
+            toggleClass: "nav-reveal",
+            // scrub: true,
+            start: "250 150",
+            // end: "+=600 +=300",
             // once: true, 
-            markers: {
-                startColor: "green", 
-                endColor: "red", 
-                fontSize: "12px"
-            } 
+            markers: true,
         }
     }
+
     const animation = new an.Animation(baseSet);
     animation.animInit(els, sel); 
   

@@ -12,7 +12,7 @@ export function Animation (baseSet) {
         };
 
         obj.scrollTrigger.trigger = obj.sel; 
-
+        console.log(obj);
         (()=>{
             return new Promise((resolve)=>{
 
@@ -38,8 +38,6 @@ export function Animation (baseSet) {
 
                             
                         } else { // use baseSettings from main js
-                            
-                            // don't update baseSettings with those provided inline
                             
                             if (obj.hasTrigger === false){ // use scrollTrigger settings from baseSettings
                                 
@@ -133,7 +131,7 @@ export function Animation (baseSet) {
         }
         
     }    
-    this.animInit = (els, sel) => { // initiates animations on websit, selects targets create animation settings and tween instances
+    this.animInit = (els, sel) => { // initiates animations on website, selects targets create animation settings and tween instances
         
         var animN = 0; 
         // get elements class names in list and split animation settings and type from the list into arrays of settings and animation type
@@ -145,7 +143,7 @@ export function Animation (baseSet) {
 
                     let animObj = {
                         useBase: false, // if true then only use inline base settings for tween
-                        hasTrigger: false, // if true then use set trigger to start animation?
+                        hasTrigger: false, // if true then use Scroll trigger settings inline
                         start: null,
                         base: null,
                         scrollTrigger: null,
@@ -160,19 +158,20 @@ export function Animation (baseSet) {
                     for (let classN of el.classList.entries()){
                         
                         if (classN[1].includes("type:")){ // find type of gsap
+
                             animObj.type = classN[1].split(":")[1];
                         } 
                         if (classN[1].includes("scrollStart:")){ // find scrollStart for scroll type animations
-                            
+
                             animObj.start = split(":")[1];
 
                         }
-                        if (classN[1].includes("hasTrigger:")){ // if true add scrollTrigger settings -> default is true
+                        if (classN[1].includes("hasTrigger:")){ // if true manually set scrollTrigger settings -> default is false
                             
                             animObj.hasTrigger = this.stringConvert(classN[1].split(":")[1]);
 
                         }
-                        if (classN[1].includes("useBase:")){ // if true add scrollTrigger settings -> default is true
+                        if (classN[1].includes("useBase:")){ // if true add set base settings -> default is false
                             
                             animObj.useBase = this.stringConvert(classN[1].split(":")[1]);
 

@@ -56,15 +56,22 @@ nav .socials a:first-child {
 nav#top {
   background: rgba(175, 255, 247, 0);
   top: 0;
+  transition: all 0.15s ease-in-out;
 }
 nav#top > #upper {
   width: 100%;
   background: #93c8ec;
+  transition: all 0.15s ease-in-out;
 }
 nav#top > #upper .container #phone i {
   width: 3rem;
   height: 2rem;
   font-size: 2rem;
+}
+@media only screen and (max-width: 576px) {
+  nav#top > #upper {
+    display: none;
+  }
 }
 nav#top .container#lower {
   padding: 1rem 0;
