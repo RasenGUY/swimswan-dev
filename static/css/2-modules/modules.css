@@ -265,7 +265,9 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
 }
 #lang-dropdown ul > li.trans-off {
   pointer-events: none;
+  width: 3.5rem;
   opacity: 0.8;
+  filter: drop-shadow(2px 2px 3px rgba(31, 63, 84, 0.45));
 }
 #lang-dropdown ul > li.trans-on {
   pointer-events: auto;
