@@ -144,6 +144,26 @@ main#main-wrapper {
   position: relative;
   z-index: -1;
 }
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section .shapes object.mob {
+    display: none;
+  }
+}
+@media only screen and (max-width: 576px) {
+  main#main-wrapper section .shapes object.med {
+    display: none;
+  }
+}
+@media only screen and (min-width: 992px) {
+  main#main-wrapper section .shapes object.med {
+    display: none;
+  }
+}
+@media only screen and (max-width: 993px) {
+  main#main-wrapper section .shapes object.lg {
+    display: none;
+  }
+}
 main#main-wrapper section#index-hero {
   height: 50vh;
 }
@@ -180,7 +200,7 @@ main#main-wrapper section#index-hero .container .text-box {
 }
 @media only screen and (min-width: 992px) {
   main#main-wrapper section#index-hero .container {
-    height: 52%;
+    height: 60%;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -194,6 +214,11 @@ main#main-wrapper section#index-hero .container .text-box {
     height: 75%;
   }
 }
+@media only screen and (min-width: 800px) {
+  main#main-wrapper section#index-hero .container .text-box {
+    height: 86%;
+  }
+}
 @media only screen and (min-width: 992px) {
   main#main-wrapper section#index-hero .container .text-box {
     height: 35%;
@@ -201,12 +226,12 @@ main#main-wrapper section#index-hero .container .text-box {
 }
 @media only screen and (min-width: 1200px) {
   main#main-wrapper section#index-hero .container .text-box {
-    height: 42%;
+    height: 35%;
   }
 }
 @media only screen and (min-width: 1400px) {
   main#main-wrapper section#index-hero .container .text-box {
-    height: 40%;
+    height: 25%;
     width: 50%;
   }
 }

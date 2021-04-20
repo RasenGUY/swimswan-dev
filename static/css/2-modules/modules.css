@@ -227,29 +227,6 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
   stroke: #1F74AD;
 }
 
-main#main-wrapper {
-  height: 300vh;
-}
-@media only screen and (min-width: 576px) {
-  main#main-wrapper section .shapes object.mob {
-    display: none;
-  }
-}
-@media only screen and (max-width: 576px) {
-  main#main-wrapper section .shapes object.med {
-    display: none;
-  }
-}
-@media only screen and (min-width: 769px) {
-  main#main-wrapper section .shapes object.med {
-    display: none;
-  }
-}
-@media only screen and (max-width: 768px) {
-  main#main-wrapper section .shapes object.lg {
-    display: none;
-  }
-}
 @media only screen and (min-width: 576px) {
   main#main-wrapper section#index-s-one {
     height: 45vh;

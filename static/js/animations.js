@@ -12,7 +12,6 @@ export function Animation (baseSet) {
         };
 
         obj.scrollTrigger.trigger = obj.sel; 
-        console.log(obj);
         (()=>{
             return new Promise((resolve)=>{
 

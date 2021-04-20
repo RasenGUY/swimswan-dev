@@ -200,15 +200,15 @@ a i:active, a i:focus, li a i:active, li a i:focus {
 }
 
 p, a, li, input, textarea, button {
-  font-size: clamp(1.585rem, 1.3732352941rem + 0.5882352941vw, 1.985rem);
+  font-size: clamp(1.585rem, 1.5388461538rem + 0.1282051282vw, 1.785rem);
 }
 
 i {
-  font-size: clamp(1.8rem, 1.5882352941rem + 0.5882352941vw, 2.2rem);
+  font-size: clamp(1.785rem, 1.6892307692rem + 0.266025641vw, 2.2rem);
 }
 
 h1 {
-  font-size: clamp(2.45rem, 2.3807692308rem + 0.1923076923vw, 2.75rem);
+  font-size: clamp(2.4rem, 2.3423076923rem + 0.1602564103vw, 2.65rem);
 }
 
 h2 {
