@@ -400,7 +400,7 @@ main#main-wrapper section#index-s-one .container .icon span p {
 }
 @media only screen and (min-width: 768px) {
   main#main-wrapper section#index-s-one .container .icon#swimming span {
-    top: 50%;
+    top: 35%;
   }
 }
 @media only screen and (min-width: 992px) {
