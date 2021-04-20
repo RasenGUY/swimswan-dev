@@ -176,6 +176,62 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
   visibility: hidden;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #93c8ec;
+  border-radius: 10px;
+  padding: 2.5rem 0;
+  margin-bottom: 5rem;
+}
+.card .card-title {
+  padding-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card .card-title h3 {
+  padding: 0.5rem 1rem 0.75rem 1rem;
+}
+.card .card-title span {
+  display: block;
+  width: 100%;
+  height: 0.35rem;
+  background-color: #68b2e4;
+  border-radius: 1rem;
+}
+.card .card-body {
+  padding: 1.5rem 0;
+}
+.card .card-body .text {
+  text-align: center;
+}
+.card .card-body .text ul {
+  list-style: none;
+}
+.card .card-body .text ul li {
+  padding: 0.25rem 0;
+}
+.card .card-body .meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(5rem, 1fr));
+  justify-items: stretch;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+.card .card-body .meta img {
+  filter: drop-shadow(3px 3px 5px rgba(31, 116, 173, 0.3));
+  width: 50%;
+  max-width: 13.5rem;
+  min-width: 8.5rem;
+}
+.card .card-body .meta span {
+  align-self: center;
+}
+.card:hover {
+  box-shadow: 3px 3px 5px rgba(31, 63, 84, 0.3);
+}
+
 #lang-dropdown ul {
   display: block;
   list-style: none;

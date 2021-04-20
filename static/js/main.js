@@ -31,9 +31,10 @@ window.onload = (()=>{
     const transEng = document.querySelector('#trans-eng');
     const transViet = document.querySelector('#trans-viet');
 
-    // on click of vietnam translation 
+    // translations  
     transBtns.forEach(btn => {
         btn.addEventListener('click', ()=>{
+
             // replace innerHTML of els with translated Text 
             transItems.forEach(el => {
                 let tempTrans = el.innerHTML;
@@ -66,7 +67,9 @@ window.onload = (()=>{
 
     const animation = new an.Animation(baseSet);
     animation.animInit(els, sel); 
-  
+
+    // animate animals on main screen
+    
 });
 
 
