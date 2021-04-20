@@ -240,6 +240,11 @@ main#main-wrapper section#index-hero .container .text-box {
     width: 55%;
   }
 }
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-one {
+    margin-top: 10rem;
+  }
+}
 main#main-wrapper section#index-s-one .container {
   justify-items: center;
   margin-top: clamp(0rem, -25.1162790698rem + 69.7674418605vw, 15rem);
@@ -249,6 +254,11 @@ main#main-wrapper section#index-s-one .container {
     grid-template-rows: none;
     grid-template-columns: repeat(3, minmax(135px, 1fr));
     margin-top: 0;
+  }
+}
+@media only screen and (min-width: 769px) {
+  main#main-wrapper section#index-s-one .container {
+    height: 50%;
   }
 }
 main#main-wrapper section#index-s-one .container .icon {
@@ -263,6 +273,52 @@ main#main-wrapper section#index-s-one .container .icon {
   }
   main#main-wrapper section#index-s-one .container .icon:nth-child(3) {
     justify-content: flex-end;
+  }
+}
+@media only screen and (max-width: 576px) {
+  main#main-wrapper section#index-s-two {
+    margin-top: 10rem;
+  }
+}
+main#main-wrapper section#index-s-two .container .text-box header {
+  text-align: center;
+}
+@media only screen and (min-width: 678px) {
+  main#main-wrapper section#index-s-two .container .text-box header {
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-title {
+    justify-self: end;
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .text ul, main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .text li {
+    text-align: right;
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .text ul li > ul {
+    list-style: none;
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .text ul li > ul li {
+    position: relative;
+    padding-right: 3.25rem;
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .text ul li > ul li:before, main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .text ul li > ul li::before {
+    content: "";
+    width: 2.25rem;
+    height: 2.25rem;
+    position: absolute;
+    background-image: url("../../images/icos/favicon-money.ico");
+    background-size: cover;
+    background-position: center;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .meta {
+    grid-template-columns: unset;
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .meta span {
+    justify-self: end;
   }
 }
 
