@@ -280,10 +280,60 @@ main#main-wrapper section#index-s-one .container .icon {
     margin-top: 10rem;
   }
 }
+main#main-wrapper section#index-s-two .shapes .orbit {
+  width: 70%;
+  position: absolute;
+  z-index: -5;
+  left: -28%;
+  animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-timing-function: linear;
+  animation-timing-name: puddle-orbit;
+  -ms-animation-timing-name: puddle-orbit;
+  -o-animation-timing-name: puddle-orbit;
+  -moz-animation-timing-name: puddle-orbit;
+  -webkit-animation-timing-name: puddle-orbit;
+  animation-timing-duration: 0.15;
+  -ms-animation-timing-duration: 0.15;
+  -o-animation-timing-duration: 0.15;
+  -moz-animation-timing-duration: 0.15;
+  -webkit-animation-timing-duration: 0.15;
+}
+main#main-wrapper section#index-s-two .shapes .orbit > object {
+  opacity: 0.85;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .package-icons {
+  width: 100%;
+  height: 100%;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .package-icons object {
+  position: absolute;
+  width: 15rem;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.orca.backstage, main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.dolphin.backstage, main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.turtle.backstage {
+  transform: rotateY(180deg) scale(0.5);
+}
+main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.orca.front, main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.dolphin.front, main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.turtle.front {
+  transform: scale(1);
+}
+main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.top {
+  top: -12%;
+  left: 40%;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.middle {
+  top: 40%;
+  right: -10%;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.bottom {
+  left: 40%;
+  bottom: -10%;
+}
 main#main-wrapper section#index-s-two .container .text-box header {
   text-align: center;
 }
-@media only screen and (min-width: 678px) {
+@media only screen and (min-width: 577px) {
   main#main-wrapper section#index-s-two .container .text-box header {
     text-align: center;
   }
@@ -319,6 +369,23 @@ main#main-wrapper section#index-s-two .container .text-box header {
   }
   main#main-wrapper section#index-s-two .container .text-box .text-body .card .card-body .meta span {
     justify-self: end;
+  }
+}
+@media only screen and (min-width: 577px) {
+  main#main-wrapper section#index-s-two .container .text-box .text-body {
+    position: relative;
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card {
+    position: absolute;
+    transition: all 0.15s ease-in-out;
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card.hide {
+    opacity: 0;
+    left: 100%;
+  }
+  main#main-wrapper section#index-s-two .container .text-box .text-body .card.show {
+    opacity: 1;
+    right: 0;
   }
 }
 

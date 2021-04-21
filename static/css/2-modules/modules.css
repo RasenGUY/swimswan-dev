@@ -273,32 +273,46 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
   pointer-events: auto;
 }
 
-#svg-shapes .overlay {
+svg#svg-shapes .overlay {
   opacity: 0.9;
   fill: #AFFFF7;
 }
-#svg-shapes .image.index-hero-mobile {
+svg#svg-shapes .image.index-hero-mobile {
   transform: translate(-40%) scale(0.35);
 }
-#svg-shapes .image.index-hero-med {
+svg#svg-shapes .image.index-hero-med {
   transform: translate(0%, -19%);
 }
-#svg-shapes .image.index-hero-web {
+svg#svg-shapes .image.index-hero-web {
   transform: translate(0%, -30%);
 }
-#svg-shapes #instagram path.outer {
+svg#svg-shapes #instagram path.outer {
   fill: none;
   stroke: #1F74AD;
 }
-#svg-shapes #instagram path.inner-big {
+svg#svg-shapes #instagram path.inner-big {
   fill: none;
   stroke: #1F74AD;
 }
-#svg-shapes #instagram path.inner-small {
+svg#svg-shapes #instagram path.inner-small {
   fill: none;
   stroke: #1F74AD;
 }
-
+svg#index-s-two {
+  filter: drop-shadow(5px 5px 5px rgba(188, 188, 188, 0.45));
+  transform: scale(0.95);
+}
+svg#index-s-two .water-bubble .main-circle {
+  fill: #AFFFF7;
+}
+svg#index-s-two .water-bubble .inner-shadow {
+  fill: #93c8ec;
+  opacity: 0.35;
+}
+svg#index-s-two .water-bubble .shine > * {
+  fill: #FAFDFF;
+  opacity: 0.85;
+}
 @media only screen and (min-width: 576px) {
   main#main-wrapper section#index-s-one {
     height: 45vh;
