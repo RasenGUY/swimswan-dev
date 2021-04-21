@@ -56,8 +56,8 @@ window.onload = (()=>{
         ease: "circ.inOut",
         clearProps: true, 
         scrollTrigger: {
-            toggleClass: "nav-reveal",
-            // scrub: true,
+            // toggleClass: "nav-reveal",
+            scrub: true,
             start: "250 150",
             // end: "+=600 +=300",
             // once: true, 
@@ -69,7 +69,29 @@ window.onload = (()=>{
     animation.animInit(els, sel); 
 
     // animate animals on main screen
+    const animBtn = document.querySelector("#arrow");
+    const orbit = document.querySelector(".orbit");
+    const waterBubble = document.querySelector(".orbit #water-bubble");
+    const turtleImg = document.querySelector(".icon-path #turtle");
+    const dolphinImg = document.querySelector(".icon-path #dolphin");
+    const orcaImg = document.querySelector(".icon-path #orca");
+    var currentAngle = 0; 
     
+    // add onclick event
+    animBtn.addEventListener("click", ()=>{
+        currentAngle += 90; 
+
+        // select parent
+        orbit.style.transform  = "rotate(" + currentAngle + "deg)"; 
+        waterBubble.style.transform  = "rotate(-" + currentAngle + "deg)"; 
+        turtleImg.style.transform  = "rotate(-" + currentAngle + "deg)"; 
+
+    })
+    const animObj  = {
+        icons: ["#icon-turtle", "#icon-dolphin", "#icon-orca"], 
+        arrows: ["#arrow .left", "#arrow .right"]
+    }
+    an.animate(animObj);
 });
 
 

@@ -1,3 +1,6 @@
+// import modules
+import * as f from "./functions.js";
+
 // ----------------- animations -----------------
 export function Animation (baseSet) {
     
@@ -236,8 +239,9 @@ export function Animation (baseSet) {
 
 }
 
+// trigger both animations at the same time at the click of the button 
+
 // circular animation with button
-    // trigger both animations at the same time at the click of the button 
     // move icons in circular motion
         // do with css animations (no need of tweens)
         // scaled (0) -> <- unscaled (1) <- unscaled (2) 
@@ -246,9 +250,43 @@ export function Animation (baseSet) {
         // move 90 deg -> move 90deg -> move 90deg 
         // bubble seq
             // scale - unscale
-            // rotate - horizontally 
+
+export function animate(obj) {
+    const icons = obj.icons.map(sel => f.getObj(sel)); // select all of the icons
+    const arrows = obj.arrows.map(sel => f.getObj(sel)); // select all the arrows
+    f.log(icons);
+    f.log(arrows);
+}
+
+    // what el is needed
+        // arrows * 2 ?
+            // add extra button 
+            // hover effect
+
+        // icons
+            // animate
+            // size -> scale * 1.5
+            // angle (to change, reverse)
+                // angle -> path walk   
+                
+
+        // bubble in the background 
+            // angle reverse 
+            // to animate
+                // opacity 
+                // size (scale) ?
+                // background puddle (extra)
+
+        // icon-path
+            // angle (to change)
+
+    // functions that are needed 
+        // function that retrieves elements
+        // function that changes the state of an el
+
 
 
     // carouselify the cards
         // visible (0) -> <- invisible (1) <- invisible (2) 
-        // remove opacity -> <- add opacity <- unchange                          
+        // remove opacity -> <- add opacity <- unchange
+        // some logic to apply state changes                         

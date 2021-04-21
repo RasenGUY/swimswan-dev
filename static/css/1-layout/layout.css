@@ -280,55 +280,116 @@ main#main-wrapper section#index-s-one .container .icon {
     margin-top: 10rem;
   }
 }
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-two {
+    height: 58vh;
+  }
+}
 main#main-wrapper section#index-s-two .shapes .orbit {
   width: 70%;
   position: absolute;
   z-index: -5;
   left: -28%;
-  animation-timing-function: linear;
-  -ms-animation-timing-function: linear;
-  -o-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
-  -webkit-animation-timing-function: linear;
-  animation-timing-name: puddle-orbit;
-  -ms-animation-timing-name: puddle-orbit;
-  -o-animation-timing-name: puddle-orbit;
-  -moz-animation-timing-name: puddle-orbit;
-  -webkit-animation-timing-name: puddle-orbit;
-  animation-timing-duration: 0.15;
-  -ms-animation-timing-duration: 0.15;
-  -o-animation-timing-duration: 0.15;
-  -moz-animation-timing-duration: 0.15;
-  -webkit-animation-timing-duration: 0.15;
+  transition: all 0.15s ease-in-out;
 }
 main#main-wrapper section#index-s-two .shapes .orbit > object {
   opacity: 0.85;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .package-icons {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path {
   width: 100%;
   height: 100%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .package-icons object {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path.rotate-full {
+  animation: rotate-full 0.15s ease-in-out forwards;
+}
+@keyframes rotate-full {
+  33% {
+    transform: rotate(45deg);
+  }
+  66% {
+    transform: rotate(67.5deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@-webkit-keyframes rotate-full {
+  33% {
+    transform: rotate(45deg);
+  }
+  66% {
+    transform: rotate(67.5deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path.rotate-half {
+  animation: rotate-half 0.15s ease-in-out forwards;
+  animation-name: rotate-half;
+  -ms-animation-name: rotate-half;
+  -o-animation-name: rotate-half;
+  -moz-animation-name: rotate-half;
+  -webkit-animation-name: rotate-half;
+}
+@-webkit-keyframes rotate-half {
+  0% {
+    transform: rotate(45deg);
+  }
+  33% {
+    transform: rotate(45deg);
+  }
+  66% {
+    transform: rotate(67.5deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+@keyframes rotate-half {
+  0% {
+    transform: rotate(45deg);
+  }
+  33% {
+    transform: rotate(45deg);
+  }
+  66% {
+    transform: rotate(67.5deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object {
   position: absolute;
   width: 15rem;
+  transform: rotate(0deg);
 }
-main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.orca.backstage, main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.dolphin.backstage, main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.turtle.backstage {
-  transform: rotateY(180deg) scale(0.5);
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#turtle, main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#orca {
+  transform: rotateY(180deg);
 }
-main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.orca.front, main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.dolphin.front, main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.turtle.front {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#orca.backstage, main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#dolphin.backstage, main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#turtle.backstage {
+  transform: scale(0.5);
+}
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#orca.front, main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#dolphin.front, main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#turtle.front {
   transform: scale(1);
 }
-main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.top {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.top {
   top: -12%;
   left: 40%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.middle {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.middle {
   top: 40%;
   right: -10%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .package-icons object.bottom {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.bottom {
   left: 40%;
   bottom: -10%;
+}
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-two .container {
+    height: 100%;
+  }
 }
 main#main-wrapper section#index-s-two .container .text-box header {
   text-align: center;
@@ -374,6 +435,7 @@ main#main-wrapper section#index-s-two .container .text-box header {
 @media only screen and (min-width: 577px) {
   main#main-wrapper section#index-s-two .container .text-box .text-body {
     position: relative;
+    height: auto;
   }
   main#main-wrapper section#index-s-two .container .text-box .text-body .card {
     position: absolute;
@@ -386,6 +448,41 @@ main#main-wrapper section#index-s-two .container .text-box header {
   main#main-wrapper section#index-s-two .container .text-box .text-body .card.show {
     opacity: 1;
     right: 0;
+  }
+}
+main#main-wrapper section#index-s-two .container .text-box #arrow {
+  display: none;
+}
+@media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-two .container .text-box #arrow {
+    width: auto;
+    display: block;
+    position: absolute;
+    bottom: 2.5%;
+    right: 4.5%;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrow i {
+    font-size: 5rem;
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrow i.left {
+    margin-right: 1rem;
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrow:hover i.left {
+    transform: translateX(-1rem);
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrow:hover i.left i {
+    color: #68b2e4;
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrow:hover i.right {
+    transform: translateX(1rem);
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrow:hover i.right i {
+    color: #68b2e4;
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrow:focus i, main#main-wrapper section#index-s-two .container .text-box #arrow:active i {
+    color: #1f4e6d;
   }
 }
 

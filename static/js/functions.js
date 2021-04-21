@@ -118,3 +118,15 @@ export function loaderFunc(ldrObj){
     
     return 0;
 }
+
+
+// general functions functional programming //  
+export function getObj(sel){ // returns single dom obj
+    return document.querySelector(sel); 
+} 
+export function getObjs(sel){ // returns multiple dom els
+    return document.querySelector(sel); 
+} 
+export function log(value){ // logs a message based on a value
+    return console.log(value);
+}
