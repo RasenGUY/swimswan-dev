@@ -127,6 +127,16 @@ export function getObj(sel){ // returns single dom obj
 export function getObjs(sel){ // returns multiple dom els
     return document.querySelector(sel); 
 } 
-export function log(value){ // logs a message based on a value
-    return console.log(value);
+export function log(arg, ...args){ // logs a message based on a value
+    return console.log(arg, ...args);
 }
+export function createObj(obj){ // create new object element
+    return Object.assign({}, obj);
+}
+export function event(obj, event, func){ // adds event listener to obj
+    obj.addEventListener(event, func);
+}
+export function updateProps(obj, prop, value){
+    obj[prop] = value;
+    console.log(obj[prop] = value);
+};

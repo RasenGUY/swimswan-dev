@@ -299,74 +299,9 @@ main#main-wrapper section#index-s-two .shapes .orbit .icon-path {
   width: 100%;
   height: 100%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path.rotate-full {
-  animation: rotate-full 0.15s ease-in-out forwards;
-}
-@keyframes rotate-full {
-  33% {
-    transform: rotate(45deg);
-  }
-  66% {
-    transform: rotate(67.5deg);
-  }
-  100% {
-    transform: rotate(90deg);
-  }
-}
-@-webkit-keyframes rotate-full {
-  33% {
-    transform: rotate(45deg);
-  }
-  66% {
-    transform: rotate(67.5deg);
-  }
-  100% {
-    transform: rotate(90deg);
-  }
-}
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path.rotate-half {
-  animation: rotate-half 0.15s ease-in-out forwards;
-  animation-name: rotate-half;
-  -ms-animation-name: rotate-half;
-  -o-animation-name: rotate-half;
-  -moz-animation-name: rotate-half;
-  -webkit-animation-name: rotate-half;
-}
-@-webkit-keyframes rotate-half {
-  0% {
-    transform: rotate(45deg);
-  }
-  33% {
-    transform: rotate(45deg);
-  }
-  66% {
-    transform: rotate(67.5deg);
-  }
-  100% {
-    transform: rotate(90deg);
-  }
-}
-@keyframes rotate-half {
-  0% {
-    transform: rotate(45deg);
-  }
-  33% {
-    transform: rotate(45deg);
-  }
-  66% {
-    transform: rotate(67.5deg);
-  }
-  100% {
-    transform: rotate(90deg);
-  }
-}
 main#main-wrapper section#index-s-two .shapes .orbit .icon-path object {
   position: absolute;
   width: 15rem;
-  transform: rotate(0deg);
-}
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#turtle, main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#orca {
-  transform: rotateY(180deg);
 }
 main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#orca.backstage, main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#dolphin.backstage, main#main-wrapper section#index-s-two .shapes .orbit .icon-path object#turtle.backstage {
   transform: scale(0.5);
@@ -378,9 +313,13 @@ main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.top {
   top: -12%;
   left: 40%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.middle {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.middleRight {
   top: 40%;
   right: -10%;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.middleLeft {
+  top: 40%;
+  left: -10%;
 }
 main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.bottom {
   left: 40%;
@@ -450,38 +389,37 @@ main#main-wrapper section#index-s-two .container .text-box header {
     right: 0;
   }
 }
-main#main-wrapper section#index-s-two .container .text-box #arrow {
+main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
   display: none;
 }
 @media only screen and (min-width: 576px) {
-  main#main-wrapper section#index-s-two .container .text-box #arrow {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
     width: auto;
     display: block;
     position: absolute;
     bottom: 2.5%;
     right: 4.5%;
     cursor: pointer;
-    transition: all 0.15s ease-in-out;
   }
-  main#main-wrapper section#index-s-two .container .text-box #arrow i {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i {
     font-size: 5rem;
   }
-  main#main-wrapper section#index-s-two .container .text-box #arrow i.left {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i.left {
     margin-right: 1rem;
   }
-  main#main-wrapper section#index-s-two .container .text-box #arrow:hover i.left {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i:hover {
+    color: #68b2e4;
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i {
+    transition: all 0.15s ease-in-out;
+  }
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i#arrows-left:hover {
     transform: translateX(-1rem);
   }
-  main#main-wrapper section#index-s-two .container .text-box #arrow:hover i.left i {
-    color: #68b2e4;
-  }
-  main#main-wrapper section#index-s-two .container .text-box #arrow:hover i.right {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i#arrows-right:hover {
     transform: translateX(1rem);
   }
-  main#main-wrapper section#index-s-two .container .text-box #arrow:hover i.right i {
-    color: #68b2e4;
-  }
-  main#main-wrapper section#index-s-two .container .text-box #arrow:focus i, main#main-wrapper section#index-s-two .container .text-box #arrow:active i {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i:focus, main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i:active {
     color: #1f4e6d;
   }
 }

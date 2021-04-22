@@ -7,7 +7,7 @@ import * as an from "./animations.js";
 
 
 // function to be run after the whole page is loaded 
-window.onload = (()=>{
+window.onload = ( ()=> {
 
     // menu-mobile-animation
     const burger = document.querySelector("#burger .burger-wrapper");
@@ -33,7 +33,7 @@ window.onload = (()=>{
 
     // translations  
     transBtns.forEach(btn => {
-        btn.addEventListener('click', ()=>{
+        btn.addEventListener('click', () => {
 
             // replace innerHTML of els with translated Text 
             transItems.forEach(el => {
@@ -69,7 +69,7 @@ window.onload = (()=>{
     animation.animInit(els, sel); 
 
     // animate animals on main screen
-    const animBtn = document.querySelector("#arrow");
+    // const animBtn = document.querySelector("#arrow");
     const orbit = document.querySelector(".orbit");
     const waterBubble = document.querySelector(".orbit #water-bubble");
     const turtleImg = document.querySelector(".icon-path #turtle");
@@ -78,18 +78,29 @@ window.onload = (()=>{
     var currentAngle = 0; 
     
     // add onclick event
-    animBtn.addEventListener("click", ()=>{
-        currentAngle += 90; 
+    // animBtn.addEventListener("click", ()=>{
+    //     currentAngle += 90; 
 
-        // select parent
-        orbit.style.transform  = "rotate(" + currentAngle + "deg)"; 
-        waterBubble.style.transform  = "rotate(-" + currentAngle + "deg)"; 
-        turtleImg.style.transform  = "rotate(-" + currentAngle + "deg)"; 
-
-    })
+    //     // select parent
+    //     orbit.style.transform  = "rotate(" + currentAngle + "deg)"; 
+    //     waterBubble.style.transform  = "rotate(-" + currentAngle + "deg)"; 
+    //     turtleImg.style.transform  = "rotate(-" + currentAngle + "deg)"; 
+    // })
+    
     const animObj  = {
-        icons: ["#icon-turtle", "#icon-dolphin", "#icon-orca"], 
-        arrows: ["#arrow .left", "#arrow .right"]
+        imgSrc: 'static/images/svg/compressed/', 
+        icons: {
+            sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
+        }, 
+        arrows: {
+            sel: ["#arrows-left", "#arrows-right"]
+        },
+        orbit: {
+            sel: ".orbit"
+        }, 
+        bubble: {
+            sel: ".orbit #water-bubble"
+        } 
     }
     an.animate(animObj);
 });

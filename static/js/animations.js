@@ -252,16 +252,118 @@ export function Animation (baseSet) {
             // scale - unscale
 
 export function animate(obj) {
-    const icons = obj.icons.map(sel => f.getObj(sel)); // select all of the icons
-    const arrows = obj.arrows.map(sel => f.getObj(sel)); // select all the arrows
-    f.log(icons);
-    f.log(arrows);
-}
 
+    const icons = obj.icons.sel.map(sel => f.getObj(sel)).map(obj => f.createObj({el: obj})); // select all of the icons and create object with state
+    const [arrowLeft, arrowRight] = obj.arrows.sel.map(sel => f.getObj(sel)); // select all the arrows and create obj with state
+       
+    // animation obj functions
+    function getDataSrc(src, obj){ // get data url for obj 
+        return src + obj.data.split("/")[obj.data.split("/").length -1];
+    }
+    function addSet(obj, set){ // create settings for obj
+        return {...obj, ...set};
+    }
+    
+    // transformations
+    // calculate angle
+    const angleAdd = (initial, angle) => (initial += angle);
+    const angleRemove = (initial, angle) => (initial -= angle);
+
+    // effects
+    const scaleTo = factor => "scale(" +  factor + ")";
+    const opacityTo = factor => factor;
+
+    // add settings to to be animated objects 
+    const iconsAnim = icons.map(icon => addSet(icon, {src: getDataSrc(obj.imgSrc, icon.el)})).map(icon => addSet(icon, {angle: 0}));
+
+    // add select and add settings to orbit and bubble
+    const orbit = addSet(f.createObj({el: f.getObj(obj.orbit.sel)}), {angle: 0}); 
+    const bubble = addSet(f.createObj({el: f.getObj(obj.bubble.sel)}), {angle: 0}); 
+
+    // rotate objects based on deg
+    function rotateForward(obj, angle) { // rotate to front based on given or calculated angle
+        obj.style.transform  = "rotate(" + angle + "deg)";
+    };
+    
+    // apply transform rotate on an element
+    function rotateObjForward(obj, angle) { // rotate forward by given angle
+        rotateForward(obj.el, angleAdd(obj.angle, angle));
+    };
+    function rotateObjBackward(obj, angle) { // rotate forward by given angle
+        rotateForward(obj.el, angleRemove(obj.angle, angle));
+    };
+    
+    // reverse animations for dolphins
+    function iconsRotate(n, forward = true){
+
+        // base case 
+        if (n > iconsAnim.length - 1){
+            // stop at base case 
+            return; 
+        }
+        if (forward){
+            rotateObjBackward(iconsAnim[n], 90);
+            f.updateProps(iconsAnim[n], "angle", angleRemove(iconsAnim[n].angle, 90)); // update icon current angle
+            return iconsRotate(n+1);
+
+        } else {
+            
+            rotateObjForward(iconsAnim[n], 90);
+            f.updateProps(iconsAnim[n], "angle", angleAdd(iconsAnim[n].angle, 90)); // update icon current angle
+            return iconsRotate(n+1, false);
+        }
+    }
+
+    // animation flow of objects
+    f.event(arrowRight, 'click', () => { // add click events to right button
+        
+        // orbit 
+        rotateObjForward(orbit, 90); // rotate orbit forward
+        f.updateProps(orbit, "angle", angleAdd(orbit.angle, 90)); // opdate orbit current angle
+        
+        // bubble 
+        rotateObjBackward(bubble, 90) // rotate bubble backwards
+        f.updateProps(bubble, "angle", angleRemove(bubble.angle, 90)); // update bubble angle
+        
+        // reverse rotate icons
+        iconsRotate(0); 
+        
+    });   
+    
+    f.event(arrowLeft, 'click', () => { // add click even to left button
+
+        // orbit
+        rotateObjBackward(orbit, 90); // rotate orbit backwards
+        f.updateProps(orbit, "angle", angleRemove(orbit.angle, 90)); // update orbit current angle
+
+        // bubble 
+        rotateObjForward(bubble, 90) // rotate bubble forward
+        f.updateProps(bubble, "angle", angleAdd(bubble.angle, 90)); // update bubble current
+
+        // reverse rotate icons
+        iconsRotate(0, false); 
+    });
+
+    // steps 
+        // select elements 
+        // click arrow (add click events to arrow and function to run)
+        // f.event(arrow.el, "click", animateObjs);
+        // rotate orbit 90 deg
+        // trigger effects on icons
+        // replace hidden icon with lower icon
+
+        // parameters that I need for icons
+            // current angle
+            // data-src 
+            // el already done
+        // params for orbit and bubble
+            // angle 
+        
+}
     // what el is needed
         // arrows * 2 ?
-            // add extra button 
-            // hover effect
+            // add extra button done
+            // hover effect done 
 
         // icons
             // animate
@@ -283,8 +385,6 @@ export function animate(obj) {
     // functions that are needed 
         // function that retrieves elements
         // function that changes the state of an el
-
-
 
     // carouselify the cards
         // visible (0) -> <- invisible (1) <- invisible (2) 
