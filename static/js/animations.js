@@ -270,7 +270,9 @@ export function animate(obj) {
     const angleRemove = (initial, angle) => (initial -= angle);
 
     // effects
-    const scaleTo = factor => "scale(" +  factor + ")";
+    function scaleTo(obj, factor){
+        obj.style.transform = "scale(" +  factor + ")";  
+    };
     const opacityTo = factor => factor;
 
     // add settings to to be animated objects 
@@ -289,10 +291,35 @@ export function animate(obj) {
     function rotateObjForward(obj, angle) { // rotate forward by given angle
         rotateForward(obj.el, angleAdd(obj.angle, angle));
     };
+
     function rotateObjBackward(obj, angle) { // rotate forward by given angle
         rotateForward(obj.el, angleRemove(obj.angle, angle));
     };
     
+    // changeclassNames of elements
+    function changeObjClassN(arr, forward = true){
+        if (forward){ 
+            arr.forEach((icon, i) => { 
+                if (i + 1 < iconsAnim.length - 1){ // only target elements inbound
+                    icon.el.className = iconsAnim[i+1].el.className;
+                } 
+                if (i + 1 === iconsAnim.length - 1){ // last element then copy from first element
+                    icon.el.className = iconsAnim[0].el.className;
+                }
+
+            });
+        } else {
+            arr.forEach((icon, i) => { 
+                if (i + 1 < iconsAnim.length - 1){ // only target elements inbound
+                    icon.el.className = iconsAnim[i-1].el.className;
+                } 
+                if (i + 1 === 0){ // last element then copy from first element
+                    icon.el.className = iconsAnim[iconsAnim.length - 1].el.className;
+                }
+            });
+        }
+    }
+
     // reverse animations for dolphins
     function iconsRotate(n, forward = true){
 
@@ -307,12 +334,51 @@ export function animate(obj) {
             return iconsRotate(n+1);
 
         } else {
-            
+
             rotateObjForward(iconsAnim[n], 90);
             f.updateProps(iconsAnim[n], "angle", angleAdd(iconsAnim[n].angle, 90)); // update icon current angle
             return iconsRotate(n+1, false);
         }
     }
+
+    // animate icons size and some other effectts
+    function iconsAnimate(n, forward = true) {
+        // base case 
+        if (n === iconsAnim.length - 1){
+            return;
+        }
+
+        if (forward){
+            // scale icon with class top to 1; 
+            if (iconsAnim[n].el.classList.contains("top")){
+                scaleTo(iconsAnim[n].el, 1); 
+            }
+            // scale icon with middleRight to 0.5
+            if (iconsAnim[n].el.classList.contains("middleRight")){
+                scaleTo(iconsAnim[n].el, 0.5); 
+            }
+            // change source of hidden to bottom
+            if (iconsAnim[n].el.classList.contains("hidden")){
+                iconsAnim[n].el.data = iconsAnim[n-1].src;
+            }
+            return iconsAnimate(n+1); 
+
+        } else {
+            // scale icon with class bottom to 1; 
+            if (iconsAnim[n].el.classList.contains("bottom")){
+                scaleTo(iconsAnim[n].el, 1); 
+            }
+            // scale icon with middleRight to 0.5
+            if (iconsAnim[n].el.classList.contains("middleRight")){
+                scaleTo(iconsAnim[n].el, 0.5); 
+            }
+            // change source of hidden to top
+            if (iconsAnim[n].el.classList.contains("hidden")){
+                iconsAnim[n].el.data = iconsAnim[n+1].src;
+            }
+            return iconsAnimate(n+1, false);
+        }
+    } 
 
     // animation flow of objects
     f.event(arrowRight, 'click', () => { // add click events to right button
@@ -327,6 +393,10 @@ export function animate(obj) {
         
         // reverse rotate icons
         iconsRotate(0); 
+
+        // scale items and change img srcs of icons
+        iconsAnimate(0); 
+        changeObjClassN(iconsAnim);
         
     });   
     
@@ -342,23 +412,12 @@ export function animate(obj) {
 
         // reverse rotate icons
         iconsRotate(0, false); 
+
+        // scale items and change img srcs of icons (reverse)
+        iconsAnimate(0, false); 
+        changeObjClassN(iconsAnim, false);
     });
 
-    // steps 
-        // select elements 
-        // click arrow (add click events to arrow and function to run)
-        // f.event(arrow.el, "click", animateObjs);
-        // rotate orbit 90 deg
-        // trigger effects on icons
-        // replace hidden icon with lower icon
-
-        // parameters that I need for icons
-            // current angle
-            // data-src 
-            // el already done
-        // params for orbit and bubble
-            // angle 
-        
 }
     // what el is needed
         // arrows * 2 ?
