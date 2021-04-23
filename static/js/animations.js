@@ -128,7 +128,6 @@ export function Animation (baseSet) {
 
         // return string if no boolean number or float
         } else {
-
             return input; 
         }
         
@@ -239,21 +238,27 @@ export function Animation (baseSet) {
 
 }
 
-// trigger both animations at the same time at the click of the button 
-
-// circular animation with button
-    // move icons in circular motion
-        // do with css animations (no need of tweens)
-        // scaled (0) -> <- unscaled (1) <- unscaled (2) 
-        // remove opacity ->                             
-        // scaleToLow -> 
-        // move 90 deg -> move 90deg -> move 90deg 
-        // bubble seq
-            // scale - unscale
-
 export function animate(obj) {
 
-    const icons = obj.icons.sel.map(sel => f.getObj(sel)).map(obj => f.createObj({el: obj})); // select all of the icons and create object with state
+    // map all necessary settings of icons
+    const icons = obj.icons.sel 
+    .map(
+        sel => f.getObj(sel) // select elements
+    ) 
+    .map( // create new object
+        icon => 
+        addSet( // add data-postion
+            addSet( // add angle
+                addSet ( // add img src to asettings
+                    f.createObj({el: icon}), // create object and give it the key element
+                    {src: getDataSrc(obj.imgSrc, icon)}
+                ),
+                {angle: 0}
+            ),
+            {position: icon.dataset.position}
+        )
+    );
+
     const [arrowLeft, arrowRight] = obj.arrows.sel.map(sel => f.getObj(sel)); // select all the arrows and create obj with state
        
     // animation obj functions
@@ -273,10 +278,13 @@ export function animate(obj) {
     function scaleTo(obj, factor){
         obj.style.transform = "scale(" +  factor + ")";  
     };
+    function changeSrc(obj, to){
+        obj.data = to;
+    }
     const opacityTo = factor => factor;
 
     // add settings to to be animated objects 
-    const iconsAnim = icons.map(icon => addSet(icon, {src: getDataSrc(obj.imgSrc, icon.el)})).map(icon => addSet(icon, {angle: 0}));
+    ;
 
     // add select and add settings to orbit and bubble
     const orbit = addSet(f.createObj({el: f.getObj(obj.orbit.sel)}), {angle: 0}); 
@@ -286,100 +294,82 @@ export function animate(obj) {
     function rotateForward(obj, angle) { // rotate to front based on given or calculated angle
         obj.style.transform  = "rotate(" + angle + "deg)";
     };
+    // change datasource of icon
+    function changeObjDataPos(obj, to){
+        obj.dataset.position = to; 
+    }
+    // updates poisitons of icons
+    function updateElsPos(Els, forward = true){
+        Els.forEach(icon => {
+            if (!forward){ // change data position of icons forward
+                if (icon.position === "hidden"){ 
+                    changeObjDataPos(icon.el, "bottom");
+                    f.updateProps(icon, "position", "bottom"); 
+
+                } else if (icon.position === "bottom"){ 
+                    f.updateProps(icon, "position", "middleRight"); 
+                    changeObjDataPos(icon.el, "middleRight");
+
+                } else if (icon.position === "middleRight"){ 
+                    f.updateProps(icon, "position", "top"); 
+                    changeObjDataPos(icon.el, "top");
+
+                } else if (icon.position === "top"){ 
+                    f.updateProps(icon, "position", "hidden"); 
+                    changeObjDataPos(icon.el, "hidden");
+
+                }
+            } else { // change data positon of icons backwards
+
+                if (icon.position === "hidden"){ 
+                    f.updateProps(icon, "position", "top"); 
+                    changeObjDataPos(icon.el, "top");
+
+                } else if (icon.position === "top"){
+                    f.updateProps(icon, "position", "middleRight"); 
+                    changeObjDataPos(icon.el, "middleRight");
+
+                } else if (icon.position === "middleRight"){
+                    f.updateProps(icon, "position", "bottom"); 
+                    changeObjDataPos(icon.el, "bottom");
+
+                } else if (icon.position === "bottom"){
+                    f.updateProps(icon, "position", "hidden"); 
+                    changeObjDataPos(icon.el, "hidden");
+                }
+            }
+        });
+    } 
     
     // apply transform rotate on an element
-    function rotateObjForward(obj, angle) { // rotate forward by given angle
-        rotateForward(obj.el, angleAdd(obj.angle, angle));
+    function rotateObjForward(obj, angle) { // rotate forward by given angle called with backward rotation
+        rotateForward(obj.el, angleAdd(obj.angle, angle)); // rotate obj forward
     };
-
-    function rotateObjBackward(obj, angle) { // rotate forward by given angle
-        rotateForward(obj.el, angleRemove(obj.angle, angle));
+    function rotateObjBackward(obj, angle) { // rotate backward by given angle 
+        rotateForward(obj.el, angleRemove(obj.angle, angle)); // rotate obj backward
     };
     
-    // changeclassNames of elements
-    function changeObjClassN(arr, forward = true){
-        if (forward){ 
-            arr.forEach((icon, i) => { 
-                if (i + 1 < iconsAnim.length - 1){ // only target elements inbound
-                    icon.el.className = iconsAnim[i+1].el.className;
-                } 
-                if (i + 1 === iconsAnim.length - 1){ // last element then copy from first element
-                    icon.el.className = iconsAnim[0].el.className;
-                }
-
-            });
-        } else {
-            arr.forEach((icon, i) => { 
-                if (i + 1 < iconsAnim.length - 1){ // only target elements inbound
-                    icon.el.className = iconsAnim[i-1].el.className;
-                } 
-                if (i + 1 === 0){ // last element then copy from first element
-                    icon.el.className = iconsAnim[iconsAnim.length - 1].el.className;
-                }
-            });
-        }
-    }
-
-    // reverse animations for dolphins
+    // rotateicons
     function iconsRotate(n, forward = true){
 
         // base case 
-        if (n > iconsAnim.length - 1){
+        if (n > icons.length - 1){
             // stop at base case 
             return; 
         }
         if (forward){
-            rotateObjBackward(iconsAnim[n], 90);
-            f.updateProps(iconsAnim[n], "angle", angleRemove(iconsAnim[n].angle, 90)); // update icon current angle
+            rotateObjBackward(icons[n], 90);
+            f.updateProps(icons[n], "angle", angleRemove(icons[n].angle, 90)); // update icon current angle
+            // f.log(icons[n].el.id, icons[n].el.style.transform, icons[n].position);
             return iconsRotate(n+1);
-
         } else {
-
-            rotateObjForward(iconsAnim[n], 90);
-            f.updateProps(iconsAnim[n], "angle", angleAdd(iconsAnim[n].angle, 90)); // update icon current angle
+            rotateObjForward(icons[n], 90);
+            f.updateProps(icons[n], "angle", angleAdd(icons[n].angle, 90)); // update icon current angle
+            // f.log(icons[n].el.id, icons[n].el.style.transform, icons[n].position);
             return iconsRotate(n+1, false);
         }
     }
-
-    // animate icons size and some other effectts
-    function iconsAnimate(n, forward = true) {
-        // base case 
-        if (n === iconsAnim.length - 1){
-            return;
-        }
-
-        if (forward){
-            // scale icon with class top to 1; 
-            if (iconsAnim[n].el.classList.contains("top")){
-                scaleTo(iconsAnim[n].el, 1); 
-            }
-            // scale icon with middleRight to 0.5
-            if (iconsAnim[n].el.classList.contains("middleRight")){
-                scaleTo(iconsAnim[n].el, 0.5); 
-            }
-            // change source of hidden to bottom
-            if (iconsAnim[n].el.classList.contains("hidden")){
-                iconsAnim[n].el.data = iconsAnim[n-1].src;
-            }
-            return iconsAnimate(n+1); 
-
-        } else {
-            // scale icon with class bottom to 1; 
-            if (iconsAnim[n].el.classList.contains("bottom")){
-                scaleTo(iconsAnim[n].el, 1); 
-            }
-            // scale icon with middleRight to 0.5
-            if (iconsAnim[n].el.classList.contains("middleRight")){
-                scaleTo(iconsAnim[n].el, 0.5); 
-            }
-            // change source of hidden to top
-            if (iconsAnim[n].el.classList.contains("hidden")){
-                iconsAnim[n].el.data = iconsAnim[n+1].src;
-            }
-            return iconsAnimate(n+1, false);
-        }
-    } 
-
+    // 
     // animation flow of objects
     f.event(arrowRight, 'click', () => { // add click events to right button
         
@@ -393,10 +383,10 @@ export function animate(obj) {
         
         // reverse rotate icons
         iconsRotate(0); 
+        updateElsPos(icons); 
+        f.log(icons.map(icon => [icon.el.dataset.position, icon.position]))
 
         // scale items and change img srcs of icons
-        iconsAnimate(0); 
-        changeObjClassN(iconsAnim);
         
     });   
     
@@ -412,40 +402,10 @@ export function animate(obj) {
 
         // reverse rotate icons
         iconsRotate(0, false); 
-
+        updateElsPos(icons, false);
+        f.log(icons.map(icon => [icon.el.dataset.position , icon.position]))
         // scale items and change img srcs of icons (reverse)
-        iconsAnimate(0, false); 
-        changeObjClassN(iconsAnim, false);
+        
     });
 
 }
-    // what el is needed
-        // arrows * 2 ?
-            // add extra button done
-            // hover effect done 
-
-        // icons
-            // animate
-            // size -> scale * 1.5
-            // angle (to change, reverse)
-                // angle -> path walk   
-                
-
-        // bubble in the background 
-            // angle reverse 
-            // to animate
-                // opacity 
-                // size (scale) ?
-                // background puddle (extra)
-
-        // icon-path
-            // angle (to change)
-
-    // functions that are needed 
-        // function that retrieves elements
-        // function that changes the state of an el
-
-    // carouselify the cards
-        // visible (0) -> <- invisible (1) <- invisible (2) 
-        // remove opacity -> <- add opacity <- unchange
-        // some logic to apply state changes                         

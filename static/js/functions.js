@@ -138,5 +138,4 @@ export function event(obj, event, func){ // adds event listener to obj
 }
 export function updateProps(obj, prop, value){
     obj[prop] = value;
-    console.log(obj[prop] = value);
 };
