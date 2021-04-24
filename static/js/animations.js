@@ -246,25 +246,33 @@ export function animate(obj) {
         sel => f.getObj(sel) // select elements
     ) 
     .map( // create new object
-        icon => 
-        addSet( // add data-postion
-            addSet( // add angle
-                addSet ( // add img src to asettings
-                    f.createObj({el: icon}), // create object and give it the key element
-                    {src: getDataSrc(obj.imgSrc, icon)}
+        icon => addSet( //add id 
+            addSet( // add data-postion
+                addSet( // add angle
+                    addSet ( // add img src to asettings
+                        f.createObj({el: icon}), // create object and give it the key element
+                        {src: getDataSrc(icon, obj.abs)}
+                    ),
+                    {angle: 0}
                 ),
-                {angle: 0}
+                {position: icon.dataset.position}
             ),
-            {position: icon.dataset.position}
+            {id: icon.id}
         )
     );
-
+    f.log(icons)
     const [arrowLeft, arrowRight] = obj.arrows.sel.map(sel => f.getObj(sel)); // select all the arrows and create obj with state
        
     // animation obj functions
-    function getDataSrc(src, obj){ // get data url for obj 
-        return src + obj.data.split("/")[obj.data.split("/").length -1];
+    function getDataSrc(obj, relative = false, ...abs){ // returns an absolute url or a relative url from given obj  
+        if (relative){
+            return obj.data.split("/")[obj.data.split("/").length -1]; // return relative path
+        } else {    
+            return abs + obj.data.split("/")[obj.data.split("/").length -1]; // return absolute path
+        }
     }
+
+
     function addSet(obj, set){ // create settings for obj
         return {...obj, ...set};
     }
@@ -278,8 +286,8 @@ export function animate(obj) {
     function scaleTo(obj, factor){
         obj.style.transform = "scale(" +  factor + ")";  
     };
-    function changeSrc(obj, to){
-        obj.data = to;
+    function changeObjSrc(obj, src){ // change src of obj to a given source 
+        obj.data = src; 
     }
     const opacityTo = factor => factor;
 
@@ -298,6 +306,8 @@ export function animate(obj) {
     function changeObjDataPos(obj, to){
         obj.dataset.position = to; 
     }
+
+        
     // updates poisitons of icons
     function updateElsPos(Els, forward = true){
         Els.forEach(icon => {
@@ -317,10 +327,8 @@ export function animate(obj) {
                 } else if (icon.position === "top"){ 
                     f.updateProps(icon, "position", "hidden"); 
                     changeObjDataPos(icon.el, "hidden");
-
                 }
             } else { // change data positon of icons backwards
-
                 if (icon.position === "hidden"){ 
                     f.updateProps(icon, "position", "top"); 
                     changeObjDataPos(icon.el, "top");
@@ -340,7 +348,8 @@ export function animate(obj) {
             }
         });
     } 
-    
+
+
     // apply transform rotate on an element
     function rotateObjForward(obj, angle) { // rotate forward by given angle called with backward rotation
         rotateForward(obj.el, angleAdd(obj.angle, angle)); // rotate obj forward
@@ -384,7 +393,9 @@ export function animate(obj) {
         // reverse rotate icons
         iconsRotate(0); 
         updateElsPos(icons); 
-        f.log(icons.map(icon => [icon.el.dataset.position, icon.position]))
+        // change data src of hidden to bottom
+        changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "bottom")[0].el.data);
+        f.log(icons.map(icon => [icon.el.dataset.position, icon.position]));
 
         // scale items and change img srcs of icons
         
@@ -403,7 +414,9 @@ export function animate(obj) {
         // reverse rotate icons
         iconsRotate(0, false); 
         updateElsPos(icons, false);
-        f.log(icons.map(icon => [icon.el.dataset.position , icon.position]))
+        // change data src of hidden to top
+        changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "top")[0].src);
+        f.log(icons.map(icon => [icon.el.dataset.position , icon.position]));
         // scale items and change img srcs of icons (reverse)
         
     });

@@ -88,7 +88,7 @@ window.onload = ( ()=> {
     // })
     
     const animObj  = {
-        imgSrc: 'static/images/svg/compressed/', 
+        abs: 'static/images/svg/compressed/', 
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
         }, 
