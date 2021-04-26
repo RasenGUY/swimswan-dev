@@ -235,192 +235,35 @@ export function Animation (baseSet) {
         })
 
     }
-
 }
 
-export function animate(obj) {
+// animation flow -> svg path 
 
-    // map all necessary settings of icons
-    const icons = obj.icons.sel 
-    .map(
-        sel => f.getObj(sel) // select elements
-    ) 
-    .map( // create new object
-        icon => addSet( //add className 
-            addSet( // add data-postion
-                addSet( // add angle
-                    addSet ( // add img src to asettings
-                        f.createObj({el: icon}), // create object and give it the key element
-                        {src: getDataSrc(icon, obj.abs)}
-                    ),
-                    {angle: 0}
-                ),
-                {position: icon.dataset.position}
-            ),
-            {classN: icon.className}
-        )
-    );
-    f.log(icons)
-    const [arrowLeft, arrowRight] = obj.arrows.sel.map(sel => f.getObj(sel)); // select all the arrows and create obj with state
-       
-    // animation obj functions
-    function getDataSrc(obj, relative = false, ...abs){ // returns an absolute url or a relative url from given obj  
-        if (relative){
-            return obj.src.split("/")[obj.src.split("/").length -1]; // return relative path
-        } else {    
-            return abs + obj.src.split("/")[obj.src.split("/").length -1]; // return absolute path
-        }
-    }
+// top coordinate
+// middleRight coordinate
+// bottom coordate
+// middleLeft coordinate
+
+// set some variable or functionality to detect which element is on the right
+
+// click (triggers the tween for bubble and tween for icons)
+// right 
+    // change hidden object image src 
+    // move right move elements right -> some percentage 25%
+    // rotate bubble 360deg to the right
+// left 
+    // change hidden object image src 
+    // move left move elements left -> some percentage 25%
+    // rotate bubble 360 degrees to the left
+
+// gsap parameters 
+    // motionPath settings
+    // path -> the path onto which to rotate the elements
+    // autoRotate -> rotates the object in the same direciton as the path 
+    // start -> start point of element to be rotated 
+        // update icon so that it has a new start point 
+    // end -> end point of element to be rotated
+        // update icon so that it has a new end point 
 
 
-    function addSet(obj, set){ // create settings for obj
-        return {...obj, ...set};
-    }
     
-    // transformations
-    // calculate angle
-    const angleAdd = (initial, angle) => (initial += angle);
-    const angleRemove = (initial, angle) => (initial -= angle);
-
-    // effects
-    function scaleTo(obj, factor){
-        obj.style.transform = "scale(" +  factor + ")";  
-    };
-    function changeObjSrc(obj, src){ // change src of obj to a given source 
-        obj.src = src; 
-    }
-    const opacityTo = factor => factor;
-
-    // add settings to to be animated objects 
-    ;
-
-    // add select and add settings to orbit and bubble
-    const orbit = addSet(f.createObj({el: f.getObj(obj.orbit.sel)}), {angle: 0}); 
-    const bubble = addSet(f.createObj({el: f.getObj(obj.bubble.sel)}), {angle: 0}); 
-
-    // rotate objects based on deg
-    function rotateForward(obj, angle) { // rotate to front based on given or calculated angle
-        obj.style.transform  = "rotate(" + angle + "deg)";
-    };
-    // change datasource of icon
-    function changeObjDataPos(obj, to){
-        obj.dataset.position = to; 
-    }
-
-        
-    // updates poisitons of icons
-    function updateElsPos(Els, forward = true){
-        Els.forEach(icon => {
-            if (!forward){ // change data position of icons forward
-                if (icon.position === "hidden"){ 
-                    f.updateProps(icon, "position", "bottom"); 
-                    changeObjDataPos(icon.el, "bottom");
-
-                } else if (icon.position === "bottom"){ 
-                    f.updateProps(icon, "position", "middleRight"); 
-                    changeObjDataPos(icon.el, "middleRight");
-
-                } else if (icon.position === "middleRight"){ 
-                    f.updateProps(icon, "position", "top"); 
-                    changeObjDataPos(icon.el, "top");
-
-                } else if (icon.position === "top"){ 
-                    f.updateProps(icon, "position", "hidden"); 
-                    changeObjDataPos(icon.el, "hidden");
-                }
-
-            } else { // change data positon of icons backwards
-                if (icon.position === "hidden"){ 
-                    f.updateProps(icon, "position", "top"); 
-                    changeObjDataPos(icon.el, "top");
-
-                } else if (icon.position === "top"){
-                    f.updateProps(icon, "position", "middleRight"); 
-                    changeObjDataPos(icon.el, "middleRight");
-
-                } else if (icon.position === "middleRight"){
-                    f.updateProps(icon, "position", "bottom"); 
-                    changeObjDataPos(icon.el, "bottom");
-
-                } else if (icon.position === "bottom"){
-                    f.updateProps(icon, "position", "hidden"); 
-                    changeObjDataPos(icon.el, "hidden");
-                }
-            }
-            f.log(`icon-src: ${icon.src}`,  `icon-position: ${icon.position}`)
-        });
-    } 
-
-
-    // apply transform rotate on an element
-    function rotateObjForward(obj, angle) { // rotate forward by given angle called with backward rotation
-        rotateForward(obj.el, angleAdd(obj.angle, angle)); // rotate obj forward
-    };
-    function rotateObjBackward(obj, angle) { // rotate backward by given angle 
-        rotateForward(obj.el, angleRemove(obj.angle, angle)); // rotate obj backward
-    };
-    
-    // rotateicons
-    function iconsRotate(n, forward = true){
-
-        // base case 
-        if (n > icons.length - 1){
-            // stop at base case 
-            return; 
-        }
-        if (forward){
-            rotateObjBackward(icons[n], 90);
-            f.updateProps(icons[n], "angle", angleRemove(icons[n].angle, 90)); // update icon current angle
-            return iconsRotate(n+1);
-        } else {
-            rotateObjForward(icons[n], 90);
-            f.updateProps(icons[n], "angle", angleAdd(icons[n].angle, 90)); // update icon current angle
-            return iconsRotate(n+1, false);
-        }
-    }
- 
-    // animation flow of objects
-    f.event(arrowRight, 'click', () => { // add click events to right button
-        
-        // change src of hidden object
-        changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, icons.filter(icon => icon.position === "bottom")[0].el.src); 
-
-        // orbit 
-        rotateObjForward(orbit, 90); // rotate orbit forward
-        f.updateProps(orbit, "angle", angleAdd(orbit.angle, 90)); // opdate orbit current angle
-        
-        // bubble 
-        rotateObjBackward(bubble, 90); // rotate bubble backwards
-        f.updateProps(bubble, "angle", angleRemove(bubble.angle, 90)); // update bubble angle
-        
-        // reverse rotate icons
-        iconsRotate(0);
-        updateElsPos(icons);
-       
-
-        // change data src of hidden to bottom
-        // scale items and change img srcs of icons
-        
-    });   
-    
-    f.event(arrowLeft, 'click', () => { // add click even to left button
-
-        // orbit
-        rotateObjBackward(orbit, 90); // rotate orbit backwards
-        f.updateProps(orbit, "angle", angleRemove(orbit.angle, 90)); // update orbit current angle
-
-        // bubble 
-        rotateObjForward(bubble, 90) // rotate bubble forward
-        f.updateProps(bubble, "angle", angleAdd(bubble.angle, 90)); // update bubble current
-
-        // reverse rotate icons
-        iconsRotate(0, false); 
-        updateElsPos(icons, false);
-        // change data src of hidden to top
-        // changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "top")[0].src);
-        // f.log(icons.map(icon => [icon.el.dataset.position , icon.position]));
-        // scale items and change img srcs of icons (reverse)
-        
-    });
-
-}
