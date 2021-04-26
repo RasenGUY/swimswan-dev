@@ -246,7 +246,7 @@ export function animate(obj) {
         sel => f.getObj(sel) // select elements
     ) 
     .map( // create new object
-        icon => addSet( //add id 
+        icon => addSet( //add className 
             addSet( // add data-postion
                 addSet( // add angle
                     addSet ( // add img src to asettings
@@ -257,7 +257,7 @@ export function animate(obj) {
                 ),
                 {position: icon.dataset.position}
             ),
-            {id: icon.id}
+            {classN: icon.className}
         )
     );
     f.log(icons)
@@ -266,9 +266,9 @@ export function animate(obj) {
     // animation obj functions
     function getDataSrc(obj, relative = false, ...abs){ // returns an absolute url or a relative url from given obj  
         if (relative){
-            return obj.data.split("/")[obj.data.split("/").length -1]; // return relative path
+            return obj.src.split("/")[obj.src.split("/").length -1]; // return relative path
         } else {    
-            return abs + obj.data.split("/")[obj.data.split("/").length -1]; // return absolute path
+            return abs + obj.src.split("/")[obj.src.split("/").length -1]; // return absolute path
         }
     }
 
@@ -287,7 +287,7 @@ export function animate(obj) {
         obj.style.transform = "scale(" +  factor + ")";  
     };
     function changeObjSrc(obj, src){ // change src of obj to a given source 
-        obj.data = src; 
+        obj.src = src; 
     }
     const opacityTo = factor => factor;
 
@@ -348,7 +348,6 @@ export function animate(obj) {
                 }
             }
             f.log(`icon-src: ${icon.src}`,  `icon-position: ${icon.position}`)
-
         });
     } 
 
@@ -372,34 +371,34 @@ export function animate(obj) {
         if (forward){
             rotateObjBackward(icons[n], 90);
             f.updateProps(icons[n], "angle", angleRemove(icons[n].angle, 90)); // update icon current angle
-            // f.log(icons[n].el.id, icons[n].el.style.transform, icons[n].position);
             return iconsRotate(n+1);
         } else {
             rotateObjForward(icons[n], 90);
             f.updateProps(icons[n], "angle", angleAdd(icons[n].angle, 90)); // update icon current angle
-            // f.log(icons[n].el.id, icons[n].el.style.transform, icons[n].position);
             return iconsRotate(n+1, false);
         }
     }
-    // 
+ 
     // animation flow of objects
     f.event(arrowRight, 'click', () => { // add click events to right button
         
+        // change src of hidden object
+        changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, icons.filter(icon => icon.position === "bottom")[0].el.src); 
+
         // orbit 
         rotateObjForward(orbit, 90); // rotate orbit forward
         f.updateProps(orbit, "angle", angleAdd(orbit.angle, 90)); // opdate orbit current angle
         
         // bubble 
-        rotateObjBackward(bubble, 90) // rotate bubble backwards
+        rotateObjBackward(bubble, 90); // rotate bubble backwards
         f.updateProps(bubble, "angle", angleRemove(bubble.angle, 90)); // update bubble angle
         
         // reverse rotate icons
-        iconsRotate(0); 
-        updateElsPos(icons); 
-        // change data src of hidden to bottom
-        // changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "bottom")[0].el.data);
-        // f.log(icons.map(icon => [icon.el.dataset.position, icon.position]));
+        iconsRotate(0);
+        updateElsPos(icons);
+       
 
+        // change data src of hidden to bottom
         // scale items and change img srcs of icons
         
     });   

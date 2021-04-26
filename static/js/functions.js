@@ -142,3 +142,9 @@ export function updateProps(obj, prop, value){
 export function newPromise(...args){
     return new Promise((resolve, reject) => {args}); 
 }
+export function timeOut(func, timeOut){
+    return setTimeout(func, timeOut);
+}
+export function waitImgLoad(img, func){
+    return img.onload(func);
+}

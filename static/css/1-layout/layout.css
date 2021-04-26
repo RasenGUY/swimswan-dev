@@ -292,33 +292,33 @@ main#main-wrapper section#index-s-two .shapes .orbit {
   left: -28%;
   transition: all 0.15s ease-in-out;
 }
-main#main-wrapper section#index-s-two .shapes .orbit > object {
+main#main-wrapper section#index-s-two .shapes .orbit > img {
   opacity: 0.85;
 }
 main#main-wrapper section#index-s-two .shapes .orbit .icon-path {
   width: 100%;
   height: 100%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path img {
   position: absolute;
   width: 15rem;
   transform: scale(0.5);
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.top {
-  top: -12%;
-  left: 40%;
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path img.top {
+  top: -5rem;
+  left: 35%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.middleRight {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path img.middleRight {
   top: 40%;
-  right: -10%;
+  right: -5rem;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.hidden {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path img.hidden {
   top: 40%;
-  left: -10%;
+  left: -5rem;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.bottom {
-  left: 40%;
-  bottom: -10%;
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path img.bottom {
+  left: 35%;
+  bottom: -5rem;
 }
 @media only screen and (min-width: 576px) {
   main#main-wrapper section#index-s-two .container {
