@@ -145,6 +145,3 @@ export function newPromise(...args){
 export function timeOut(func, timeOut){
     return setTimeout(func, timeOut);
 }
-export function waitImgLoad(img, func){
-    return img.onload(func);
-}
