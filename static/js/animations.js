@@ -313,8 +313,8 @@ export function animate(obj) {
         Els.forEach(icon => {
             if (!forward){ // change data position of icons forward
                 if (icon.position === "hidden"){ 
-                    changeObjDataPos(icon.el, "bottom");
                     f.updateProps(icon, "position", "bottom"); 
+                    changeObjDataPos(icon.el, "bottom");
 
                 } else if (icon.position === "bottom"){ 
                     f.updateProps(icon, "position", "middleRight"); 
@@ -328,6 +328,7 @@ export function animate(obj) {
                     f.updateProps(icon, "position", "hidden"); 
                     changeObjDataPos(icon.el, "hidden");
                 }
+
             } else { // change data positon of icons backwards
                 if (icon.position === "hidden"){ 
                     f.updateProps(icon, "position", "top"); 
@@ -346,6 +347,8 @@ export function animate(obj) {
                     changeObjDataPos(icon.el, "hidden");
                 }
             }
+            f.log(`icon-src: ${icon.src}`,  `icon-position: ${icon.position}`)
+
         });
     } 
 
@@ -394,8 +397,8 @@ export function animate(obj) {
         iconsRotate(0); 
         updateElsPos(icons); 
         // change data src of hidden to bottom
-        changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "bottom")[0].el.data);
-        f.log(icons.map(icon => [icon.el.dataset.position, icon.position]));
+        // changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "bottom")[0].el.data);
+        // f.log(icons.map(icon => [icon.el.dataset.position, icon.position]));
 
         // scale items and change img srcs of icons
         
@@ -415,8 +418,8 @@ export function animate(obj) {
         iconsRotate(0, false); 
         updateElsPos(icons, false);
         // change data src of hidden to top
-        changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "top")[0].src);
-        f.log(icons.map(icon => [icon.el.dataset.position , icon.position]));
+        // changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "top")[0].src);
+        // f.log(icons.map(icon => [icon.el.dataset.position , icon.position]));
         // scale items and change img srcs of icons (reverse)
         
     });

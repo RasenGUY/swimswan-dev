@@ -304,19 +304,19 @@ main#main-wrapper section#index-s-two .shapes .orbit .icon-path object {
   width: 15rem;
   transform: scale(0.5);
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object[data-position=top] {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.top {
   top: -12%;
   left: 40%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object[data-position=middleRight] {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.middleRight {
   top: 40%;
   right: -10%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object[data-position=hidden] {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.hidden {
   top: 40%;
   left: -10%;
 }
-main#main-wrapper section#index-s-two .shapes .orbit .icon-path object[data-position=bottom] {
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.bottom {
   left: 40%;
   bottom: -10%;
 }
