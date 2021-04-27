@@ -298,21 +298,28 @@ svg#svg-shapes #instagram path.inner-small {
   fill: none;
   stroke: #1F74AD;
 }
-svg#index-s-two {
+svg#water-bubble {
   filter: drop-shadow(5px 5px 5px rgba(188, 188, 188, 0.45));
   transform: scale(0.95);
 }
-svg#index-s-two .water-bubble .main-circle {
+svg#water-bubble #body #main-circle {
   fill: #AFFFF7;
 }
-svg#index-s-two .water-bubble .inner-shadow {
+svg#water-bubble #body .shadow {
   fill: #93c8ec;
   opacity: 0.35;
 }
-svg#index-s-two .water-bubble .shine > * {
+svg#water-bubble #body .shine > * {
   fill: #FAFDFF;
   opacity: 0.85;
 }
+svg#index-s-two-animation-path #animation-path {
+  fill: none;
+  stroke: black;
+  stroke-width: 0.5rem;
+  stroke-miterlimit: 10;
+}
+
 @media only screen and (min-width: 576px) {
   main#main-wrapper section#index-s-one {
     height: 45vh;
