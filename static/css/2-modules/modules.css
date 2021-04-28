@@ -309,15 +309,14 @@ svg#water-bubble #body .shadow {
   fill: #93c8ec;
   opacity: 0.35;
 }
-svg#water-bubble #body .shine > * {
+svg#water-bubble #body .shine {
   fill: #FAFDFF;
-  opacity: 0.85;
+  opacity: 0.65;
 }
 svg#index-s-two-animation-path #animation-path {
   fill: none;
-  stroke: black;
-  stroke-width: 0.5rem;
-  stroke-miterlimit: 10;
+  stroke: #FF3E5B;
+  stroke-miterlimit: 200;
 }
 
 @media only screen and (min-width: 576px) {
