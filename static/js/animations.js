@@ -237,9 +237,66 @@ export function Animation (baseSet) {
     }
 }
 
-// animation flow -> svg path 
+export function animate(obj){
 
-// top coordinate
+    // animation flow -> svg path 
+    // needed 
+    const path = f.grab(obj.path.sel) // path (use this as the value for the motionPath setting) 
+    const [arrowLeft, arrowRight] = obj.arrows.sel.map( arrow => f.grab(arrow) ) // arrows  
+    const bubble = f.grab(obj.bubble.sel) // water bubble
+    const icons = obj.icons.sel.map( // icons 
+        sel => Object.assign({}, {
+            el: f.grab(sel), // fetch dom el
+            id: f.grab(sel).id, // fetch element id
+            isHidden: (f.grab(sel).dataset.position) === "hidden" ? true : false, // isHidden
+            set: setPosition(f.grab(sel)) // set initial positions
+        })
+    )
+    
+
+    // functions 
+    function setPosition(obj){ // create positions for icons
+        
+        if (obj.dataset.position === "top"){
+            return { current: { start: 0, end: 25 }, next: { start: null, end: null }}
+        }
+        else if (obj.dataset.position === "middlRight"){
+            return { current: { start: 25, end: 50 }, next: { start: null, end: null }}
+        }
+        else if (obj.dataset.position === "bottom"){
+            return { current: { start: 50, end: 75 }, next: { start: null, end: null}}
+        }
+        else {
+            return { current: { start: 75, end: 100 }, next: { start: null, end: null }}
+        }
+    }
+
+    f.log(path);
+    f.log(arrowLeft, arrowRight);
+    f.log(bubble);
+    f.log(icons);  
+    // .map( // create animation
+    //     icon => f.updateProps(icon, "animation", obj.animeTo(icon.el, Object.assign({}, { motionPath: icon.set.current}), obj.animset.base))
+    // );
+    // types of animations to be done 
+    // mostly .to animations
+        // change opacity
+        // change size 
+    // updating settings 
+        // change set of an object(update start and stop settings)    
+    // toAnimate 
+
+    // add click events to buttons 
+    f.event(arrowRight, "click", () => {
+        f.log("clicked right");
+    }); // click left
+    f.event(arrowLeft, "click", () => {
+        f.log("clicked left");
+    }); // click right
+    
+}
+
+// top coordinate 
 // middleRight coordinate
 // bottom coordate
 // middleLeft coordinate

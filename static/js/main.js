@@ -5,7 +5,6 @@ import * as f from "./functions.js";
 // import * as gal from "./gallery.js";
 import * as an from "./animations.js";
 
-
 // function to be run after the whole page is loaded 
 window.onload = ( ()=> {
 
@@ -88,15 +87,21 @@ window.onload = ( ()=> {
     // })
     
     const animObj  = {
-        abs: 'static/images/svg/compressed/', 
+        abs: 'static/images/svg/compressed/',
+        animset: {
+            changeOpacity: value => Object.assign({}, {opacity: value}),
+            scale: value => Object.assign({}, {scale: value}), 
+            base: {duration:0.15, ease: "circ.inOut"}
+        }, 
+        animeTo: (sel, setTo, base) => gsap.to(sel, Object.assign({}, setTo, base)),
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
         }, 
         arrows: {
             sel: ["#arrows-left", "#arrows-right"]
         },
-        orbit: {
-            sel: ".orbit"
+        path: {
+            sel: "#index-s-two #animation-path", 
         }, 
         bubble: {
             sel: ".orbit #water-bubble"
