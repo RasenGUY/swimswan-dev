@@ -249,35 +249,42 @@ export function animate(obj){
             el: f.grab(sel), // fetch dom el
             id: f.grab(sel).id, // fetch element id
             isHidden: (f.grab(sel).dataset.position) === "hidden" ? true : false, // isHidden
-            set: setPosition(f.grab(sel)) // set initial positions
-        })
-    )
+            animPosition: setPosition(f.grab(sel)), // set start position
+            animSet: {
+                to: {scale: 1.5},
+                base: obj.animset.base,
+                motionPath: {
+                    path: path,
+                    align: path,
+                    transformOrigin: "50% 50%"
+                }
+            }
+        }))
     
-
     // functions 
     function setPosition(obj){ // create positions for icons
-        
+        f.log(obj.dataset.position)
+
         if (obj.dataset.position === "top"){
-            return { current: { start: 0, end: 25 }, next: { start: null, end: null }}
+            return {start: 0, end: 0.25}; 
         }
-        else if (obj.dataset.position === "middlRight"){
-            return { current: { start: 25, end: 50 }, next: { start: null, end: null }}
+        else if (obj.dataset.position === "middleRight"){
+            return {start: 0.25, end: 0.5}; 
         }
         else if (obj.dataset.position === "bottom"){
-            return { current: { start: 50, end: 75 }, next: { start: null, end: null}}
+            return {start: 5, end: 0.75};
         }
-        else {
-            return { current: { start: 75, end: 100 }, next: { start: null, end: null }}
+        else if (obj.dataset.position === "hidden") {
+            return {start: 0.75, end: 1};
         }
     }
 
-    f.log(path);
-    f.log(arrowLeft, arrowRight);
-    f.log(bubble);
+    // f.log(path);
+    // f.log(arrowLeft, arrowRight);
+    // f.log(bubble);
     f.log(icons);  
-    // .map( // create animation
-    //     icon => f.updateProps(icon, "animation", obj.animeTo(icon.el, Object.assign({}, { motionPath: icon.set.current}), obj.animset.base))
-    // );
+    
+    
     // types of animations to be done 
     // mostly .to animations
         // change opacity
@@ -285,15 +292,18 @@ export function animate(obj){
     // updating settings 
         // change set of an object(update start and stop settings)    
     // toAnimate 
-
+    
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
-        f.log("clicked right");
+        const [turtle, dolphin, orca, hidden] = icons;
+        f.log(turtle);
+        
+
     }); // click left
+
     f.event(arrowLeft, "click", () => {
         f.log("clicked left");
     }); // click right
-    
 }
 
 // top coordinate 

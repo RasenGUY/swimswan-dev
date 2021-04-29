@@ -153,10 +153,10 @@
                         <path id="animation-path" d="M125,1a124,124,0,0,1,87.6812,211.6812A124,124,0,1,1,37.3188,37.3188,123.1882,123.1882,0,0,1,125,1m0-1A125,125,0,1,0,250,125,125,125,0,0,0,125,0Z"/> <!-- change opacity  -->
                     </svg>
                     <div class="icon-path">
-                        <img id="icon-dolphin" data-position="top" class="top" src="static/images/svg/compressed/icons-dolphin.svg"/>
-                        <img id="icon-turtle" data-position="middleRight" class="middleRight" src="static/images/svg/compressed/icons-turtle.svg"/>
-                        <img id="icon-orca" data-position="bottom" class="bottom" src="static/images/svg/compressed/icons-orca.svg"/>
-                        <img id="icon-hidden" data-position="hidden" class="hidden"/>
+                        <object id="icon-dolphin" data-position="top" class="top" data="static/images/svg/compressed/icons-dolphin.svg"></object>
+                        <object id="icon-turtle" data-position="middleRight" class="middleRight" data="static/images/svg/compressed/icons-turtle.svg"></object>
+                        <object id="icon-orca" data-position="bottom" class="bottom" data="static/images/svg/compressed/icons-orca.svg"></object>
+                        <object id="icon-hidden" data-position="hidden" class="hidden"></object>
                     </div>
                 </div>
             </div>
@@ -274,16 +274,17 @@
 
     <!-- GreenSock -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/CSSRulePlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/TextPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/MotionPathPlugin.min.js"></script>
+    <script defer>
+        gsap.registerPlugin(MotionPathPlugin);
+    </script>
 
     <!-- js -->
-    <script type="module" src="/static/js/main.js"></script> <!-- main.js -->
+    <script defer type="module" src="/static/js/main.js"></script> <!-- main.js -->
 
 </body>
 </html>

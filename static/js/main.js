@@ -4,9 +4,8 @@ import * as f from "./functions.js";
 // import * as c from "./carousel.js";
 // import * as gal from "./gallery.js";
 import * as an from "./animations.js";
-
 // function to be run after the whole page is loaded 
-window.onload = ( ()=> {
+window.addEventListener("load", ()=> {
 
     // menu-mobile-animation
     const burger = document.querySelector("#burger .burger-wrapper");
@@ -93,7 +92,7 @@ window.onload = ( ()=> {
             scale: value => Object.assign({}, {scale: value}), 
             base: {duration:0.15, ease: "circ.inOut"}
         }, 
-        animeTo: (sel, setTo, base) => gsap.to(sel, Object.assign({}, setTo, base)),
+        animeTo: (sel, setTo, base, motionPath) => gsap.to(sel, {...setTo, ...base, ...motionPath} ),
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
         }, 
