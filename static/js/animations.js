@@ -249,20 +249,38 @@ export function animate(obj){
             el: f.grab(sel), // fetch dom el
             id: f.grab(sel).id, // fetch element id
             isHidden: (f.grab(sel).dataset.position) === "hidden" ? true : false, // isHidden
-            animPosition: setPosition(f.grab(sel)), // set start position
             animSet: {
-                to: {scale: 1.5},
+                to: {
+                    scale: 1.5,
+                    startAt: {
+                        x: f.grab(sel).getClientRects()[0].x,
+                        y: f.grab(sel).getClientRects()[0].y
+                    }
+                },
                 base: obj.animset.base,
                 motionPath: {
                     path: path,
                     align: path,
-                    transformOrigin: "50% 50%"
+                    transformOrigin: "50% 50%",
+                    start: setMotionPosition(f.grab(sel)).start, // set start position
+                    end: setMotionPosition(f.grab(sel)).end,
+                    alignOrigin: [0.5, 0.5] // set start position
                 }
-            }
+            },
+            startPos: {
+                old: {
+                    x: f.grab(sel).getClientRects()[0].x,
+                    y: f.grab(sel).getClientRects()[0].y
+                },
+                next: {
+                    x: null,
+                    y: null
+                }
+            } 
         }))
     
     // functions 
-    function setPosition(obj){ // create positions for icons
+    function setMotionPosition(obj){ // create positions for icons
         f.log(obj.dataset.position)
 
         if (obj.dataset.position === "top"){
@@ -292,17 +310,23 @@ export function animate(obj){
     // updating settings 
         // change set of an object(update start and stop settings)    
     // toAnimate 
+
+    // copy icons into their own variables
+    const [turtle, dolphin, orca, hidden] = icons;
     
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
-        const [turtle, dolphin, orca, hidden] = icons;
-        f.log(turtle);
+        
+        // --> move turtle right
+        obj.animeTo(turtle.el, turtle.animSet.to, turtle.animSet.base, turtle.animSet.motionPath);
         
 
     }); // click left
 
     f.event(arrowLeft, "click", () => {
-        f.log("clicked left");
+        f.log(turtle.animSet.base)
+        obj.animUpdate(turtle.el, path, turtle.animSet.base, turtle.animSet.motionPath.end + 0.1);
+        
     }); // click right
 }
 

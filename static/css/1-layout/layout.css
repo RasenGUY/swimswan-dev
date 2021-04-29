@@ -305,6 +305,22 @@ main#main-wrapper section#index-s-two .shapes .orbit .icon-path object {
   height: 15rem;
   transform: scale(0.5);
 }
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.top {
+  top: -5rem;
+  left: 35%;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.middleRight {
+  top: 39%;
+  right: -5rem;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.hidden {
+  top: 39%;
+  left: -5rem;
+}
+main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.bottom {
+  left: 35%;
+  bottom: -5rem;
+}
 main#main-wrapper section#index-s-two .shapes .orbit svg#index-s-two-animation-path {
   position: absolute;
   top: 6px;

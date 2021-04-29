@@ -4,6 +4,7 @@ import * as f from "./functions.js";
 // import * as c from "./carousel.js";
 // import * as gal from "./gallery.js";
 import * as an from "./animations.js";
+
 // function to be run after the whole page is loaded 
 window.addEventListener("load", ()=> {
 
@@ -80,19 +81,16 @@ window.addEventListener("load", ()=> {
     //     currentAngle += 90; 
 
     //     // select parent
-    //     orbit.style.transform  = "rotate(" + currentAngle + "deg)"; 
-    //     waterBubble.style.transform  = "rotate(-" + currentAngle + "deg)"; 
-    //     turtleImg.style.transform  = "rotate(-" + currentAngle + "deg)"; 
+    //     
     // })
     
     const animObj  = {
         abs: 'static/images/svg/compressed/',
         animset: {
-            changeOpacity: value => Object.assign({}, {opacity: value}),
-            scale: value => Object.assign({}, {scale: value}), 
-            base: {duration:0.15, ease: "circ.inOut"}
+            base: {duration:1, ease: "power4.out", overwrite: "auto"}
         }, 
-        animeTo: (sel, setTo, base, motionPath) => gsap.to(sel, {...setTo, ...base, ...motionPath} ),
+        animeTo: (sel, setTo, base, motion) => gsap.to(sel, {...setTo, ...base, motionPath: {...motion}}),
+        animUpdate: (sel, p, base, e) => gsap.set(sel, {duration: base.duration, ease: base.ease, motionPath: {path: p, end: e}}),
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
         }, 
