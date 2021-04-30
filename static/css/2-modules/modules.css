@@ -318,9 +318,9 @@ svg#index-s-two-animation-path #animation-path {
   stroke: #FF3E5B;
   stroke-miterlimit: 200;
 }
-svg#index-s-two-animation-path symbol > svg {
-  height: 15rem;
-  width: 15rem;
+svg#index-s-two-animation-path use {
+  height: 5rem;
+  width: 5rem;
 }
 
 @media only screen and (min-width: 576px) {
