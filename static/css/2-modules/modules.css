@@ -318,7 +318,7 @@ svg#index-s-two-animation-path #animation-path {
   stroke: #FF3E5B;
   stroke-miterlimit: 200;
 }
-svg#index-s-two-animation-path use {
+svg#index-s-two-animation-path image {
   height: 5rem;
   width: 5rem;
 }

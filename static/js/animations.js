@@ -251,7 +251,7 @@ export function animate(obj){
             isHidden: (f.grab(sel).dataset.position) === "hidden" ? true : false, // isHidden
             animSet: {
                 to: {
-                    scale: 1.5,
+                    scale: 1.15,
                     startAt: {
                         x: f.grab(sel).getClientRects()[0].x,
                         y: f.grab(sel).getClientRects()[0].y
@@ -287,7 +287,7 @@ export function animate(obj){
             return {start: 0, end: 0.25}; 
         }
         else if (obj.dataset.position === "middleRight"){
-            return {start: 0.25, end: 0.5}; 
+            return {start: 1.25, end: 0.5}; 
         }
         else if (obj.dataset.position === "bottom"){
             return {start: 5, end: 0.75};

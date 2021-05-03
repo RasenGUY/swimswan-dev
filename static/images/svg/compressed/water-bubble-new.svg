@@ -1,0 +1,19 @@
+<?xml-stylesheet type="text/css" href="../../../css/2-modules/modules.css"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+id="water-bubble" 
+data-name="animation-space"
+viewBox="0 0 350 350"> 
+  
+  <!-- water bubble  -->
+  <g data-name="body" id="body">
+    <circle  id="main-circle" cx="175" cy="175" r="125"/>
+
+    <!-- <path d="M175 50.5a124.5 124.5 0 11-88.03 36.47A123.69 123.69 0 01175 50.5m0-.5a125 125 0 10125 125A125 125 0 00175 50z"/> -->
+
+    <path data-name="shadow" class="shadow" d="M185.59 268.21c-39.97-3.79-75.43-29.15-92.7-66.44-17.35-37.47-15.04-76.44.67-107.8 1.16-2.3-1.81-4.53-3.56-2.67-30.94 32.97-42.7 83.8-21.65 132.54 16.72 38.75 52.67 65.63 93.7 69.67 36.44 3.59 68.5-8.94 91.5-30.72 3.08-2.92-.31-8.13-4.08-6.23a116.32 116.32 0 01-63.88 11.65z"/>
+
+    <circle data-name="shine-cirlce" class="shine" cx="229.79" cy="102.26" r="19.85"/>
+    <path data-name="shine-rectangle" class="shine" d="M261.77 219.43h-.13a12.04 12.04 0 01-12-12c5.82-22.66 7.97-44.67 0-64.86a12.04 12.04 0 0112-12h.13c3.76 0 9.2 2.2 12 12 5.1 17.9 5.9 41.52 0 64.86-2.67 7.7-5.4 12-12 12z"/>  
+  </g>
+
+</svg>

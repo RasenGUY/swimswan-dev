@@ -321,10 +321,13 @@ main#main-wrapper section#index-s-two .shapes .orbit .icon-path object.bottom {
   left: 35%;
   bottom: -5rem;
 }
+main#main-wrapper section#index-s-two .shapes .orbit #water-bubble {
+  width: 100%;
+}
 main#main-wrapper section#index-s-two .shapes .orbit svg#index-s-two-animation-path {
   position: absolute;
-  top: 6px;
-  left: 6px;
+  top: 0;
+  width: 100%;
 }
 @media only screen and (min-width: 576px) {
   main#main-wrapper section#index-s-two .container {
