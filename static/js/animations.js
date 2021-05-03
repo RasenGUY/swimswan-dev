@@ -247,15 +247,10 @@ export function animate(obj){
     const icons = obj.icons.sel.map( // icons 
         sel => Object.assign({}, {
             el: f.grab(sel), // fetch dom el
-            id: f.grab(sel).id, // fetch element id
             isHidden: (f.grab(sel).dataset.position) === "hidden" ? true : false, // isHidden
             animSet: {
                 to: {
-                    scale: 1.15,
-                    startAt: {
-                        x: f.grab(sel).getClientRects()[0].x,
-                        y: f.grab(sel).getClientRects()[0].y
-                    }
+                    scale: 1.15
                 },
                 base: obj.animset.base,
                 motionPath: {
@@ -267,33 +262,55 @@ export function animate(obj){
                     alignOrigin: [0.5, 0.5] // set start position
                 }
             },
-            startPos: {
-                old: {
-                    x: f.grab(sel).getClientRects()[0].x,
-                    y: f.grab(sel).getClientRects()[0].y
+            motionPos: {
+                rev: {
+                    start: null,
+                    end: null,
                 },
                 next: {
-                    x: null,
-                    y: null
+                    start: null,
+                    end: null
                 }
             } 
         }))
     
     // functions 
-    function setMotionPosition(obj){ // create positions for icons
+    function setMotionPosition(obj){ // create positions for icons 
         f.log(obj.dataset.position)
 
         if (obj.dataset.position === "top"){
-            return {start: 0, end: 0.25}; 
+            return {start: 0.375, end: 0.5}; 
         }
         else if (obj.dataset.position === "middleRight"){
-            return {start: 1.25, end: 0.5}; 
+            return {start: 0, end: 0.125}; 
         }
         else if (obj.dataset.position === "bottom"){
-            return {start: 5, end: 0.75};
+            return {start: 0.125, end: 0.25};
         }
         else if (obj.dataset.position === "hidden") {
-            return {start: 0.75, end: 1};
+            return {start: .25, end: 0.375};
+        }
+    }
+
+    function updateMotionPos(obj, incr){ // update the start and end position of and obj
+        
+        // set next position to animate to and next
+
+        // set reverse
+        obj.motionPos.rev.start = obj.animSet.motionPath.end;
+        obj.motionPos.rev.end = obj.animSet.motionPath.start;
+        
+        if (obj.animSet.motionPath.end === 0.5){
+            
+            // set next  
+            obj.motionPos.next.start = 0;
+            obj.motionPos.next.end = (0 + incr);
+
+        } else {
+            
+            // set next
+            obj.motionPos.next.start = obj.animSet.motionPath.end;
+            obj.motionPos.next.end = (obj.animSet.motionPath.end + incr);
         }
     }
 
@@ -318,43 +335,47 @@ export function animate(obj){
     f.event(arrowRight, "click", () => {
         
         // --> move turtle right
-        obj.animeTo(turtle.el, turtle.animSet.to, turtle.animSet.base, turtle.animSet.motionPath);
+        obj.animTo(turtle.el, turtle.animSet.to, turtle.animSet.base, turtle.animSet.motionPath);
         
 
     }); // click left
 
     f.event(arrowLeft, "click", () => {
         f.log(turtle.animSet.base)
-        obj.animUpdate(turtle.el, path, turtle.animSet.base, turtle.animSet.motionPath.end + 0.1);
-        
     }); // click right
+
+    // initial animation
+    icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath));
+    
 }
+// update properties
+    // if top
+        // top -> middleRight
+        // start -> top.start + 0.125
+        // end -> top.end + 0.125
+            // if start or end is 0.5 then start back from 0
 
-// top coordinate 
-// middleRight coordinate
-// bottom coordate
-// middleLeft coordinate
+    // if middleRight 
+        // middleRight -> bottom 
+        // start -> middleRight.start += 0.125
+        // start -> middleRight.end += 0.125
 
-// set some variable or functionality to detect which element is on the right
+    // if bottom 
+        // bottom -> hidden
+        // imgSrc -> none
+        // start -> bottom.start += 0.125
+        // end -> bottom.end += 0.125
+        // hiddenimgSrc -> bottomImgSrc
 
-// click (triggers the tween for bubble and tween for icons)
-// right 
-    // change hidden object image src 
-    // move right move elements right -> some percentage 25%
-    // rotate bubble 360deg to the right
-// left 
-    // change hidden object image src 
-    // move left move elements left -> some percentage 25%
-    // rotate bubble 360 degrees to the left
+    // if bottom 
+        // hidden -> top
+        // start -> bottom.start += 0.125
+        // end -> bottom.end += 0.125
 
-// gsap parameters 
-    // motionPath settings
-    // path -> the path onto which to rotate the elements
-    // autoRotate -> rotates the object in the same direciton as the path 
-    // start -> start point of element to be rotated 
-        // update icon so that it has a new start point 
-    // end -> end point of element to be rotated
-        // update icon so that it has a new end point 
+// function for changing dataPosition attribute 
+// function for changing start and end positions
+// function for changing imgSrc 
+
 
 
     

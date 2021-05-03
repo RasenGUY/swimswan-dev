@@ -285,11 +285,13 @@ main#main-wrapper section#index-s-one .container .icon {
     height: 58vh;
   }
 }
+main#main-wrapper section#index-s-two .shapes {
+  position: relative;
+}
 main#main-wrapper section#index-s-two .shapes .orbit {
-  width: 70%;
+  width: 80%;
   position: absolute;
   z-index: -5;
-  left: -28%;
   transition: all 0.15s ease-in-out;
 }
 main#main-wrapper section#index-s-two .shapes .orbit > object {
@@ -326,8 +328,9 @@ main#main-wrapper section#index-s-two .shapes .orbit #water-bubble {
 }
 main#main-wrapper section#index-s-two .shapes .orbit svg#index-s-two-animation-path {
   position: absolute;
-  top: 0;
-  width: 100%;
+  top: 2.5%;
+  width: 95%;
+  left: 3%;
 }
 @media only screen and (min-width: 576px) {
   main#main-wrapper section#index-s-two .container {

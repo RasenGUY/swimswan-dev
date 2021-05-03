@@ -87,9 +87,9 @@ window.addEventListener("load", ()=> {
     const animObj  = {
         abs: 'static/images/svg/compressed/',
         animset: {
-            base: {duration:1, ease: "power4.out", overwrite: "auto"}
+            base: {duration:2, ease: "power4.out", overwrite: "auto"}
         }, 
-        animeTo: (sel, setTo, base, motion) => gsap.to(sel, {...setTo, ...base, motionPath: {...motion}}),
+        animTo: (sel, setTo, base, motion) => gsap.to(sel, {...setTo, ...base, motionPath: {...motion}}),
         animUpdate: (sel, p, base, e) => gsap.set(sel, {duration: base.duration, ease: base.ease, motionPath: {path: p, end: e}}),
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
