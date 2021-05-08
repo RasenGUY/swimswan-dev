@@ -270,6 +270,10 @@ export function animate(obj){
                 next: {
                     start: null,
                     end: null
+                },
+                current: {
+                    start: setMotionPosition(f.grab(sel)).start,
+                    end: setMotionPosition(f.grab(sel)).end
                 }
             } 
         }))
@@ -292,60 +296,69 @@ export function animate(obj){
         }
     }
 
-    function updateMotionPos(obj, incr){ // update the start and end position of and obj
-        
-        // set next position to animate to and next
-
-        // set reverse
-        obj.motionPos.rev.start = obj.animSet.motionPath.end;
-        obj.motionPos.rev.end = obj.animSet.motionPath.start;
-        
-        if (obj.animSet.motionPath.end === 0.5){
-            
-            // set next  
-            obj.motionPos.next.start = 0;
-            obj.motionPos.next.end = (0 + incr);
-
-        } else {
-            
-            // set next
-            obj.motionPos.next.start = obj.animSet.motionPath.end;
-            obj.motionPos.next.end = (obj.animSet.motionPath.end + incr);
-        }
+    function calcPosNext(current, incr){
+        return {start: current.end != 0.5 ? current.end : 0, end: current.end != 0.5 ? current.end + incr : (0 + incr) };
     }
-
-    // f.log(path);
-    // f.log(arrowLeft, arrowRight);
-    // f.log(bubble);
-    f.log(icons);  
     
-    
-    // types of animations to be done 
-    // mostly .to animations
-        // change opacity
-        // change size 
-    // updating settings 
-        // change set of an object(update start and stop settings)    
-    // toAnimate 
+    function calcPosRev(current, incr){
+        return {start: current.end != 0.5 ? 0.5 + current.end : 0.5, end: current.end != 0.5 ? 0.5 + current.end + incr : current.end + incr};        
+    }
+    // let poss = [{start: 0.375, end: 0.5}, {start: 0, end: 0.125}, {start: 0.125, end: 0.25}, {start: 0.25, end: 0.375}]
+    // f.log(poss.map(pos => calcPosRev(pos, 0.125))); 
 
-    // copy icons into their own variables
+    function setPos(icon, incr){
+        // if (rev){
+        //     let current = {start: icon.motionPos.current.end != 0.5 ? icon.motionPos.current.end - 0.5 : icon.motionPos.current, end: icons.motionPos.end - 0.5 };
+        // } else {
+        // }
+
+        let current = {start: icon.motionPos.current.start, end: icon.motionPos.current.end};
+        icon.motionPos.next = calcPosNext(current, incr); // calculate next 
+        icon.motionPos.rev =  calcPosRev(current, incr); // calculate reverse 
+    }; 
+
+    function updateCurrentPos(pos, icon) { // sets the current motionPosition icon 
+        icon.motionPos.current.start = pos.start;
+        icon.motionPos.current.start = pos.end;
+    };
+
+    function updateMotionPath(icon, start, end){
+        icon.animSet.motionPath.start = start;
+        icon.animSet.motionPath.end = end;
+    };
+
+    
+        // copy icons into their own variables
     const [turtle, dolphin, orca, hidden] = icons;
     
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
         
-        // --> move turtle right
-        obj.animTo(turtle.el, turtle.animSet.to, turtle.animSet.base, turtle.animSet.motionPath);
+        icons.map(icon => updateMotionPath(icon, icon.motionPos.next.start, icon.motionPos.next.end)); // set new motion
+        icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath)); // --> move icons right
+        icons.map(icon => updateCurrentPos(icon.motionPos.next, icon)); // update current motion position
+        icons.map(icon => setPos(icon, 0.125)); // --> set new pos  
+
+        f.log(icons.filter(icon => icon.animSet.motionPath)[0].animSet.motionPath)
+        f.log(icons.filter(icon => icon.motionPos)[0].motionPos)
         
-
+        
     }); // click left
-
+    
     f.event(arrowLeft, "click", () => {
-        f.log(turtle.animSet.base)
+        
+        icons.map(icon => updateMotionPath(icon, icon.motionPos.rev.start, icon.motionPos.rev.end)); // set new motion
+        icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath)); // --> move icons left
+        icons.map(icon => setPos(icon, 0.125)); // --> set new pos  
+        
     }); // click right
-
+    
     // initial animation
     icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath));
+    // initial pos and motionPath update
+    icons.map(icon => updateCurrentPos(icon.motionPos.next, icon)); // update current position
+    icons.map(icon => setPos(icon, 0.125)); // set positions
+    
     
 }
 // update properties
@@ -372,9 +385,6 @@ export function animate(obj){
         // start -> bottom.start += 0.125
         // end -> bottom.end += 0.125
 
-// function for changing dataPosition attribute 
-// function for changing start and end positions
-// function for changing imgSrc 
 
 
 
