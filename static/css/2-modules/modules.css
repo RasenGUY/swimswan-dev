@@ -315,12 +315,11 @@ svg#water-bubble #body .shine {
 }
 svg#index-s-two-animation-path #animation-path {
   fill: none;
-  stroke: #FF3E5B;
-  stroke-miterlimit: 200;
+  opacity: 0;
 }
 svg#index-s-two-animation-path image {
-  height: 5rem;
-  width: 5rem;
+  height: 4.5rem;
+  width: 4.5rem;
 }
 
 @media only screen and (min-width: 576px) {

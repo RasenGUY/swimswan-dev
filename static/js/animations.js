@@ -250,7 +250,7 @@ export function animate(obj){
             isHidden: (f.grab(sel).dataset.position) === "hidden" ? true : false, // isHidden
             animSet: {
                 to: {
-                    scale: 1.15
+                    scale: f.grab(sel).dataset.position === "middleRight" ? 1.5 : 1
                 },
                 base: obj.animset.base,
                 motionPath: {
@@ -275,12 +275,12 @@ export function animate(obj){
                     start: setMotionPosition(f.grab(sel)).start,
                     end: setMotionPosition(f.grab(sel)).end
                 }
-            } 
+            },
+            position: f.grab(sel).dataset.position
         }))
     
     // functions 
     function setMotionPosition(obj){ // create positions for icons 
-        f.log(obj.dataset.position)
 
         if (obj.dataset.position === "top"){
             return {start: 0.375, end: 0.5}; 
@@ -294,97 +294,102 @@ export function animate(obj){
         else if (obj.dataset.position === "hidden") {
             return {start: .25, end: 0.375};
         }
-    }
+    };
 
-    function calcPosNext(current, incr){
-        return {start: current.end != 0.5 ? current.end : 0, end: current.end != 0.5 ? current.end + incr : (0 + incr) };
-    }
+    function calcPosNext(current, incr){ // calculates the next position to animate to
+        return {start: current.end != 0.5 ? current.end : 0, end: current.end != 0.5 ? current.end + incr : (0 + incr)};
+    };
     
-    function calcPosRev(current, incr){
-        return {start: current.end != 0.5 ? 0.5 + current.end : 0.5, end: current.end != 0.5 ? 0.5 + current.end + incr : current.end + incr};        
-    }
-    // let poss = [{start: 0.375, end: 0.5}, {start: 0, end: 0.125}, {start: 0.125, end: 0.25}, {start: 0.25, end: 0.375}]
-    // f.log(poss.map(pos => calcPosRev(pos, 0.125))); 
+    function calcPosRev(current, incr){ // calculates the reverse postion to animate to
+        return {start: current.end != 0 ? current.end : 0.5, end: current.end != 0 ? current.end - incr : (0.5 - incr) };        
+    };
 
-    function setPos(icon, incr){
-        // if (rev){
-        //     let current = {start: icon.motionPos.current.end != 0.5 ? icon.motionPos.current.end - 0.5 : icon.motionPos.current, end: icons.motionPos.end - 0.5 };
-        // } else {
-        // }
+    function calcPos(obj, incr){        
+        obj.motionPos.next = calcPosNext(obj.motionPos.current, incr); 
+        obj.motionPos.rev = calcPosRev(obj.motionPos.current, incr); 
 
-        let current = {start: icon.motionPos.current.start, end: icon.motionPos.current.end};
-        icon.motionPos.next = calcPosNext(current, incr); // calculate next 
-        icon.motionPos.rev =  calcPosRev(current, incr); // calculate reverse 
+    }; // calculates and sets new motionpositions of animation icon 
+
+    function setCurrent(obj, next){
+        obj.motionPos.current = Object.assign({}, obj.motionPos.current, next); // sets the new current position
+    };
+
+    function filterIcon(array, pos){ // returns icons with a given data position
+        return array.filter(icon => icon.position === pos)[0];
     }; 
 
-    function updateCurrentPos(pos, icon) { // sets the current motionPosition icon 
-        icon.motionPos.current.start = pos.start;
-        icon.motionPos.current.start = pos.end;
-    };
+    function updatePos(obj, reverse=false){ // updates the positions of icons
+        if (!reverse){ // cycling right
+            if (obj.position === "top"){
+                obj.position = "middleRight";
+            } else if (obj.position === "middleRight"){
+                obj.position = "bottom";
+            } else if (obj.position === "bottom"){
+                obj.position = "hidden";
+            } else if (obj.position === "hidden"){
+                obj.position = "top";
+            }
+            
+        } else { // cycling left 
+            
+            if (obj.position === "top"){
+                obj.position = "hidden";
+            } else if (obj.position === "middleRight"){
+                obj.position = "top";
+            } else if (obj.position === "bottom"){
+                obj.position = "middleRight";
+            } else if (obj.position === "hidden"){
+                obj.position = "bottom";
+            }
+        } 
+    } 
 
-    function updateMotionPath(icon, start, end){
-        icon.animSet.motionPath.start = start;
-        icon.animSet.motionPath.end = end;
-    };
+    function addAnimTo(obj, animation){ // update the to animation for gsap
+        obj.animSet.to = Object.assign({}, obj.animSet.to, animation);
+    }
 
-    
-        // copy icons into their own variables
-    const [turtle, dolphin, orca, hidden] = icons;
     
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
         
-        icons.map(icon => updateMotionPath(icon, icon.motionPos.next.start, icon.motionPos.next.end)); // set new motion
-        icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath)); // --> move icons right
-        icons.map(icon => updateCurrentPos(icon.motionPos.next, icon)); // update current motion position
-        icons.map(icon => setPos(icon, 0.125)); // --> set new pos  
+        addAnimTo(filterIcon(icons, "top"), {scale: 1.5}); // add scale to settings to top 
+        addAnimTo(filterIcon(icons, "middleRight"), {scale: 1}); // add scale to settings to middleRight
 
-        f.log(icons.filter(icon => icon.animSet.motionPath)[0].animSet.motionPath)
-        f.log(icons.filter(icon => icon.motionPos)[0].motionPos)
+        // change source of hidden element to bottom 
+        filterIcon(icons, "hidden").el.href.baseVal = filterIcon(icons, "bottom").el.href.baseVal;
+
+        icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, Object.assign({}, icon.animSet.motionPath, icon.motionPos.next))); // animate next
+        icons.map(icon => setCurrent(icon, icon.motionPos.next)); // then set the new current position to next
+        icons.map(icon => calcPos(icon, 0.125)); // calc new next and reverse positions
+        icons.map(icon => updatePos(icon)); // update positions to new positions
         
-        
+        f.log(icons)
+
     }); // click left
     
     f.event(arrowLeft, "click", () => {
-        
-        icons.map(icon => updateMotionPath(icon, icon.motionPos.rev.start, icon.motionPos.rev.end)); // set new motion
-        icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath)); // --> move icons left
-        icons.map(icon => setPos(icon, 0.125)); // --> set new pos  
-        
+
+        addAnimTo(filterIcon(icons, "bottom"), {scale: 1.5}); // add scale to settings to top 
+        addAnimTo(filterIcon(icons, "middleRight"), {scale: 1}); // add scale to settings to middleRight
+
+        // change source of hidden element to top
+        filterIcon(icons, "hidden").el.href.baseVal = filterIcon(icons, "top").el.href.baseVal;
+
+        icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, Object.assign({}, icon.animSet.motionPath, icon.motionPos.rev))); // animate reverse
+        icons.map(icon => setCurrent(icon, icon.motionPos.rev)); // set the new current position to the reverse position
+
+        icons.map(icon => calcPos(icon, 0.125)); // calc new next and reverse positions
+        icons.map(icon => updatePos(icon, true)); // update positions to new positions
+
+        f.log(icons);
+
     }); // click right
     
-    // initial animation
-    icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath));
-    // initial pos and motionPath update
-    icons.map(icon => updateCurrentPos(icon.motionPos.next, icon)); // update current position
-    icons.map(icon => setPos(icon, 0.125)); // set positions
-    
-    
+    // initialize animation 
+    icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath)); // initial animation
+    icons.map(icon => calcPos(icon, 0.125)); // initial pos and motionPath update
+       
 }
-// update properties
-    // if top
-        // top -> middleRight
-        // start -> top.start + 0.125
-        // end -> top.end + 0.125
-            // if start or end is 0.5 then start back from 0
-
-    // if middleRight 
-        // middleRight -> bottom 
-        // start -> middleRight.start += 0.125
-        // start -> middleRight.end += 0.125
-
-    // if bottom 
-        // bottom -> hidden
-        // imgSrc -> none
-        // start -> bottom.start += 0.125
-        // end -> bottom.end += 0.125
-        // hiddenimgSrc -> bottomImgSrc
-
-    // if bottom 
-        // hidden -> top
-        // start -> bottom.start += 0.125
-        // end -> bottom.end += 0.125
-
 
 
 

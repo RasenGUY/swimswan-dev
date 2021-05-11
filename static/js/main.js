@@ -76,13 +76,6 @@ window.addEventListener("load", ()=> {
     const orcaImg = document.querySelector(".icon-path #orca");
     var currentAngle = 0; 
     
-    // add onclick event
-    // animBtn.addEventListener("click", ()=>{
-    //     currentAngle += 90; 
-
-    //     // select parent
-    //     
-    // })
     
     const animObj  = {
         abs: 'static/images/svg/compressed/',
@@ -90,7 +83,6 @@ window.addEventListener("load", ()=> {
             base: {duration:2, ease: "power4.out", overwrite: "auto"}
         }, 
         animTo: (sel, setTo, base, motion) => gsap.to(sel, {...setTo, ...base, motionPath: {...motion}}),
-        animUpdate: (sel, p, base, e) => gsap.set(sel, {duration: base.duration, ease: base.ease, motionPath: {path: p, end: e}}),
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
         }, 

@@ -292,6 +292,7 @@ main#main-wrapper section#index-s-two .shapes .orbit {
   width: 80%;
   position: absolute;
   z-index: -5;
+  left: -28%;
   transition: all 0.15s ease-in-out;
 }
 main#main-wrapper section#index-s-two .shapes .orbit > object {
