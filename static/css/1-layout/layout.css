@@ -386,15 +386,14 @@ main#main-wrapper section#index-s-two .container .text-box header {
   }
   main#main-wrapper section#index-s-two .container .text-box .text-body .card {
     position: absolute;
-    transition: all 0.15s ease-in-out;
-  }
-  main#main-wrapper section#index-s-two .container .text-box .text-body .card.hide {
+    right: 0;
     opacity: 0;
-    left: 100%;
+    transition: all 1s ease-in-out;
+    transform: translateX(110%);
   }
   main#main-wrapper section#index-s-two .container .text-box .text-body .card.show {
     opacity: 1;
-    right: 0;
+    transform: translateX(0%);
   }
 }
 main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
@@ -410,10 +409,10 @@ main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
     cursor: pointer;
   }
   main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i {
-    font-size: 5rem;
+    font-size: 4rem;
   }
-  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i.left {
-    margin-right: 1rem;
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i#arrows-left {
+    margin-right: 10rem;
   }
   main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i:hover {
     color: #68b2e4;

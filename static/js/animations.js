@@ -244,11 +244,13 @@ export function animate(obj){
     const path = f.grab(obj.path.sel) // path (use this as the value for the motionPath setting) 
     const [arrowLeft, arrowRight] = obj.arrows.sel.map( arrow => f.grab(arrow) ) // arrows  
     const bubble = f.grab(obj.bubble.sel) // water bubble
-    const packages = f.grabAll(obj.cards.sel)
+    const cards = obj.cards.sel.map(sel => Object.assign({}, {
+        el: f.grab(sel),
+        position: f.grab(sel).dataset.cardPosition
+    }))
     const icons = obj.icons.sel.map( // icons 
         sel => Object.assign({}, {
             el: f.grab(sel), // fetch dom el
-            isHidden: (f.grab(sel).dataset.position) === "hidden" ? true : false, // isHidden
             animSet: {
                 to: {
                     scale: f.grab(sel).dataset.position === "middleRight" ? 1.5 : 1
@@ -315,26 +317,32 @@ export function animate(obj){
         obj.motionPos.current = Object.assign({}, obj.motionPos.current, next); // sets the new current position
     };
 
-    function filterIcon(array, pos){ // returns icons with a given data position
+    function filterItem(array, pos){ // returns icons with a given data position
         return array.filter(icon => icon.position === pos)[0];
     }; 
 
-    function updatePos(obj, reverse=false){ // updates the positions of icons
+    function updatePos(obj, reverse=false, cards=false){ // updates the positions of icons
         if (!reverse){ // cycling right
             if (obj.position === "top"){
                 obj.position = "middleRight";
             } else if (obj.position === "middleRight"){
                 obj.position = "bottom";
             } else if (obj.position === "bottom"){
-                obj.position = "hidden";
+                if (cards){
+                    obj.position = "top";
+                } else {
+                    obj.position = "hidden";
+                }
             } else if (obj.position === "hidden"){
                 obj.position = "top";
             }
-            
         } else { // cycling left 
-            
             if (obj.position === "top"){
-                obj.position = "hidden";
+                if (cards){
+                    obj.position = "bottom"
+                } else {
+                    obj.position = "hidden";
+                }
             } else if (obj.position === "middleRight"){
                 obj.position = "top";
             } else if (obj.position === "bottom"){
@@ -349,54 +357,71 @@ export function animate(obj){
         obj.animSet.to = Object.assign({}, obj.animSet.to, animation);
     }
 
-    f.log(packages);
+    
+    function toggleShow(card){
+        card.el.classList.toggle("show");
+    }
     
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
         
-        addAnimTo(filterIcon(icons, "top"), {scale: 1.5}); // add scale to settings to top 
-        addAnimTo(filterIcon(icons, "middleRight"), {scale: 1}); // add scale to settings to middleRight
+        // add settings to icon animations
+        addAnimTo(filterItem(icons, "top"), {scale: 1.5}); // add scale to settings to top 
+        addAnimTo(filterItem(icons, "middleRight"), {scale: 1}); // add scale to settings to middleRight
 
         // change source of hidden element to bottom 
-        filterIcon(icons, "hidden").el.href.baseVal = filterIcon(icons, "bottom").el.href.baseVal;
+        filterItem(icons, "hidden").el.href.baseVal = filterItem(icons, "bottom").el.href.baseVal;
 
         // animate bubble
-        gsap.fromTo(bubble, {scale: "1"}, {scale: "-=0.1", ease:Bounce.easeOut, yoyoEase:Power2.easeOut, repeat: 1, duration: 1.5});
+        gsap.fromTo(bubble, {scale: "1"}, {scale: "-=0.1", ease:Bounce.easeOut, yoyoEase:Power2.easeOut, repeat: 1, duration: 1});
 
+        // animate icons 
         icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, Object.assign({}, icon.animSet.motionPath, icon.motionPos.next))); // animate next
         icons.map(icon => setCurrent(icon, icon.motionPos.next)); // then set the new current position to next
+
+        // animate cards
+        toggleShow(filterItem(cards, "middleRight")); // remove show from middleRight
+        toggleShow(filterItem(cards, "top")); // add show to top
+        
+        // update positions
         icons.map(icon => calcPos(icon, 0.125)); // calc new next and reverse positions
         icons.map(icon => updatePos(icon)); // update positions to new positions
-        
-        // f.log(icons)
+        cards.map(card => updatePos(card, false, true)); // update to new positions
+
 
     }); // click left
     
     f.event(arrowLeft, "click", () => {
 
-        addAnimTo(filterIcon(icons, "bottom"), {scale: 1.5}); // add scale to settings to top 
-        addAnimTo(filterIcon(icons, "middleRight"), {scale: 1}); // add scale to settings to middleRight
+        // add settings to icon animations
+        addAnimTo(filterItem(icons, "bottom"), {scale: 1.5}); // add scale to settings to top 
+        addAnimTo(filterItem(icons, "middleRight"), {scale: 1}); // add scale to settings to middleRight
 
         // change source of hidden element to top
-        filterIcon(icons, "hidden").el.href.baseVal = filterIcon(icons, "top").el.href.baseVal;
+        filterItem(icons, "hidden").el.href.baseVal = filterItem(icons, "top").el.href.baseVal;
 
         // animate bubble
-        gsap.fromTo(bubble, {scale: "1"}, {scale: "-=0.1", ease:Bounce.easeOut, yoyoEase:Power2.easeOut, repeat: 1, duration: 1.5});
+        gsap.fromTo(bubble, {scale: "1"}, {scale: "-=0.1", ease:Bounce.easeOut, yoyoEase:Power2.easeOut, repeat: 1, duration: 1});
 
+        // animate icons
         icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, Object.assign({}, icon.animSet.motionPath, icon.motionPos.rev))); // animate reverse
         icons.map(icon => setCurrent(icon, icon.motionPos.rev)); // set the new current position to the reverse position
 
+        // animate cards
+        toggleShow(filterItem(cards, "middleRight")); // remove show from middleRight
+        toggleShow(filterItem(cards, "bottom")); // add show to top
+
+        // update positions
         icons.map(icon => calcPos(icon, 0.125)); // calc new next and reverse positions
         icons.map(icon => updatePos(icon, true)); // update positions to new positions
-
-        // f.log(icons);
+        cards.map(card => updatePos(card, true, true)); // update to new positions
 
     }); // click right
     
     // initialize animation 
     icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath)); // initial animation
     icons.map(icon => calcPos(icon, 0.125)); // initial pos and motionPath update
-       
+    toggleShow(filterItem(cards, "middleRight")); // show card
 }
 
 

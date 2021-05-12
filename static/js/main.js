@@ -96,7 +96,7 @@ window.addEventListener("load", ()=> {
             sel: ".orbit #water-bubble"
         },
         cards: {
-            sel: "#card"
+            sel: ["#card-turtle", "#card-orca", "#card-dolphin"]
         }
     }
     an.animate(animObj);
