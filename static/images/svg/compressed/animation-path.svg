@@ -1,0 +1,11 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" 
+id="index-s-two-animation-path"
+viewBox="0 0 500 500"
+width="100%"
+>   
+    <!-- grid for materializing the symbols -->
+    <path id="animation-path" d="M125,1a124,124,0,0,1,87.6812,211.6812A124,124,0,1,1,37.3188,37.3188,123.1882,123.1882,0,0,1,125,1m0-1A125,125,0,1,0,250,125,125,125,0,0,0,125,0Z" fill="#17ff30"/> <!-- change opacity  -->
+
+</svg>

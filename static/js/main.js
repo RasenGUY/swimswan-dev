@@ -5,9 +5,8 @@ import * as f from "./functions.js";
 // import * as gal from "./gallery.js";
 import * as an from "./animations.js";
 
-
 // function to be run after the whole page is loaded 
-window.onload = ( ()=> {
+window.addEventListener("load", ()=> {
 
     // menu-mobile-animation
     const burger = document.querySelector("#burger .burger-wrapper");
@@ -77,30 +76,28 @@ window.onload = ( ()=> {
     const orcaImg = document.querySelector(".icon-path #orca");
     var currentAngle = 0; 
     
-    // add onclick event
-    // animBtn.addEventListener("click", ()=>{
-    //     currentAngle += 90; 
-
-    //     // select parent
-    //     orbit.style.transform  = "rotate(" + currentAngle + "deg)"; 
-    //     waterBubble.style.transform  = "rotate(-" + currentAngle + "deg)"; 
-    //     turtleImg.style.transform  = "rotate(-" + currentAngle + "deg)"; 
-    // })
     
     const animObj  = {
-        abs: 'static/images/svg/compressed/', 
+        abs: 'static/images/svg/compressed/',
+        animset: {
+            base: {duration:2, ease: "power4.out", overwrite: "auto"}
+        }, 
+        animTo: (sel, setTo, base, motion) => gsap.to(sel, {...setTo, ...base, motionPath: {...motion}}),
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
         }, 
         arrows: {
             sel: ["#arrows-left", "#arrows-right"]
         },
-        orbit: {
-            sel: ".orbit"
+        path: {
+            sel: "#index-s-two #animation-path", 
         }, 
         bubble: {
             sel: ".orbit #water-bubble"
-        } 
+        },
+        cards: {
+            sel: "#card"
+        }
     }
     an.animate(animObj);
 });

@@ -235,192 +235,170 @@ export function Animation (baseSet) {
         })
 
     }
-
 }
 
-export function animate(obj) {
+export function animate(obj){
 
-    // map all necessary settings of icons
-    const icons = obj.icons.sel 
-    .map(
-        sel => f.getObj(sel) // select elements
-    ) 
-    .map( // create new object
-        icon => addSet( //add className 
-            addSet( // add data-postion
-                addSet( // add angle
-                    addSet ( // add img src to asettings
-                        f.createObj({el: icon}), // create object and give it the key element
-                        {src: getDataSrc(icon, obj.abs)}
-                    ),
-                    {angle: 0}
-                ),
-                {position: icon.dataset.position}
-            ),
-            {classN: icon.className}
-        )
-    );
-    f.log(icons)
-    const [arrowLeft, arrowRight] = obj.arrows.sel.map(sel => f.getObj(sel)); // select all the arrows and create obj with state
-       
-    // animation obj functions
-    function getDataSrc(obj, relative = false, ...abs){ // returns an absolute url or a relative url from given obj  
-        if (relative){
-            return obj.src.split("/")[obj.src.split("/").length -1]; // return relative path
-        } else {    
-            return abs + obj.src.split("/")[obj.src.split("/").length -1]; // return absolute path
-        }
-    }
-
-
-    function addSet(obj, set){ // create settings for obj
-        return {...obj, ...set};
-    }
+    // animation flow -> svg path 
+    // needed 
+    const path = f.grab(obj.path.sel) // path (use this as the value for the motionPath setting) 
+    const [arrowLeft, arrowRight] = obj.arrows.sel.map( arrow => f.grab(arrow) ) // arrows  
+    const bubble = f.grab(obj.bubble.sel) // water bubble
+    const packages = f.grabAll(obj.cards.sel)
+    const icons = obj.icons.sel.map( // icons 
+        sel => Object.assign({}, {
+            el: f.grab(sel), // fetch dom el
+            isHidden: (f.grab(sel).dataset.position) === "hidden" ? true : false, // isHidden
+            animSet: {
+                to: {
+                    scale: f.grab(sel).dataset.position === "middleRight" ? 1.5 : 1
+                },
+                base: obj.animset.base,
+                motionPath: {
+                    path: path,
+                    align: path,
+                    transformOrigin: "50% 50%",
+                    start: setMotionPosition(f.grab(sel)).start, // set start position
+                    end: setMotionPosition(f.grab(sel)).end,
+                    alignOrigin: [0.5, 0.5] // set start position
+                }
+            },
+            motionPos: {
+                rev: {
+                    start: null,
+                    end: null,
+                },
+                next: {
+                    start: null,
+                    end: null
+                },
+                current: {
+                    start: setMotionPosition(f.grab(sel)).start,
+                    end: setMotionPosition(f.grab(sel)).end
+                }
+            },
+            position: f.grab(sel).dataset.position
+        }))
     
-    // transformations
-    // calculate angle
-    const angleAdd = (initial, angle) => (initial += angle);
-    const angleRemove = (initial, angle) => (initial -= angle);
+    // functions 
+    function setMotionPosition(obj){ // create positions for icons 
 
-    // effects
-    function scaleTo(obj, factor){
-        obj.style.transform = "scale(" +  factor + ")";  
+        if (obj.dataset.position === "top"){
+            return {start: 0.375, end: 0.5}; 
+        }
+        else if (obj.dataset.position === "middleRight"){
+            return {start: 0, end: 0.125}; 
+        }
+        else if (obj.dataset.position === "bottom"){
+            return {start: 0.125, end: 0.25};
+        }
+        else if (obj.dataset.position === "hidden") {
+            return {start: .25, end: 0.375};
+        }
     };
-    function changeObjSrc(obj, src){ // change src of obj to a given source 
-        obj.src = src; 
-    }
-    const opacityTo = factor => factor;
 
-    // add settings to to be animated objects 
-    ;
-
-    // add select and add settings to orbit and bubble
-    const orbit = addSet(f.createObj({el: f.getObj(obj.orbit.sel)}), {angle: 0}); 
-    const bubble = addSet(f.createObj({el: f.getObj(obj.bubble.sel)}), {angle: 0}); 
-
-    // rotate objects based on deg
-    function rotateForward(obj, angle) { // rotate to front based on given or calculated angle
-        obj.style.transform  = "rotate(" + angle + "deg)";
+    function calcPosNext(current, incr){ // calculates the next position to animate to
+        return {start: current.end != 0.5 ? current.end : 0, end: current.end != 0.5 ? current.end + incr : (0 + incr)};
     };
-    // change datasource of icon
-    function changeObjDataPos(obj, to){
-        obj.dataset.position = to; 
-    }
+    
+    function calcPosRev(current, incr){ // calculates the reverse postion to animate to
+        return {start: current.end != 0 ? current.end : 0.5, end: current.end != 0 ? current.end - incr : (0.5 - incr) };        
+    };
 
-        
-    // updates poisitons of icons
-    function updateElsPos(Els, forward = true){
-        Els.forEach(icon => {
-            if (!forward){ // change data position of icons forward
-                if (icon.position === "hidden"){ 
-                    f.updateProps(icon, "position", "bottom"); 
-                    changeObjDataPos(icon.el, "bottom");
+    function calcPos(obj, incr){        
+        obj.motionPos.next = calcPosNext(obj.motionPos.current, incr); 
+        obj.motionPos.rev = calcPosRev(obj.motionPos.current, incr); 
 
-                } else if (icon.position === "bottom"){ 
-                    f.updateProps(icon, "position", "middleRight"); 
-                    changeObjDataPos(icon.el, "middleRight");
+    }; // calculates and sets new motionpositions of animation icon 
 
-                } else if (icon.position === "middleRight"){ 
-                    f.updateProps(icon, "position", "top"); 
-                    changeObjDataPos(icon.el, "top");
+    function setCurrent(obj, next){
+        obj.motionPos.current = Object.assign({}, obj.motionPos.current, next); // sets the new current position
+    };
 
-                } else if (icon.position === "top"){ 
-                    f.updateProps(icon, "position", "hidden"); 
-                    changeObjDataPos(icon.el, "hidden");
-                }
+    function filterIcon(array, pos){ // returns icons with a given data position
+        return array.filter(icon => icon.position === pos)[0];
+    }; 
 
-            } else { // change data positon of icons backwards
-                if (icon.position === "hidden"){ 
-                    f.updateProps(icon, "position", "top"); 
-                    changeObjDataPos(icon.el, "top");
-
-                } else if (icon.position === "top"){
-                    f.updateProps(icon, "position", "middleRight"); 
-                    changeObjDataPos(icon.el, "middleRight");
-
-                } else if (icon.position === "middleRight"){
-                    f.updateProps(icon, "position", "bottom"); 
-                    changeObjDataPos(icon.el, "bottom");
-
-                } else if (icon.position === "bottom"){
-                    f.updateProps(icon, "position", "hidden"); 
-                    changeObjDataPos(icon.el, "hidden");
-                }
+    function updatePos(obj, reverse=false){ // updates the positions of icons
+        if (!reverse){ // cycling right
+            if (obj.position === "top"){
+                obj.position = "middleRight";
+            } else if (obj.position === "middleRight"){
+                obj.position = "bottom";
+            } else if (obj.position === "bottom"){
+                obj.position = "hidden";
+            } else if (obj.position === "hidden"){
+                obj.position = "top";
             }
-            f.log(`icon-src: ${icon.src}`,  `icon-position: ${icon.position}`)
-        });
+            
+        } else { // cycling left 
+            
+            if (obj.position === "top"){
+                obj.position = "hidden";
+            } else if (obj.position === "middleRight"){
+                obj.position = "top";
+            } else if (obj.position === "bottom"){
+                obj.position = "middleRight";
+            } else if (obj.position === "hidden"){
+                obj.position = "bottom";
+            }
+        } 
     } 
 
-
-    // apply transform rotate on an element
-    function rotateObjForward(obj, angle) { // rotate forward by given angle called with backward rotation
-        rotateForward(obj.el, angleAdd(obj.angle, angle)); // rotate obj forward
-    };
-    function rotateObjBackward(obj, angle) { // rotate backward by given angle 
-        rotateForward(obj.el, angleRemove(obj.angle, angle)); // rotate obj backward
-    };
-    
-    // rotateicons
-    function iconsRotate(n, forward = true){
-
-        // base case 
-        if (n > icons.length - 1){
-            // stop at base case 
-            return; 
-        }
-        if (forward){
-            rotateObjBackward(icons[n], 90);
-            f.updateProps(icons[n], "angle", angleRemove(icons[n].angle, 90)); // update icon current angle
-            return iconsRotate(n+1);
-        } else {
-            rotateObjForward(icons[n], 90);
-            f.updateProps(icons[n], "angle", angleAdd(icons[n].angle, 90)); // update icon current angle
-            return iconsRotate(n+1, false);
-        }
+    function addAnimTo(obj, animation){ // update the to animation for gsap
+        obj.animSet.to = Object.assign({}, obj.animSet.to, animation);
     }
- 
-    // animation flow of objects
-    f.event(arrowRight, 'click', () => { // add click events to right button
-        
-        // change src of hidden object
-        changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, icons.filter(icon => icon.position === "bottom")[0].el.src); 
 
-        // orbit 
-        rotateObjForward(orbit, 90); // rotate orbit forward
-        f.updateProps(orbit, "angle", angleAdd(orbit.angle, 90)); // opdate orbit current angle
-        
-        // bubble 
-        rotateObjBackward(bubble, 90); // rotate bubble backwards
-        f.updateProps(bubble, "angle", angleRemove(bubble.angle, 90)); // update bubble angle
-        
-        // reverse rotate icons
-        iconsRotate(0);
-        updateElsPos(icons);
-       
-
-        // change data src of hidden to bottom
-        // scale items and change img srcs of icons
-        
-    });   
+    f.log(packages);
     
-    f.event(arrowLeft, 'click', () => { // add click even to left button
-
-        // orbit
-        rotateObjBackward(orbit, 90); // rotate orbit backwards
-        f.updateProps(orbit, "angle", angleRemove(orbit.angle, 90)); // update orbit current angle
-
-        // bubble 
-        rotateObjForward(bubble, 90) // rotate bubble forward
-        f.updateProps(bubble, "angle", angleAdd(bubble.angle, 90)); // update bubble current
-
-        // reverse rotate icons
-        iconsRotate(0, false); 
-        updateElsPos(icons, false);
-        // change data src of hidden to top
-        // changeObjSrc(icons.filter(icon => icon.position === "hidden")[0].el, obj.abs + icons.filter(icon => icon.position === "top")[0].src);
-        // f.log(icons.map(icon => [icon.el.dataset.position , icon.position]));
-        // scale items and change img srcs of icons (reverse)
+    // add click events to buttons 
+    f.event(arrowRight, "click", () => {
         
-    });
+        addAnimTo(filterIcon(icons, "top"), {scale: 1.5}); // add scale to settings to top 
+        addAnimTo(filterIcon(icons, "middleRight"), {scale: 1}); // add scale to settings to middleRight
 
+        // change source of hidden element to bottom 
+        filterIcon(icons, "hidden").el.href.baseVal = filterIcon(icons, "bottom").el.href.baseVal;
+
+        // animate bubble
+        gsap.fromTo(bubble, {scale: "1"}, {scale: "-=0.1", ease:Bounce.easeOut, yoyoEase:Power2.easeOut, repeat: 1, duration: 1.5});
+
+        icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, Object.assign({}, icon.animSet.motionPath, icon.motionPos.next))); // animate next
+        icons.map(icon => setCurrent(icon, icon.motionPos.next)); // then set the new current position to next
+        icons.map(icon => calcPos(icon, 0.125)); // calc new next and reverse positions
+        icons.map(icon => updatePos(icon)); // update positions to new positions
+        
+        // f.log(icons)
+
+    }); // click left
+    
+    f.event(arrowLeft, "click", () => {
+
+        addAnimTo(filterIcon(icons, "bottom"), {scale: 1.5}); // add scale to settings to top 
+        addAnimTo(filterIcon(icons, "middleRight"), {scale: 1}); // add scale to settings to middleRight
+
+        // change source of hidden element to top
+        filterIcon(icons, "hidden").el.href.baseVal = filterIcon(icons, "top").el.href.baseVal;
+
+        // animate bubble
+        gsap.fromTo(bubble, {scale: "1"}, {scale: "-=0.1", ease:Bounce.easeOut, yoyoEase:Power2.easeOut, repeat: 1, duration: 1.5});
+
+        icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, Object.assign({}, icon.animSet.motionPath, icon.motionPos.rev))); // animate reverse
+        icons.map(icon => setCurrent(icon, icon.motionPos.rev)); // set the new current position to the reverse position
+
+        icons.map(icon => calcPos(icon, 0.125)); // calc new next and reverse positions
+        icons.map(icon => updatePos(icon, true)); // update positions to new positions
+
+        // f.log(icons);
+
+    }); // click right
+    
+    // initialize animation 
+    icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath)); // initial animation
+    icons.map(icon => calcPos(icon, 0.125)); // initial pos and motionPath update
+       
 }
+
+
+
+    
