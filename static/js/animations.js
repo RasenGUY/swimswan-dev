@@ -244,6 +244,7 @@ export function animate(obj){
     const path = f.grab(obj.path.sel) // path (use this as the value for the motionPath setting) 
     const [arrowLeft, arrowRight] = obj.arrows.sel.map( arrow => f.grab(arrow) ) // arrows  
     const bubble = f.grab(obj.bubble.sel) // water bubble
+    const packages = f.grabAll(obj.cards.sel)
     const icons = obj.icons.sel.map( // icons 
         sel => Object.assign({}, {
             el: f.grab(sel), // fetch dom el
@@ -348,6 +349,7 @@ export function animate(obj){
         obj.animSet.to = Object.assign({}, obj.animSet.to, animation);
     }
 
+    f.log(packages);
     
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
@@ -358,12 +360,15 @@ export function animate(obj){
         // change source of hidden element to bottom 
         filterIcon(icons, "hidden").el.href.baseVal = filterIcon(icons, "bottom").el.href.baseVal;
 
+        // animate bubble
+        gsap.fromTo(bubble, {scale: "1"}, {scale: "-=0.1", ease:Bounce.easeOut, yoyoEase:Power2.easeOut, repeat: 1, duration: 1.5});
+
         icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, Object.assign({}, icon.animSet.motionPath, icon.motionPos.next))); // animate next
         icons.map(icon => setCurrent(icon, icon.motionPos.next)); // then set the new current position to next
         icons.map(icon => calcPos(icon, 0.125)); // calc new next and reverse positions
         icons.map(icon => updatePos(icon)); // update positions to new positions
         
-        f.log(icons)
+        // f.log(icons)
 
     }); // click left
     
@@ -375,13 +380,16 @@ export function animate(obj){
         // change source of hidden element to top
         filterIcon(icons, "hidden").el.href.baseVal = filterIcon(icons, "top").el.href.baseVal;
 
+        // animate bubble
+        gsap.fromTo(bubble, {scale: "1"}, {scale: "-=0.1", ease:Bounce.easeOut, yoyoEase:Power2.easeOut, repeat: 1, duration: 1.5});
+
         icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, Object.assign({}, icon.animSet.motionPath, icon.motionPos.rev))); // animate reverse
         icons.map(icon => setCurrent(icon, icon.motionPos.rev)); // set the new current position to the reverse position
 
         icons.map(icon => calcPos(icon, 0.125)); // calc new next and reverse positions
         icons.map(icon => updatePos(icon, true)); // update positions to new positions
 
-        f.log(icons);
+        // f.log(icons);
 
     }); // click right
     

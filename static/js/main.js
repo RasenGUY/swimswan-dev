@@ -94,7 +94,10 @@ window.addEventListener("load", ()=> {
         }, 
         bubble: {
             sel: ".orbit #water-bubble"
-        } 
+        },
+        cards: {
+            sel: "#card"
+        }
     }
     an.animate(animObj);
 });

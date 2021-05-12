@@ -124,7 +124,7 @@ export function loaderFunc(ldrObj){
 export function grab(sel){ // returns single dom obj
     return document.querySelector(sel); 
 } 
-export function getObjs(sel){ // returns multiple dom els
+export function grabAll(sel){ // returns multiple dom els
     return document.querySelectorAll(sel); 
 } 
 export function log(arg, ...args){ // logs a message based on a value
