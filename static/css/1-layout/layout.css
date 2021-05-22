@@ -285,6 +285,21 @@ main#main-wrapper section#index-s-one .container .icon {
     height: 58vh;
   }
 }
+@media only screen and (min-width: 1280px) {
+  main#main-wrapper section#index-s-two {
+    height: 129vh;
+  }
+}
+@media only screen and (min-width: 1536px) {
+  main#main-wrapper section#index-s-two {
+    height: 145vh;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  main#main-wrapper section#index-s-two {
+    height: 132vh;
+  }
+}
 main#main-wrapper section#index-s-two .shapes {
   position: relative;
 }
@@ -294,6 +309,29 @@ main#main-wrapper section#index-s-two .shapes .orbit {
   z-index: -5;
   left: -28%;
   transition: all 0.15s ease-in-out;
+}
+@media only screen and (min-width: 1280px) {
+  main#main-wrapper section#index-s-two .shapes .orbit {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  main#main-wrapper section#index-s-two .shapes .orbit {
+    width: 68%;
+  }
+}
+@media only screen and (min-width: 1536px) {
+  main#main-wrapper section#index-s-two .shapes .orbit {
+    top: 14%;
+    width: 55%;
+    left: -24%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  main#main-wrapper section#index-s-two .shapes .orbit {
+    width: 60%;
+    left: -24%;
+  }
 }
 main#main-wrapper section#index-s-two .shapes .orbit > object {
   opacity: 0.85;
@@ -396,6 +434,16 @@ main#main-wrapper section#index-s-two .container .text-box header {
     transform: translateX(0%);
   }
 }
+@media (min-width: 834px) and (max-width: 1024px) {
+  main#main-wrapper section#index-s-two .container .text-box .text-body {
+    top: 14%;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  main#main-wrapper section#index-s-two .container .text-box .text-body {
+    top: 14%;
+  }
+}
 main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
   display: none;
 }
@@ -428,6 +476,32 @@ main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
   }
   main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i:focus, main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i:active {
     color: #1f4e6d;
+  }
+}
+@media (min-width: 834px) and (max-width: 1024px) {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
+    bottom: 6.5%;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
+    bottom: 12.5%;
+    right: 5.5%;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
+    right: 14.7%;
+  }
+}
+@media only screen and (min-width: 1536px) {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
+    bottom: 13.5%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i {
+    font-size: 5.5rem;
   }
 }
 
