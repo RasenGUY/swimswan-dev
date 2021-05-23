@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 222.34 216.82">
+  <defs/>
+  <defs>
+    <linearGradient id="b" x1="47.4" x2="48.4" y1="185.37" y2="185.37" gradientTransform="matrix(166.52 0 0 -166.52 -7849.15 30975.09)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#affff7"/>
+      <stop offset=".19" stop-color="#affff7"/>
+      <stop offset=".22" stop-color="#aaf5f5"/>
+      <stop offset=".31" stop-color="#9fddf1"/>
+      <stop offset=".4" stop-color="#98cfee"/>
+      <stop offset=".47" stop-color="#96caed"/>
+      <stop offset="1" stop-color="#96caed"/>
+    </linearGradient>
+    <clipPath id="a">
+      <path fill="none" d="M149.72 157.53a88.94 88.94 0 01-20.82 9.84c-13.34 4.3-30.92 6.23-46.1-4.53a81.41 81.41 0 01-6.73-5.34C52.85 137.07 48 109.69 48 109.69S39.08 74.94 92.16 54c3.2-1 6.29-1.85 9.27-2.57C135.87 43.22 156.68 53.68 167 71c16.28 27.33 6.4 71.75-17.26 86.54"/>
+    </clipPath>
+  </defs>
+  <g data-name="Layer 2">
+    <g clip-path="url(#a)" data-name="Layer 1" opacity=".59">
+      <path fill="url(#b)" d="M22.18 23.78h177.99v169.26H22.18z" transform="rotate(-18.42 111.164 108.41)"/>
+    </g>
+  </g>
+</svg>

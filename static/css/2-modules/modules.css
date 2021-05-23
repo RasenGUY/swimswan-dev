@@ -452,5 +452,14 @@ main#main-wrapper section#index-s-one .container .icon span p {
     padding-bottom: 2.5rem;
   }
 }
+main#main-wrapper section#index-s-three {
+  height: 145vh;
+}
+main#main-wrapper section#index-s-three .shapes {
+  position: absolute;
+}
+main#main-wrapper section#index-s-three .shapes #weird-bubble {
+  position: absolute;
+}
 
 /*# sourceMappingURL=modules.css.map */
