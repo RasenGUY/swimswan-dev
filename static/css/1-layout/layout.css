@@ -68,6 +68,9 @@ main#main-wrapper section .text-box {
     text-align: center;
   }
 }
+main#main-wrapper section .text-box p {
+  padding-bottom: 1rem;
+}
 
 nav {
   position: fixed;
@@ -144,6 +147,24 @@ main#main-wrapper {
   position: relative;
   z-index: -1;
 }
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section:first-child {
+    margin-bottom: 10rem;
+  }
+}
+@media only screen and (min-width: 800px) {
+  main#main-wrapper section:first-child {
+    margin-bottom: unset;
+  }
+}
+main#main-wrapper section:not(:nth-child(1)) {
+  margin-bottom: 10rem;
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section:not(:nth-child(1)) {
+    margin-bottom: 15rem;
+  }
+}
 @media only screen and (min-width: 576px) {
   main#main-wrapper section .shapes object.mob {
     display: none;
@@ -162,6 +183,14 @@ main#main-wrapper {
 @media only screen and (max-width: 993px) {
   main#main-wrapper section .shapes object.lg {
     display: none;
+  }
+}
+main#main-wrapper section .text-box header {
+  padding-bottom: 2.5rem;
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section .text-box {
+    margin-top: 5rem;
   }
 }
 main#main-wrapper section#index-hero {
@@ -240,11 +269,6 @@ main#main-wrapper section#index-hero .container .text-box {
     width: 55%;
   }
 }
-@media only screen and (min-width: 576px) {
-  main#main-wrapper section#index-s-one {
-    margin-top: 10rem;
-  }
-}
 main#main-wrapper section#index-s-one .container {
   justify-items: center;
   margin-top: clamp(0rem, -25.1162790698rem + 69.7674418605vw, 15rem);
@@ -280,9 +304,14 @@ main#main-wrapper section#index-s-one .container .icon {
     margin-top: 10rem;
   }
 }
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) {
   main#main-wrapper section#index-s-two {
-    height: 58vh;
+    height: 55vh;
+  }
+}
+@media only screen and (min-width: 800px) {
+  main#main-wrapper section#index-s-two {
+    height: 45vh;
   }
 }
 @media only screen and (min-width: 1280px) {
@@ -333,6 +362,11 @@ main#main-wrapper section#index-s-two .shapes .orbit {
     left: -24%;
   }
 }
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-two .shapes .orbit {
+    transform: translateY(3%);
+  }
+}
 main#main-wrapper section#index-s-two .shapes .orbit > object {
   opacity: 0.85;
 }
@@ -375,6 +409,9 @@ main#main-wrapper section#index-s-two .shapes .orbit svg#index-s-two-animation-p
   main#main-wrapper section#index-s-two .container {
     height: 100%;
   }
+}
+main#main-wrapper section#index-s-two .container .text-box {
+  position: relative;
 }
 main#main-wrapper section#index-s-two .container .text-box header {
   text-align: center;
@@ -453,7 +490,7 @@ main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
     display: block;
     position: absolute;
     bottom: 2.5%;
-    right: 4.5%;
+    right: 0%;
     cursor: pointer;
   }
   main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i {
@@ -502,6 +539,36 @@ main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper {
 @media only screen and (min-width: 1920px) {
   main#main-wrapper section#index-s-two .container .text-box #arrows-wrapper i {
     font-size: 5.5rem;
+  }
+}
+main#main-wrapper section#index-s-three .shapes {
+  position: relative;
+}
+main#main-wrapper section#index-s-three .shapes #weird-bubble {
+  position: absolute;
+  z-index: -1;
+  transform: translateY(-5%);
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-three .shapes #weird-bubble {
+    transform: translate(-4%, 25%) scale(1.65);
+  }
+}
+@media only screen and (min-width: 800px) {
+  main#main-wrapper section#index-s-three .shapes #weird-bubble {
+    transform: translate(-4%, 13%) scale(1.35);
+  }
+}
+@media only screen and (max-width: 576px) {
+  main#main-wrapper section#index-s-three .shapes #weird-bubble .bubble {
+    width: 75rem;
+    transform: translateX(-15%);
+  }
+}
+@media only screen and (max-width: 576px) {
+  main#main-wrapper section#index-s-three .container .text-box img {
+    width: 45%;
+    margin-bottom: 1.5rem;
   }
 }
 
