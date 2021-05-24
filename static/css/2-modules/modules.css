@@ -187,6 +187,11 @@ nav#mobile-bottom .container #burger .burger-wrapper .middle.animate {
   padding: 2.5rem 0;
   margin-bottom: 5rem;
 }
+@media only screen and (min-width: 768px) {
+  .card {
+    padding: unset;
+  }
+}
 .card .card-title {
   padding-bottom: 1.5rem;
   justify-self: center;
@@ -283,6 +288,9 @@ svg#svg-shapes .image.index-hero-med {
 svg#svg-shapes .image.index-hero-web {
   transform: translate(0%, -30%);
 }
+svg#svg-shapes .image.water-puddle {
+  transform: scale(0.2);
+}
 svg#svg-shapes #instagram path.outer {
   fill: none;
   stroke: #1F74AD;
@@ -334,18 +342,12 @@ svg#index-s-two-animation-path image {
 }
 @media only screen and (min-width: 992px) {
   main#main-wrapper section#index-s-one {
-    height: 50vh;
+    height: 32vh;
   }
 }
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1280px) {
   main#main-wrapper section#index-s-one {
-    height: 100vh;
-    margin-top: 20rem;
-  }
-}
-@media only screen and (min-width: 1400px) {
-  main#main-wrapper section#index-s-one {
-    margin-top: 35rem;
+    height: 65vh;
   }
 }
 main#main-wrapper section#index-s-one .container {
@@ -461,7 +463,7 @@ main#main-wrapper section#index-s-three .container .text-box header {
   main#main-wrapper section#index-s-three .container .text-box img {
     width: 26%;
     padding-right: 2.5rem;
-    float: left;
+    float: right;
   }
 }
 
