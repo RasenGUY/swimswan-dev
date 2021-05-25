@@ -64,25 +64,51 @@ window.addEventListener("load", ()=> {
         }
     }
 
+    // activeate gsapCss
     const animation = new an.Animation(baseSet);
     animation.animInit(els, sel); 
-
-    // animate animals on main screen
-    // const animBtn = document.querySelector("#arrow");
-    const orbit = document.querySelector(".orbit");
-    const waterBubble = document.querySelector(".orbit #water-bubble");
-    const turtleImg = document.querySelector(".icon-path #turtle");
-    const dolphinImg = document.querySelector(".icon-path #dolphin");
-    const orcaImg = document.querySelector(".icon-path #orca");
-    var currentAngle = 0; 
+    
+    // // animate animals on main screen
+    // // const animBtn = document.querySelector("#arrow");
+    // const orbit = document.querySelector(".orbit");
+    // const waterBubble = document.querySelector(".orbit #water-bubble");
+    // const turtleImg = document.querySelector(".icon-path #turtle");
+    // const dolphinImg = document.querySelector(".icon-path #dolphin");
+    // const orcaImg = document.querySelector(".icon-path #orca");
+    // var currentAngle = 0; 
     
     
+    // animate packages index-s-three nad index-s-four
     const animObj  = {
         abs: 'static/images/svg/compressed/',
         animset: {
-            base: {duration:2, ease: "power4.out", overwrite: "auto"}
+            base: {duration:2, ease: "power4.out", overwrite: "auto"},
+            weirdB: {
+                base: {
+                    duration: 0.75,
+                    ease: "circ.inOut",
+                    clearProps: true,
+                    scrollTrigger: null
+                },
+                scrollT: {
+                    trigger: null,
+                    start: null,
+                    end: null,
+                    markers: true
+                },
+                setTo: {
+                    mob: {
+                        x: "-75%",
+                        y: "57%",
+                        scale: 0.76,
+                        rotation: "190deg",
+                        transformOrigin: "50% 50%"
+                    }
+                } 
+            }
         }, 
         animTo: (sel, setTo, base, motion) => gsap.to(sel, {...setTo, ...base, motionPath: {...motion}}),
+        animWB: (sel, base, setTo, scrollT) => gsap.to(sel, {...setTo, ...base, ...scrollT}), 
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
         }, 
@@ -97,9 +123,19 @@ window.addEventListener("load", ()=> {
         },
         cards: {
             sel: ["#card-turtle", "#card-orca", "#card-dolphin"]
+        },
+        weirdBubbles: {
+            sel: ["#bubble-weird-top", "#bubble-weird-middle", "#bubble-weird-bottom"]
         }
     }
     an.animate(animObj);
+
+    // animate circle from index-s-three to index-s-4
+        // scrollTrigger animation 
+        // trigger at section-s-three
+        // scrub
+        // move animation objec to position
+    
 });
 
 

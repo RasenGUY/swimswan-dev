@@ -39,19 +39,14 @@ export function togglePseudo(htmlEl, pseudo, cssRule){ //function for animating 
 };
 
 // function for doing media queries on site 
-export function medQueries(minMax, width){
-    
-    let query = null; 
-
+export function medQueries(minMax, width){    
     // max or min
     if (minMax === ">"){ // if min then create min-width query
-        query = `(min-width: ${width})`;
+        return window.matchMedia(`(min-width: ${width})`);
     }
     else if (minMax === "<"){ // if min then create max-width query
-        query = `(max-width: ${width})`;
+        return window.matchMedia(`(max-width: ${width})`);
     }
-    // initialize and listen to changes on page
-    return window.matchMedia(query);
 };
 
 // queries for index page
@@ -64,7 +59,6 @@ export function callQueries(window, callBack, reverse){
     else {
         reverse(); 
     }
-
     return 0;
 };
 

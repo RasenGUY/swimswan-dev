@@ -247,7 +247,8 @@ export function animate(obj){
     const cards = obj.cards.sel.map(sel => Object.assign({}, {
         el: f.grab(sel),
         position: f.grab(sel).dataset.cardPosition
-    }))
+    })
+    )
     const icons = obj.icons.sel.map( // icons 
         sel => Object.assign({}, {
             el: f.grab(sel), // fetch dom el
@@ -280,7 +281,22 @@ export function animate(obj){
                 }
             },
             position: f.grab(sel).dataset.position
-        }))
+        })
+    )
+    const weirdBubbles = obj.weirdBubbles.sel.map(
+        sel => Object.assign({}, {
+            el: f.grab(sel), // fetch dom el
+            position: f.grab(sel).dataset.arranged, // fetch position
+            gsap: {
+                base: obj.animset.weirdB.base,
+                scrollT: obj.animset.weirdB.scrollT,
+                setTo: {
+                    mob: obj.animset.weirdB.setTo.mob
+                }
+            } 
+        })
+    )
+    f.log(weirdBubbles);
     
     // functions 
     function setMotionPosition(obj){ // create positions for icons 
@@ -357,10 +373,14 @@ export function animate(obj){
         obj.animSet.to = Object.assign({}, obj.animSet.to, animation);
     }
 
-    
     function toggleShow(card){
         card.el.classList.toggle("show");
     }
+
+    function scrub(bubble, setTo, trigger){ // initiates animations
+        bubble.gsap.scrollT.trigger = trigger;
+        obj.animWB(bubble.el, bubble.gsap.base, setTo, bubble.gsap.scrollT);
+    };
     
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
@@ -422,6 +442,10 @@ export function animate(obj){
     icons.map(icon => obj.animTo(icon.el, icon.animSet.to, icon.animSet.base, icon.animSet.motionPath)); // initial animation
     icons.map(icon => calcPos(icon, 0.125)); // initial pos and motionPath update
     toggleShow(filterItem(cards, "middleRight")); // show card
+
+    // animate weird bubble
+    
+
 }
 
 
