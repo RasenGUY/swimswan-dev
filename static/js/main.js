@@ -84,22 +84,22 @@ window.addEventListener("load", ()=> {
         animset: {
             base: {duration:2, ease: "power4.out", overwrite: "auto"},
             weirdB: {
+                trigger: "#index-s-three",
                 base: {
                     duration: 0.75,
                     ease: "circ.inOut",
-                    clearProps: true,
-                    scrollTrigger: null
+                    // clearProps: true
                 },
                 scrollT: {
                     trigger: null,
                     start: null,
-                    end: null,
-                    markers: true
+                    scrub: 1,
+                    // markers: true
                 },
                 setTo: {
                     mob: {
-                        x: "-75%",
-                        y: "57%",
+                        x: "-35%",
+                        y: "55%",
                         scale: 0.76,
                         rotation: "190deg",
                         transformOrigin: "50% 50%"
@@ -108,7 +108,7 @@ window.addEventListener("load", ()=> {
             }
         }, 
         animTo: (sel, setTo, base, motion) => gsap.to(sel, {...setTo, ...base, motionPath: {...motion}}),
-        animWB: (sel, base, setTo, scrollT) => gsap.to(sel, {...setTo, ...base, ...scrollT}), 
+        animWB: (sel, base, setTo, scrollT) => gsap.to(sel, {...setTo, ...base, scrollTrigger: {...scrollT}}), 
         icons: {
             sel: ["#icon-turtle", "#icon-dolphin", "#icon-orca", "#icon-hidden"]
         }, 

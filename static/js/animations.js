@@ -287,6 +287,7 @@ export function animate(obj){
         sel => Object.assign({}, {
             el: f.grab(sel), // fetch dom el
             position: f.grab(sel).dataset.arranged, // fetch position
+            trigger: obj.animset.weirdB.trigger,
             gsap: {
                 base: obj.animset.weirdB.base,
                 scrollT: obj.animset.weirdB.scrollT,
@@ -377,8 +378,7 @@ export function animate(obj){
         card.el.classList.toggle("show");
     }
 
-    function scrub(bubble, setTo, trigger){ // initiates animations
-        bubble.gsap.scrollT.trigger = trigger;
+    function scrub(bubble, setTo){ // initiates animations
         obj.animWB(bubble.el, bubble.gsap.base, setTo, bubble.gsap.scrollT);
     };
     
@@ -444,8 +444,14 @@ export function animate(obj){
     toggleShow(filterItem(cards, "middleRight")); // show card
 
     // animate weird bubble
-    
-
+    // for mobile
+    // if (window.screen.width <= 576){        
+    // }
+    const bottomWB = weirdBubbles.filter(bubble => bubble.position === "bottom")[0];
+    f.log(bottomWB)
+    bottomWB.gsap.scrollT.trigger = f.grab(bubble.trigger);
+    bottomWB.gsap.scrollT.start = "75% top"; 
+    scrub(bottomWB, bottomWB.gsap.setTo.mob);
 }
 
 
