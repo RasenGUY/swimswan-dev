@@ -50,11 +50,11 @@ export function medQueries(minMax, width){
 };
 
 // queries for index page
-export function callQueries(window, callBack, reverse){
+export function callQueries(window, callB, reverse){
 
     // will execute callBack and reverseFunction on matched or unmatched window
     if (window.matches){ // section one 
-        callBack(); 
+        callB(); 
     } 
     else {
         reverse(); 

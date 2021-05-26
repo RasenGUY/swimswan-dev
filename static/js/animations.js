@@ -297,8 +297,17 @@ export function animate(obj){
             } 
         })
     )
-    f.log(weirdBubbles);
-    
+    const indexSFour = {
+        el: f.grab(obj.indexSFour.sel), 
+        trigger: obj.animset.indexSFour.trigger,
+        gsap: {
+            base: obj.animset.weirdB.base,
+            setTo: obj.animset.indexSFour.setTo,
+            scrollT: obj.animset.weirdB.scrollT
+        }
+    }
+    f.log(indexSFour);
+
     // functions 
     function setMotionPosition(obj){ // create positions for icons 
 
@@ -378,8 +387,8 @@ export function animate(obj){
         card.el.classList.toggle("show");
     }
 
-    function scrub(bubble, setTo){ // initiates animations
-        obj.animWB(bubble.el, bubble.gsap.base, setTo, bubble.gsap.scrollT);
+    function scrub(bubble, setTo, scrollT){ // initiates animations
+        obj.animWB(bubble.el, bubble.gsap.base, setTo, scrollT);
     };
     
     // add click events to buttons 
@@ -445,13 +454,22 @@ export function animate(obj){
 
     // animate weird bubble
     // for mobile
-    // if (window.screen.width <= 576){        
-    // }
-    const bottomWB = weirdBubbles.filter(bubble => bubble.position === "bottom")[0];
-    f.log(bottomWB)
-    bottomWB.gsap.scrollT.trigger = f.grab(bubble.trigger);
-    bottomWB.gsap.scrollT.start = "75% top"; 
-    scrub(bottomWB, bottomWB.gsap.setTo.mob);
+    if (window.screen.width <= 576){
+
+        // edit setttings
+        // weird bubbles 
+        const bottomWB = filterItem(weirdBubbles, "bottom"); 
+        bottomWB.gsap.scrollT.trigger = f.grab(bubble.trigger);
+
+        // index-s-four
+        indexSFour.gsap.scrollT.trigger = f.grab(bubble.trigger);
+
+        // scrub bttom bubble
+        scrub(bottomWB, bottomWB.gsap.setTo.mob, bottomWB.gsap.scrollT.mob);
+        scrub(indexSFour, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.mob);
+        
+    }
+
 }
 
 

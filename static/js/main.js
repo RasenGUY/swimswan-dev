@@ -87,14 +87,15 @@ window.addEventListener("load", ()=> {
                 trigger: "#index-s-three",
                 base: {
                     duration: 0.75,
-                    ease: "circ.inOut",
-                    // clearProps: true
+                    ease: "circ.inOut"
                 },
                 scrollT: {
-                    trigger: null,
-                    start: null,
-                    scrub: 1,
-                    // markers: true
+                    mob: {
+                        trigger: null,
+                        start: "75% top",
+                        scrub: 0.5,
+                        markers: true
+                    }
                 },
                 setTo: {
                     mob: {
@@ -105,6 +106,13 @@ window.addEventListener("load", ()=> {
                         transformOrigin: "50% 50%"
                     }
                 } 
+            },
+            indexSFour: {
+                trigger: "#index-s-four",
+                setTo: {
+                    opacity: 1, 
+                    visibility: "initial", 
+                }
             }
         }, 
         animTo: (sel, setTo, base, motion) => gsap.to(sel, {...setTo, ...base, motionPath: {...motion}}),
@@ -126,15 +134,13 @@ window.addEventListener("load", ()=> {
         },
         weirdBubbles: {
             sel: ["#bubble-weird-top", "#bubble-weird-middle", "#bubble-weird-bottom"]
+        }, 
+        indexSFour: {
+            sel: "#index-s-four"
         }
     }
     an.animate(animObj);
 
-    // animate circle from index-s-three to index-s-4
-        // scrollTrigger animation 
-        // trigger at section-s-three
-        // scrub
-        // move animation objec to position
     
 });
 

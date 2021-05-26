@@ -463,6 +463,10 @@ main#main-wrapper section#index-s-three .container .text-box header {
     float: right;
   }
 }
+main#main-wrapper section#index-s-four {
+  visibility: hidden;
+  opacity: 0;
+}
 main#main-wrapper section#index-s-four .container .text-box .text-body #box-left ul {
   list-style: none;
 }
