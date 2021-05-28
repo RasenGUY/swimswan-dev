@@ -464,8 +464,7 @@ main#main-wrapper section#index-s-three .container .text-box header {
   }
 }
 main#main-wrapper section#index-s-four {
-  visibility: hidden;
-  opacity: 0;
+  height: 50vh;
 }
 main#main-wrapper section#index-s-four .container .text-box .text-body #box-left ul {
   list-style: none;
@@ -490,6 +489,14 @@ main#main-wrapper section#index-s-four .container .text-box .text-body #box-left
 }
 main#main-wrapper section#index-s-four .container .text-box .text-body > * {
   margin-bottom: 5rem;
+}
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-four .container .text-box .text-body {
+    position: relative;
+  }
+  main#main-wrapper section#index-s-four .container .text-box .text-body > div {
+    position: absolute;
+  }
 }
 
 /*# sourceMappingURL=modules.css.map */

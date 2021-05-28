@@ -92,20 +92,47 @@ window.addEventListener("load", ()=> {
                         start: "top top",
                         end: null,
                         scrub: 0.5
+                    },
+                    ipad: {
+                        trigger: null,
+                        start: "center bottom",
+                        end: null,
+                        scrub: 0.5
                     }
                 },
                 setTo: {
                     ipXSMax: {
                         x: "-35%",
-                        y: "55%",
+                        y: "60%",
                         scale: 0.76,
                         rotation: "190deg",
                         transformOrigin: "50% 50%"
                     },
                     ipXSR: {
                         x: "-35%",
-                        y: "55%",
-                        scale: 0.76,
+                        y: "75%",
+                        scale: 0.79,
+                        rotation: "190deg",
+                        transformOrigin: "50% 50%"
+                    },
+                    ipXSO: {
+                        x: "-35%",
+                        y: "75%",
+                        scale: 0.79,
+                        rotation: "190deg",
+                        transformOrigin: "50% 50%"
+                    },
+                    galaxyS9: {
+                        x: "-35%",
+                        y: "82%",
+                        scale: 0.90,
+                        rotation: "190deg",
+                        transformOrigin: "50% 50%"
+                    },
+                    ipad: {
+                        x: "-35%",
+                        y: "82%",
+                        scale: 0.90,
                         rotation: "190deg",
                         transformOrigin: "50% 50%"
                     }

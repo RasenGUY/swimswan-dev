@@ -292,11 +292,15 @@ export function animate(obj){
                 base: obj.animset.weirdB.base,
                 setTo: {
                     ipXSMax: obj.animset.weirdB.setTo.ipXSMax,
-                    ipXSR: obj.animset.weirdB.setTo.ipXSR
+                    ipXSR: obj.animset.weirdB.setTo.ipXSR,
+                    ipXSO: obj.animset.weirdB.setTo.ipXS,
+                    galaxyS9: obj.animset.weirdB.setTo.galaxyS9,
+                    ipad: obj.animset.weirdB.setTo.ipad
                 },
                 scrollT: {
                     ipXSMax: obj.animset.weirdB.scrollT.ipXSMax,
-                    ipXSR: obj.animset.weirdB.scrollT.ipXSR
+                    ipXSR: obj.animset.weirdB.scrollT.ipXSR,
+                    ipad: obj.animset.weirdB.scrollT.ipad
                 } 
             } 
         })
@@ -494,6 +498,28 @@ export function animate(obj){
                 scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
             }
         },
+        {   
+            screen: "Samsung Galaxy S9/S9 +android 7",
+            set: {
+                width: 360,
+                minMax: ">"
+            },
+            callB: () => {
+                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.galaxyS9, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
+                scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
+            }
+        },
+        {   
+            screen: "Ipad",
+            set: {
+                width: 768,
+                minMax: ">"
+            },
+            callB: () => {
+                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipad, bottomWB.gsap.scrollT.ipad, bottomWB.trigger)
+                scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipad, bottomWB.trigger)
+            }
+        }
         
     ]
 
