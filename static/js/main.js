@@ -67,17 +67,7 @@ window.addEventListener("load", ()=> {
     // activeate gsapCss
     const animation = new an.Animation(baseSet);
     animation.animInit(els, sel); 
-    
-    // // animate animals on main screen
-    // // const animBtn = document.querySelector("#arrow");
-    // const orbit = document.querySelector(".orbit");
-    // const waterBubble = document.querySelector(".orbit #water-bubble");
-    // const turtleImg = document.querySelector(".icon-path #turtle");
-    // const dolphinImg = document.querySelector(".icon-path #dolphin");
-    // const orcaImg = document.querySelector(".icon-path #orca");
-    // var currentAngle = 0; 
-    
-    
+        
     // animate packages index-s-three nad index-s-four
     const animObj  = {
         abs: 'static/images/svg/compressed/',
@@ -90,15 +80,29 @@ window.addEventListener("load", ()=> {
                     ease: "circ.inOut"
                 },
                 scrollT: {
-                    mob: {
+                    ipXSMax: {
                         trigger: null,
-                        start: "75% top",
-                        scrub: 0.5,
-                        markers: true
+                        start: "top top",
+                        end: null,
+                        scrub: 0.5
+                        // markers: true
+                    },
+                    ipXSR: {
+                        trigger: null,
+                        start: "top top",
+                        end: null,
+                        scrub: 0.5
                     }
                 },
                 setTo: {
-                    mob: {
+                    ipXSMax: {
+                        x: "-35%",
+                        y: "55%",
+                        scale: 0.76,
+                        rotation: "190deg",
+                        transformOrigin: "50% 50%"
+                    },
+                    ipXSR: {
                         x: "-35%",
                         y: "55%",
                         scale: 0.76,
@@ -108,7 +112,6 @@ window.addEventListener("load", ()=> {
                 } 
             },
             indexSFour: {
-                trigger: "#index-s-four",
                 setTo: {
                     opacity: 1, 
                     visibility: "initial", 

@@ -290,23 +290,23 @@ export function animate(obj){
             trigger: obj.animset.weirdB.trigger,
             gsap: {
                 base: obj.animset.weirdB.base,
-                scrollT: obj.animset.weirdB.scrollT,
                 setTo: {
-                    mob: obj.animset.weirdB.setTo.mob
-                }
+                    ipXSMax: obj.animset.weirdB.setTo.ipXSMax,
+                    ipXSR: obj.animset.weirdB.setTo.ipXSR
+                },
+                scrollT: {
+                    ipXSMax: obj.animset.weirdB.scrollT.ipXSMax,
+                    ipXSR: obj.animset.weirdB.scrollT.ipXSR
+                } 
             } 
         })
     )
     const indexSFour = {
         el: f.grab(obj.indexSFour.sel), 
-        trigger: obj.animset.indexSFour.trigger,
         gsap: {
-            base: obj.animset.weirdB.base,
-            setTo: obj.animset.indexSFour.setTo,
-            scrollT: obj.animset.weirdB.scrollT
+            setTo: obj.animset.indexSFour.setTo
         }
     }
-    f.log(indexSFour);
 
     // functions 
     function setMotionPosition(obj){ // create positions for icons 
@@ -387,10 +387,23 @@ export function animate(obj){
         card.el.classList.toggle("show");
     }
 
-    function scrub(bubble, setTo, scrollT){ // initiates animations
-        obj.animWB(bubble.el, bubble.gsap.base, setTo, scrollT);
+    function scrub(el, base, setTo, scrollT, trigger){ // initiates animations
+        scrollT.trigger = trigger;
+        obj.animWB(el, base, setTo, scrollT);
+        // f.log(obj.animWB(el.el, base, setTo, scrollT));
     };
     
+    function animateWB(qList, width, callB){
+        
+        // listens and triggers on windwo change
+        qList.addEventListener("change", ql => {
+        f.callQueries(ql, callB);
+        })  // iphone xs 12 & XR iO
+
+        if (window.screen.width >= width){ // initial call
+            f.callQueries(qList, callB);
+        }
+    }
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
         
@@ -452,24 +465,50 @@ export function animate(obj){
     icons.map(icon => calcPos(icon, 0.125)); // initial pos and motionPath update
     toggleShow(filterItem(cards, "middleRight")); // show card
 
-    // animate weird bubble
-    // for mobile
-    if (window.screen.width <= 576){
+    // animate weird bubble and index-s-four 
 
-        // edit setttings
-        // weird bubbles 
-        const bottomWB = filterItem(weirdBubbles, "bottom"); 
-        bottomWB.gsap.scrollT.trigger = f.grab(bubble.trigger);
-
-        // index-s-four
-        indexSFour.gsap.scrollT.trigger = f.grab(bubble.trigger);
-
-        // scrub bttom bubble
-        scrub(bottomWB, bottomWB.gsap.setTo.mob, bottomWB.gsap.scrollT.mob);
-        scrub(indexSFour, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.mob);
+    // filter out bottom weird bubble
+    const bottomWB = filterItem(weirdBubbles, "bottom");
+    
+    // callB's for anim bottom bubble 
+    let anims = [
+        {   
+            screen: "iphone XS Max, Iphone XR",
+            set: {
+                width: 414,
+                minMax: ">"
+            },
+            callB: () => {
+                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipXSMax, bottomWB.gsap.scrollT.ipXSMax, bottomWB.trigger)
+                scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipXSMax, bottomWB.trigger)
+            }
+        },
+        {   
+            screen: "iphone X/XS",
+            set: {
+                width: 375,
+                minMax: ">"
+            },
+            callB: () => {
+                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipXSR, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
+                scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
+            }
+        },
         
-    }
+    ]
 
+    // run all animations for different queries on different screens
+   let ranAnims =  anims.map(anim => animateWB(f.medQueries(anim.set.minMax, anim.set.width), anim.set.width, anim.callB));
+
+   f.log(ranAnims);
+
+
+
+    
+    
+
+
+    
 }
 
 

@@ -39,25 +39,25 @@ export function togglePseudo(htmlEl, pseudo, cssRule){ //function for animating 
 };
 
 // function for doing media queries on site 
-export function medQueries(minMax, width){    
+export function medQueries(minMax, width){  
     // max or min
     if (minMax === ">"){ // if min then create min-width query
-        return window.matchMedia(`(min-width: ${width})`);
+        return window.matchMedia(`(min-width: ${width}px)`);
     }
     else if (minMax === "<"){ // if min then create max-width query
-        return window.matchMedia(`(max-width: ${width})`);
+        return window.matchMedia(`(max-width: ${width}px)`);
     }
 };
 
 // queries for index page
-export function callQueries(window, callB, reverse){
+export function callQueries(e, callB){
 
     // will execute callBack and reverseFunction on matched or unmatched window
-    if (window.matches){ // section one 
+    if (e.matches){ // section one 
         callB(); 
     } 
     else {
-        reverse(); 
+        return;
     }
     return 0;
 };
