@@ -77,7 +77,8 @@ window.addEventListener("load", ()=> {
                 trigger: "#index-s-three",
                 base: {
                     duration: 0.75,
-                    ease: "circ.inOut"
+                    ease: "circ.inOut",
+                    overwrite: true
                 },
                 scrollT: {
                     ipXSMax: {
@@ -93,11 +94,23 @@ window.addEventListener("load", ()=> {
                         end: null,
                         scrub: 0.5
                     },
+                    ipadPro105In: {
+                        trigger: null,
+                        start: "center bottom",
+                        end: null,
+                        scrub: 0.75
+                    },
                     ipad: {
                         trigger: null,
                         start: "center bottom",
                         end: null,
-                        scrub: 0.5
+                        scrub: 0.75
+                    },
+                    ipadPro1209In: {
+                        trigger: null,
+                        start: "center bottom",
+                        end: null,
+                        scrub: 0.75
                     }
                 },
                 setTo: {
@@ -129,12 +142,53 @@ window.addEventListener("load", ()=> {
                         rotation: "190deg",
                         transformOrigin: "50% 50%"
                     },
+                    ipadPro105In: {
+                        bottomWB: {
+                            x: "-25%",
+                            y: "78%",
+                            scale: 1.10,
+                            rotation: "65deg",
+                            transformOrigin: "50% 50%"
+                        },
+                        middleWB: {
+                            x: "40%",
+                            y: "97%",
+                            scale: 1.06,
+                            rotation: "175deg",
+                            transformOrigin: "50% 50%"
+                        },
+                    },
                     ipad: {
-                        x: "-35%",
-                        y: "82%",
-                        scale: 0.90,
-                        rotation: "190deg",
-                        transformOrigin: "50% 50%"
+                        bottomWB: {
+                            x: "-25%",
+                            y: "95%",
+                            scale: 1.10,
+                            rotation: "65deg",
+                            transformOrigin: "50% 50%"
+                        },
+                        middleWB: {
+                            x: "40%",
+                            y: "115%",
+                            scale: 1.06,
+                            rotation: "175deg",
+                            transformOrigin: "50% 50%"
+                        }
+                    },
+                    ipadPro1209In: {
+                        bottomWB: {
+                            x: "-30%",
+                            y: "70%",
+                            scale: 1.10,
+                            rotation: "65deg",
+                            transformOrigin: "50% 50%"
+                        },
+                        middleWB: {
+                            x: "38%",
+                            y: "90%",
+                            scale: 1.06,
+                            rotation: "175deg",
+                            transformOrigin: "50% 50%"
+                        }
                     }
                 } 
             },

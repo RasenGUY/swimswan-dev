@@ -448,11 +448,6 @@ main#main-wrapper section#index-s-one .container .icon span p {
     padding-bottom: 2.5rem;
   }
 }
-@media only screen and (min-width: 768px) {
-  main#main-wrapper section#index-s-three {
-    height: 45vh;
-  }
-}
 main#main-wrapper section#index-s-three .container .text-box header {
   text-align: center;
 }
@@ -466,13 +461,28 @@ main#main-wrapper section#index-s-three .container .text-box header {
 main#main-wrapper section#index-s-four {
   height: 50vh;
 }
+@media only screen and (min-width: 768px) {
+  main#main-wrapper section#index-s-four .container {
+    height: 100%;
+  }
+  main#main-wrapper section#index-s-four .container .text-box {
+    height: inherit;
+  }
+  main#main-wrapper section#index-s-four .container .text-box .text-body {
+    height: inherit;
+  }
+}
 main#main-wrapper section#index-s-four .container .text-box .text-body #box-left ul {
   list-style: none;
 }
 @media only screen and (min-width: 576px) {
+  main#main-wrapper section#index-s-four .container .text-box .text-body #box-left ul {
+    margin-left: 9.5%;
+  }
+}
+@media only screen and (min-width: 576px) {
   main#main-wrapper section#index-s-four .container .text-box .text-body #box-left ul li {
     position: relative;
-    padding-right: 3.25rem;
   }
   main#main-wrapper section#index-s-four .container .text-box .text-body #box-left ul li:before, main#main-wrapper section#index-s-four .container .text-box .text-body #box-left ul li::before {
     content: "";
@@ -482,10 +492,16 @@ main#main-wrapper section#index-s-four .container .text-box .text-body #box-left
     background-image: url("../../images/png/compressed/swimming.png");
     background-size: cover;
     background-position: center;
-    left: 0;
+    left: -10%;
     top: 50%;
     transform: translateY(-50%);
   }
+}
+main#main-wrapper section#index-s-four .container .text-box .text-body #box-left br {
+  display: none;
+}
+main#main-wrapper section#index-s-four .container .text-box .text-body #box-left a.btn {
+  display: none;
 }
 main#main-wrapper section#index-s-four .container .text-box .text-body > * {
   margin-bottom: 5rem;
@@ -496,6 +512,35 @@ main#main-wrapper section#index-s-four .container .text-box .text-body > * {
   }
   main#main-wrapper section#index-s-four .container .text-box .text-body > div {
     position: absolute;
+    height: 50%;
+    width: 50%;
+  }
+  main#main-wrapper section#index-s-four .container .text-box .text-body #box-left {
+    text-align: left;
+    top: 10%;
+    left: 0;
+  }
+  main#main-wrapper section#index-s-four .container .text-box .text-body #box-left br {
+    display: initial;
+  }
+  main#main-wrapper section#index-s-four .container .text-box .text-body #box-left a.btn {
+    display: initial;
+  }
+  main#main-wrapper section#index-s-four .container .text-box .text-body #box-right {
+    text-align: right;
+    top: 25%;
+    right: 0;
+  }
+  main#main-wrapper section#index-s-four .container .text-box .text-body a.btn {
+    display: none;
+  }
+}
+@media only screen and (min-width: 834px) {
+  main#main-wrapper section#index-s-four .container .text-box .text-body #box-left {
+    top: 10%;
+  }
+  main#main-wrapper section#index-s-four .container .text-box .text-body #box-right {
+    top: 25%;
   }
 }
 

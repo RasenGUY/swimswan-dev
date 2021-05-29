@@ -579,12 +579,16 @@ main#main-wrapper section#index-s-three .shapes #weird-bubble {
 }
 @media only screen and (min-width: 768px) {
   main#main-wrapper section#index-s-three .shapes #weird-bubble {
-    transform: translate(55%, 19%) scale(1.45);
+    transform: unset;
+  }
+  main#main-wrapper section#index-s-three .shapes #weird-bubble .bubble {
+    width: 19rem;
+    transform: translate(34%, -1%);
   }
 }
 @media only screen and (min-width: 1024px) {
   main#main-wrapper section#index-s-three .shapes #weird-bubble {
-    transform: translate(58%, 17%) scale(1.45);
+    transform: translate(0%, -3.4%) scale(0.95);
   }
 }
 @media only screen and (max-width: 576px) {

@@ -39,14 +39,8 @@ export function togglePseudo(htmlEl, pseudo, cssRule){ //function for animating 
 };
 
 // function for doing media queries on site 
-export function medQueries(minMax, width){  
-    // max or min
-    if (minMax === ">"){ // if min then create min-width query
-        return window.matchMedia(`(min-width: ${width}px)`);
-    }
-    else if (minMax === "<"){ // if min then create max-width query
-        return window.matchMedia(`(max-width: ${width}px)`);
-    }
+export function medQueries(query){  
+    return window.matchMedia(query);
 };
 
 // queries for index page

@@ -295,12 +295,17 @@ export function animate(obj){
                     ipXSR: obj.animset.weirdB.setTo.ipXSR,
                     ipXSO: obj.animset.weirdB.setTo.ipXS,
                     galaxyS9: obj.animset.weirdB.setTo.galaxyS9,
-                    ipad: obj.animset.weirdB.setTo.ipad
+                    ipadPro105In: obj.animset.weirdB.setTo.ipadPro105In,
+                    ipad: obj.animset.weirdB.setTo.ipad,
+                    ipadPro1209In: obj.animset.weirdB.setTo.ipadPro1209In
                 },
                 scrollT: {
                     ipXSMax: obj.animset.weirdB.scrollT.ipXSMax,
                     ipXSR: obj.animset.weirdB.scrollT.ipXSR,
-                    ipad: obj.animset.weirdB.scrollT.ipad
+                    ipadPro105In: obj.animset.weirdB.scrollT.ipadPro105In,
+                    ipad: obj.animset.weirdB.scrollT.ipad,
+                    ipadPro1209In: obj.animset.weirdB.scrollT.ipadPro1209In
+
                 } 
             } 
         })
@@ -393,21 +398,21 @@ export function animate(obj){
 
     function scrub(el, base, setTo, scrollT, trigger){ // initiates animations
         scrollT.trigger = trigger;
-        obj.animWB(el, base, setTo, scrollT);
-        // f.log(obj.animWB(el.el, base, setTo, scrollT));
+        let ele = obj.animWB(el, base, setTo, scrollT);
+        f.log(ele);
     };
     
-    function animateWB(qList, width, callB){
+    function animateWB(qList, callB){
         
         // listens and triggers on windwo change
         qList.addEventListener("change", ql => {
         f.callQueries(ql, callB);
         })  // iphone xs 12 & XR iO
-
-        if (window.screen.width >= width){ // initial call
-            f.callQueries(qList, callB);
-        }
+        
+        // initial call
+        f.callQueries(qList, callB);
     }
+
     // add click events to buttons 
     f.event(arrowRight, "click", () => {
         
@@ -473,15 +478,13 @@ export function animate(obj){
 
     // filter out bottom weird bubble
     const bottomWB = filterItem(weirdBubbles, "bottom");
+    const middleWB = filterItem(weirdBubbles, "middle");
     
     // callB's for anim bottom bubble 
     let anims = [
         {   
             screen: "iphone XS Max, Iphone XR",
-            set: {
-                width: 414,
-                minMax: ">"
-            },
+            query: "(min-width: 414px) and (max-height: 896px)",
             callB: () => {
                 scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipXSMax, bottomWB.gsap.scrollT.ipXSMax, bottomWB.trigger)
                 scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipXSMax, bottomWB.trigger)
@@ -489,10 +492,7 @@ export function animate(obj){
         },
         {   
             screen: "iphone X/XS",
-            set: {
-                width: 375,
-                minMax: ">"
-            },
+            query: "(min-width: 375px) and (max-height: 812px)",
             callB: () => {
                 scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipXSR, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
                 scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
@@ -500,31 +500,67 @@ export function animate(obj){
         },
         {   
             screen: "Samsung Galaxy S9/S9 +android 7",
-            set: {
-                width: 360,
-                minMax: ">"
-            },
+            query: "(min-width: 360px) and (max-height: 740px)",
             callB: () => {
                 scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.galaxyS9, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
                 scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
             }
         },
         {   
-            screen: "Ipad",
-            set: {
-                width: 768,
-                minMax: ">"
-            },
+            screen: "Samsung Galaxy S5",
+            query: "(min-width: 360px) and (max-height: 640px)",
             callB: () => {
-                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipad, bottomWB.gsap.scrollT.ipad, bottomWB.trigger)
+                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.galaxyS9, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
+                scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipXSR, bottomWB.trigger)
+            }
+        },
+        {   
+            screen: "Ipad Pro 10.5 inch",
+            query: "(min-width: 834px) and (max-height: 1112px)",
+            callB: () => {
+                
+                // bottom weirdBubble
+                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipadPro105In.bottomWB, bottomWB.gsap.scrollT.ipadPro105In, bottomWB.trigger)
+                scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipadPro105In, bottomWB.trigger)
+                
+                // middel weirdBubble
+                scrub(middleWB.el, middleWB.gsap.base, middleWB.gsap.setTo.ipadPro105In.middleWB, middleWB.gsap.scrollT.ipadPro105In, middleWB.trigger)
+                scrub(indexSFour.el, middleWB.gsap.base, indexSFour.gsap.setTo, middleWB.gsap.scrollT.ipadPro105In, middleWB.trigger)
+            }
+        },
+        {   
+            screen: "Ipad",
+            query: "(min-width: 768px) and (max-height: 1024px)",
+            callB: () => {
+                
+                // bottom weirdBubble
+                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipad.bottomWB, bottomWB.gsap.scrollT.ipad, bottomWB.trigger)
                 scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipad, bottomWB.trigger)
+                
+                // middel weirdBubble
+                scrub(middleWB.el, middleWB.gsap.base, middleWB.gsap.setTo.ipad.middleWB, middleWB.gsap.scrollT.ipad, middleWB.trigger)
+                scrub(indexSFour.el, middleWB.gsap.base, indexSFour.gsap.setTo, middleWB.gsap.scrollT.ipad, middleWB.trigger)
+            }
+        },
+        {   
+            screen: "Ipad Pro 12.9 Inch",
+            query: "(min-width: 1024px) and (max-height: 1366px)",
+            callB: () => {
+                
+                // bottom weirdBubble
+                scrub(bottomWB.el, bottomWB.gsap.base, bottomWB.gsap.setTo.ipadPro1209In.bottomWB, bottomWB.gsap.scrollT.ipadPro1209In, bottomWB.trigger)
+                scrub(indexSFour.el, bottomWB.gsap.base, indexSFour.gsap.setTo, bottomWB.gsap.scrollT.ipadPro1209In, bottomWB.trigger)
+                
+                // middel weirdBubble
+                scrub(middleWB.el, middleWB.gsap.base, middleWB.gsap.setTo.ipadPro1209In.middleWB, middleWB.gsap.scrollT.ipadPro1209In, middleWB.trigger)
+                scrub(indexSFour.el, middleWB.gsap.base, indexSFour.gsap.setTo, middleWB.gsap.scrollT.ipadPro1209In, middleWB.trigger)
             }
         }
         
     ]
 
     // run all animations for different queries on different screens
-   let ranAnims =  anims.map(anim => animateWB(f.medQueries(anim.set.minMax, anim.set.width), anim.set.width, anim.callB));
+   let ranAnims = anims.map(anim => animateWB(f.medQueries(anim.query), anim.callB));
 
    f.log(ranAnims);
 
